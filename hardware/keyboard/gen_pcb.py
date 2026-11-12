@@ -77,7 +77,7 @@ nrows = len(layout.ROWS)
 for i, k in enumerate(keys):
     sw = choc_footprint()
     sw.SetReference(f"SW{i + 1}")
-    sw.SetValue(k["name"])
+    sw.SetValue("Choc_V1")   # key legend stays in layout.py; odd characters break Specctra export
     sw.SetPosition(mm(m + k["x"], m + k["y"]))
     board.Add(sw)
 
@@ -105,6 +105,14 @@ board.Add(hdr)
 names = [f"ROW{r}" for r in range(nrows)] + [f"COL{c}" for c in range(ncols)]
 for p, n in zip(sorted(hdr.Pads(), key=lambda q: int(q.GetNumber())), names):
     p.SetNet(net(n))
+
+# M2.5 mounting holes in the corners
+for n, (hx, hy) in enumerate([(3.5, 3.5), (width - 3.5, 3.5), (3.5, height - 3.5), (width - 3.5, height - 3.5)], 1):
+    mh = pcbnew.FootprintLoad(os.path.join(FP_LIB, "MountingHole.pretty"), "MountingHole_2.7mm_M2.5")
+    mh.SetReference(f"H{n}")
+    mh.SetPosition(mm(hx, hy))
+    mh.Reference().SetVisible(False)
+    board.Add(mh)
 
 # Board outline
 pts = [(0, 0), (width, 0), (width, height), (0, height)]

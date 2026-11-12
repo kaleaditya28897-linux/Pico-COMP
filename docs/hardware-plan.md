@@ -60,3 +60,13 @@ Use a Wi-Fi module with a U.FL connector and a 2.4 GHz stick-on flex antenna in 
 
 ## Viewing the assembly
 `FreeCADCmd hardware/mechanical/case.py && python3 hardware/mechanical/build_viewer.py`, then open `hardware/mechanical/pico-comp-viewer.html` in a browser (offline, orbit/zoom, per-part toggles). It shows the lid open at 80 degrees with keycaps, plate, keyboard PCB, main PCB placeholder, cells, hinge, display and antenna. Placeholder parts are for visualisation only.
+
+## PCBs (KiCad 10, generated)
+
+There is **no schematic**: both boards are generated from Python (`hardware/mainboard/gen_pcb.py`, `hardware/keyboard/gen_pcb.py`) and autorouted with Freerouting 2.1 (needs Java 21) via `hardware/mainboard/route.py`; `ses_import.py` loads its result because pcbnew's own SES importer rejects it.
+
+- **Keyboard PCB** (244x120 mm, 2 layers, 75 Choc + diodes, 4 mounting holes): fully routed, DRC clean.
+- **Main PCB** (152x68 mm, 4 layers): 2x RP2350A + flash, BQ25798 charger, 5 V / 3.3 V bucks, USB-C, microSD, HDMI, keyboard/printer/expansion headers. Routed except **38 unconnected items** (mostly V3V3/VBUS/VSYS/VBAT power connections) that must be finished by hand in KiCad. Courtyard DRC is clean.
+- **Not verified**: the Wi-Fi module footprint is a placeholder (replace with the real Murata footprint); BQ25798/TPS62933 passive values need datasheet review; robu.in's min trace/space and 4-layer rules are unconfirmed.
+- GPIO plan: NET MCU ROW0-5 = GPIO0-5, COL0-13 = GPIO6-19, I2C 20/21, CHG_INT 22, Wi-Fi 23-26, CHG_STAT 27, UART 28/29. UI MCU printer UART 0-3, EXP 4-11, HSTX TMDS 12-19, SD SPI 20-23, SD_DET 24, LED 25, buzzer 26, UART 28/29.
+- Regenerate 3D: `kicad-cli pcb export step --subst-models --force -o X.step X.kicad_pcb` in `hardware/kicad`, then `FreeCADCmd hardware/mechanical/case.py` (imports both STEPs) and `build_viewer.py`.
