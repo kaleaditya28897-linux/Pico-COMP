@@ -27,9 +27,9 @@ W, D = 250.0, 140.0                 # footprint
 WALL = 2.5
 R_CORNER = 6.0                      # vertical corner radius
 R_EDGE = 1.5                        # bottom / top edge softening
-BASE_H = 30.0
+BASE_H = 37.0                       # rim; the lid's screen face rests on it when closed
 PLATE_T = 1.5
-PLATE_TOP = BASE_H                  # plate flush with the base rim; Choc keycaps rise above
+PLATE_TOP = 30.0                    # plate recessed 7 mm below the rim so the keycaps clear the closed lid
 KB_PCB_T = 1.6
 KB_PCB_Z = PLATE_TOP - PLATE_T - 3.0 - KB_PCB_T   # Choc: PCB ~3 mm below the plate
 LID_H = 14.0
@@ -45,7 +45,7 @@ MB_Z = WALL + 4.0                   # PCB underside on 4 mm standoffs
 FEET = [(22, 22), (W - 22, 22), (22, D - 22), (W - 22, D - 22)]
 
 doc = App.newDocument("PicoComp")
-lz = PLATE_TOP + 7.0                # closed-stack lid height (clearance for keycaps)
+lz = BASE_H                         # lid is modelled flat (screen face up) starting at this height
 LID_D = D
 
 
@@ -61,6 +61,15 @@ def box(x, y, z, dx, dy, dz):
 
 def cyl(r, h, x, y, z, axis=EZ):
     return Part.makeCylinder(r, h, V(x, y, z), axis)
+
+
+def lid_pose(shape, deg):
+    """Rotate a flat lid-frame shape (screen up) about the hinge: 180 = closed on the base, 80 = open."""
+    sh = shape.copy()
+    sh.translate(V(0, 0, -(lz + LID_H)))
+    sh.rotate(V(0, 0, 0), EX, deg)
+    sh.translate(V(0, HINGE_Y, HINGE_Z))
+    return sh
 
 
 def rounded_box(x, y, z, dx, dy, dz, r, bottom=0.0, top=0.0):
@@ -143,13 +152,15 @@ base = base.cut(box(W / 2 - 22, D / 2 - 15, 0.6, 44, 30, 0.5))                  
 base = base.cut(box(W / 2 - 20, -0.1, BASE_H - 2.5, 40, WALL + 0.2, 2.6))
 
 # hinge: three base knuckles on the rear wall (pin axis along X)
-HINGE_Y, HINGE_Z, HK_R, PIN_R = D + 3.0, PLATE_TOP - 4.0, 4.0, 1.5
+HINGE_Y, HINGE_Z, HK_R, PIN_R = D, BASE_H, 4.0, 1.5   # pin on the rim plane, rear edge
 base_knuckles = [(20, 50), (110, 140), (200, 230)]
 lid_knuckles = [(55, 105), (145, 195)]
 for x0, x1 in base_knuckles:
     k = cyl(HK_R, x1 - x0, x0, HINGE_Y, HINGE_Z, EX).fuse(box(x0, D - WALL + 0.5, HINGE_Z - HK_R, x1 - x0, HINGE_Y - (D - WALL + 0.5), 2 * HK_R))
     base = base.fuse(k)
 base = base.cut(cyl(PIN_R, W, 0, HINGE_Y, HINGE_Z, EX))
+for x0, x1 in lid_knuckles:                                  # rear-wall notch for the lid knuckles
+    base = base.cut(box(x0 - 0.5, D - WALL - 0.1, HINGE_Z - HK_R - 0.5, x1 - x0 + 1.0, WALL + 0.2, HK_R + 0.6))
 base = base.removeSplitter()
 add("Base", base)
 
@@ -186,17 +197,19 @@ po = box(bezel_mid - ANT_POCKET[1] / 2 - RIB, pocket_y0 - RIB, top_z - ANT_POCKE
 pi = box(bezel_mid - ANT_POCKET[1] / 2, pocket_y0, top_z - ANT_POCKET[2] - 0.5, ANT_POCKET[1], ANT_POCKET[0], ANT_POCKET[2] + 1)
 lid = lid.fuse(po.cut(pi))
 lid = lid.cut(cyl(1.5, 12.0, bezel_mid, pocket_y0 + ANT_POCKET[0] - 2, top_z - 2.5, EY))
-# lid hinge knuckles: pivot on the lid's y=0 bottom edge
+for x0, x1 in base_knuckles:                                 # lid-wall notch for the base knuckles
+    lid = lid.cut(box(x0 - 0.5, -0.1, lz + LID_H - HK_R - 0.5, x1 - x0 + 1.0, HK_R + 0.3, HK_R + 0.6))
+# lid hinge knuckles: pivot on the lid's y=0 screen-face edge
 for x0, x1 in lid_knuckles:
-    k = cyl(HK_R, x1 - x0, x0, 0, lz, EX).fuse(box(x0, 0, lz, x1 - x0, HK_R, HK_R))
+    k = cyl(HK_R, x1 - x0, x0, 0, lz + LID_H, EX).fuse(box(x0, 0, lz + LID_H - HK_R, x1 - x0, HK_R, HK_R))
     lid = lid.fuse(k)
-lid = lid.cut(cyl(PIN_R, W, 0, 0, lz, EX)).removeSplitter()
-add("Lid", lid)
+lid = lid.cut(cyl(PIN_R, W, 0, 0, lz + LID_H, EX)).removeSplitter()
+add("Lid", lid_pose(lid, 180))
 
 antenna = box(bezel_mid - ANT[1] / 2, pocket_y0 + (ANT_POCKET[0] - ANT[0]) / 2, top_z - ANT[2], ANT[1], ANT[0], ANT[2])
-add("Antenna", antenna)
+add("Antenna", lid_pose(antenna, 180))
 panel = box(px, py, top_z - PANEL[2], PANEL[0], PANEL[1], PANEL[2])
-add("DisplayPanel", panel)
+add("DisplayPanel", lid_pose(panel, 180))
 
 # ---------------------------------------------------------------- cells, pin, PCBs
 cells = None
@@ -254,10 +267,10 @@ for name, sh in (("base", base), ("lid", lid_flat), ("key_plate", plate)):
 # ---------------------------------------------------------------- dimensions sheet
 dim_rows = [
     ("Overall closed footprint", f"{W:.0f} x {D:.0f} mm"),
-    ("Base height / wall / floor", f"{BASE_H:.0f} / {WALL} / {WALL} mm"),
+    ("Base height (rim) / plate top / wall / floor", f"{BASE_H:.0f} / {PLATE_TOP:.0f} / {WALL} / {WALL} mm"),
     ("Lid height (flat, screen up)", f"{LID_H:.0f} mm"),
     ("Corner radius / edge fillet", f"{R_CORNER} / {R_EDGE} mm"),
-    ("Closed height (base + keycap gap + lid)", f"{lz + LID_H:.0f} mm"),
+    ("Closed height (base rim + lid)", f"{BASE_H + LID_H:.0f} mm"),
     ("Keyboard plate / key pitch", f"{pw:.0f} x {ph:.0f} x {PLATE_T} mm, {layout.PITCH:.0f} mm pitch, {layout.CUTOUT} mm cutouts"),
     ("Keyboard PCB", f"{KB_PCB_W:.0f} x {KB_PCB_H:.0f} x {KB_PCB_T} mm, underside z={KB_PCB_Z:.1f}"),
     ("Main PCB", f"{MB_W:.0f} x {MB_H:.0f} mm, underside z={MB_Z:.1f}, 4x M2.5 standoffs"),
@@ -281,19 +294,11 @@ OPEN_DEG = 80.0
 CAP, CAP_H = 16.0, 6.0
 
 
-def lid_pose(shape):
-    sh = shape.copy()
-    sh.translate(V(0, 0, -lz))
-    sh.rotate(V(0, 0, 0), EX, OPEN_DEG)
-    sh.translate(V(0, HINGE_Y, HINGE_Z))
-    return sh
-
-
 caps = []
 for k in keys:
     w = k["w"] * layout.PITCH - 1.0
     cx, cy = px0 + margin + k["x"], py_top - margin - k["y"]
-    z0 = PLATE_TOP + 1.0
+    z0 = PLATE_TOP + 0.5
     cap = box(cx - w / 2, cy - CAP / 2, z0, w, CAP, CAP_H)
     cap = cap.makeChamfer(1.2, [e for e in cap.Edges if abs(e.BoundBox.ZMin - (z0 + CAP_H)) < 1e-6 and abs(e.BoundBox.ZMax - (z0 + CAP_H)) < 1e-6])
     caps.append(cap)
@@ -307,9 +312,9 @@ parts = [
     ("Main PCB", main_pcb, (0.0, 0.35, 0.5)),
     ("18650 cells", cells, (0.2, 0.4, 0.8)),
     ("Hinge", pin, (0.5, 0.5, 0.5)),
-    ("Lid", lid_pose(lid), (0.15, 0.15, 0.17)),
-    ("Display", lid_pose(panel), (0.02, 0.02, 0.05)),
-    ("Antenna", lid_pose(antenna), (1.0, 0.7, 0.0)),
+    ("Lid", lid_pose(lid, OPEN_DEG), (0.15, 0.15, 0.17)),
+    ("Display", lid_pose(panel, OPEN_DEG), (0.02, 0.02, 0.05)),
+    ("Antenna", lid_pose(antenna, OPEN_DEG), (1.0, 0.7, 0.0)),
 ]
 out = []
 for name, shape, rgb in parts:

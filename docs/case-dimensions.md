@@ -3,10 +3,10 @@
 | Item | Value |
 |---|---|
 | Overall closed footprint | 250 x 140 mm |
-| Base height / wall / floor | 30 / 2.5 / 2.5 mm |
+| Base height (rim) / plate top / wall / floor | 37 / 30 / 2.5 / 2.5 mm |
 | Lid height (flat, screen up) | 14 mm |
 | Corner radius / edge fillet | 6.0 / 1.5 mm |
-| Closed height (base + keycap gap + lid) | 51 mm |
+| Closed height (base rim + lid) | 51 mm |
 | Keyboard plate / key pitch | 244 x 108 x 1.5 mm, 17 mm pitch, 13.8 mm cutouts |
 | Keyboard PCB | 244 x 120 x 1.6 mm, underside z=23.9 |
 | Main PCB | 152 x 68 mm, underside z=6.5, 4x M2.5 standoffs |
@@ -14,7 +14,7 @@
 | Display module | 164.9 x 124.27 x 10.0 mm (thickness assumed) |
 | Visible window | 154.08 x 85.92 mm |
 | Bezel L/R (panel to lid edge) | 42.5 mm each side |
-| Hinge | pin dia 3 mm, knuckle dia 8 mm, axis at y=143, z=26 |
+| Hinge | pin dia 3 mm, knuckle dia 8 mm, axis at y=140, z=37 |
 | Antenna / pocket | 30.0 x 8.0 x 1.0 mm in 34.0 x 12.0 x 4.0 mm pocket |
 | Ports | USB-C + microSD on right wall, HDMI cable slot at rear/hinge |
 | Feet / vents | 4x dia 12 x 1.2 mm feet pockets, 8 bottom vent slots 3 x 36 mm |
