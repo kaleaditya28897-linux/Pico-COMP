@@ -167,6 +167,8 @@ uyc, syc = (uy0 + uy1) / 2, (sy0 + sy1) / 2
 base = base.cut(rounded_box(W - WALL - 1.5, uyc - 4.9, PCB_TOP + 1.63 - 1.9, WALL + 4, 9.8, 3.8, 1.5))  # USB-C 8.94 x 3.26
 base = base.cut(box(W - WALL - 1.5, syc - 6.5, PCB_TOP + 0.1, WALL + 4, 13.0, 2.2))                     # microSD
 base = base.cut(box(W - 0.8, syc - 5.0, PCB_TOP - 2.0, 1.0, 10.0, 6.0))                                   # finger scoop
+nx0, ny0, nx1, ny1 = mb_bbox_case("J14")                 # USB-C port 2 (NET MCU), below the microSD
+base = base.cut(rounded_box(W - WALL - 1.5, (ny0 + ny1) / 2 - 4.9, PCB_TOP + 1.63 - 1.9, WALL + 4, 9.8, 3.8, 1.5))
 rx0, ry0, rx1, ry1 = mb_bbox_case("SW2")                 # side-push UI reset: pinhole (double-tap = update mode)
 base = base.cut(cyl(0.8, WALL + 4, W - WALL - 1.5, (ry0 + ry1) / 2, PCB_TOP + 1.75, EX))
 # HDMI (J6) is internal: the panel cable leaves J6 rearward and rises through this slot to the lid
@@ -408,7 +410,7 @@ dim_rows = [
     ("Display module", f"{PANEL[0]} x {PANEL[1]} x {PANEL[2]} mm (thickness assumed)"),
     ("Visible window", f"{ACTIVE[0]} x {ACTIVE[1]} mm"),
     ("Hinge", f"pin dia {2 * PIN_R:.0f} mm, knuckle dia {2 * HK_R:.0f} mm, axis at y={HINGE_Y:.0f}, z={HINGE_Z:.0f}"),
-    ("Ports", "USB-C + microSD on the right wall (from the board), HDMI internal via the hinge cable slot"),
+    ("Ports", "Right wall: USB-C 1 (UI, dual-role), reset pinhole, microSD, USB-C 2 (NET); HDMI internal via the hinge slot"),
     ("Wi-Fi", "RM2 onboard antenna at the main board's front edge, under the plastic top deck"),
     ("Feet / vents", "4x dia 12 x 1.2 mm feet pockets, 8 bottom vent slots 3 x 36 mm"),
 ]

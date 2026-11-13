@@ -22,6 +22,9 @@ def resolve(p):
         p = p.replace(k, v)
     if p.endswith(".wrl"):
         p = p[:-4] + ".step"
+    if not os.path.exists(p):                  # fall back to our own model of the same name
+        own = os.path.join(here, "pico-comp.3dshapes", os.path.basename(p))
+        p = own if os.path.exists(own) else p
     return p if os.path.exists(p) else None
 
 

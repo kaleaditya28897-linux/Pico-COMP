@@ -15,7 +15,7 @@ LIB = "pico-comp"
 OWN_3D = {"QFN-60-1EP_7x7mm_P0.4mm_EP3.4x3.4mm", "QFN-80-1EP_10x10mm_P0.4mm_EP3.4x3.4mm",
           "LFBGA-153_11.5x13mm_Layout14x14_P0.5mm", "Texas_RQM0029A_VQFN-29_4x4mm_P0.4mm",
           "L_Bourns_SRP7028A_7.3x6.6mm", "USB_C_Receptacle_HRO_TYPE-C-31-M-12",
-          "AMASS_XT30PW-M_1x02_P2.50mm_Horizontal"}
+          "AMASS_XT30PW-M_1x02_P2.50mm_Horizontal", "Texas_X2QFN-12_1.6x1.6mm_P0.4mm"}
 
 
 def _silk_pts(e):
