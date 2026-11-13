@@ -1,4 +1,4 @@
-"""Material palette shared by render_export.py (renders) and bake_colors.py (FreeCAD file colours)."""
+"""Material palette shared by render_export.py (renders) and open_gui.py (FreeCAD colours)."""
 
 # material -> (rgb, specular, shininess)
 MAT = {

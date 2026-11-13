@@ -1,5 +1,5 @@
 """Open the assembly in the FreeCAD GUI with the material colours (palette.py), everything visible.
-(pico-comp.FCStd already carries the colours; this script re-applies them after edits.)
+Run it once after every `FreeCADCmd case.py`: it applies the colours and saves them into the FCStd.
 Run: FreeCAD hardware/mechanical/open_gui.py      (build it first: FreeCADCmd hardware/mechanical/case.py)
 
 Tree groups: Case, Display, Battery, Mainboard, Keyboard, Keycaps, Fasteners, Cables. Every board
@@ -25,6 +25,7 @@ for g in doc.Objects:
         if hasattr(o, "Shape") and o.ViewObject is not None:
             o.ViewObject.Visibility = True
             o.ViewObject.ShapeColor = MAT[material(o, g.Name)][0]
+doc.save()                       # store the colours in the FCStd (GuiDocument.xml written by FreeCAD itself)
 view = Gui.activeDocument().activeView()
 view.viewIsometric()
 view.fitAll()

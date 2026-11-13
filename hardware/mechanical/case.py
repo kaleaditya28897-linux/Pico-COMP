@@ -370,8 +370,7 @@ bb = Part.makeCompound([o.Shape for o in doc.Objects if hasattr(o, "Shape") and 
 print(f"Bounding box {bb.XLength:.1f} x {bb.YLength:.1f} x {bb.ZLength:.1f} mm, {len(doc.Objects)} objects")
 
 doc.saveAs(os.path.join(here, "pico-comp.FCStd"))
-import bake_colors  # noqa: E402
-bake_colors.bake(doc, os.path.join(here, "pico-comp.FCStd"))
+# colours: FreeCADCmd has no view providers; open_gui.py applies palette.py in the GUI and saves them
 Part.export([o for o in doc.Objects if o.TypeId == "Part::Feature"], os.path.join(here, "pico-comp.step"))
 
 # per-part manufacturing exports (printable case parts, base/lid flat)
