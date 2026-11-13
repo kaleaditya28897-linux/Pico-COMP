@@ -10,7 +10,7 @@ Two RP2350s (see `docs/architecture.md`): **UI** (`firmware/ui`: DVI/HSTX displa
 Pico-COMP is a modern analog of the TRS-80 Model 100: a text-only, battery-powered portable built on a couple of Raspberry Pi RP2350 microcontrollers (user wrote "RP2530"; no such part exists, so RP2350 is assumed — confirm). Written exclusively in C (C11, Raspberry Pi Pico SDK with CMake); do not introduce C++, MicroPython, or other languages.
 
 Hardware constraints from `intent.md` that should drive design decisions:
-- ~10" simple monochrome LCD, text only; colour modes are amber-on-black, green-on-black, black-on-white.
+- Display: intent says ~10" monochrome LCD; the design uses a 7" 1024x600 HDMI IPS panel driven in text mode; colour modes are amber-on-black, green-on-black, black-on-white.
 - Small mechanical keyboard; arrow keys are the only navigation, with other functions on hotkeys (documented on a sticker by the screen base — keep hotkey assignments centrally defined so the sticker can be kept in sync).
 - Power: 4× 18650 (1800 mAh), charged over USB-C; targets 1 week standby / 4 days of use, so favour low-power designs (sleep, minimal redraws, Wi-Fi only when needed).
 - Wi-Fi: email, a few basic IM chats, and file sync by serving a web page on the local network.

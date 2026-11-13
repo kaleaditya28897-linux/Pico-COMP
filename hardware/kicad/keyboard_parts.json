@@ -1,0 +1,6601 @@
+{
+"board": "keyboard",
+"width": 244.1,
+"height": 120.1,
+"thickness": 1.6,
+"npth": [
+[
+6.05,
+11.55,
+1.9
+],
+[
+11.55,
+11.55,
+3.4
+],
+[
+17.05,
+11.55,
+1.9
+],
+[
+3.55,
+116.05,
+2.7
+],
+[
+222.8,
+62.55,
+1.9
+],
+[
+228.3,
+62.55,
+3.4
+],
+[
+233.8,
+62.55,
+1.9
+],
+[
+74.05,
+11.55,
+1.9
+],
+[
+79.55,
+11.55,
+3.4
+],
+[
+85.05,
+11.55,
+1.9
+],
+[
+48.55,
+62.55,
+1.9
+],
+[
+54.05,
+62.55,
+3.4
+],
+[
+59.55,
+62.55,
+1.9
+],
+[
+210.05,
+79.55,
+1.9
+],
+[
+215.55,
+79.55,
+3.4
+],
+[
+221.05,
+79.55,
+1.9
+],
+[
+184.55,
+45.55,
+1.9
+],
+[
+190.05,
+45.55,
+3.4
+],
+[
+195.55,
+45.55,
+1.9
+],
+[
+40.05,
+79.55,
+1.9
+],
+[
+45.55,
+79.55,
+3.4
+],
+[
+51.05,
+79.55,
+1.9
+],
+[
+176.05,
+28.55,
+1.9
+],
+[
+181.55,
+28.55,
+3.4
+],
+[
+187.05,
+28.55,
+1.9
+],
+[
+193.05,
+96.55,
+1.9
+],
+[
+198.55,
+96.55,
+3.4
+],
+[
+204.05,
+96.55,
+1.9
+],
+[
+159.05,
+11.55,
+1.9
+],
+[
+164.55,
+11.55,
+3.4
+],
+[
+170.05,
+11.55,
+1.9
+],
+[
+142.05,
+28.55,
+1.9
+],
+[
+147.55,
+28.55,
+3.4
+],
+[
+153.05,
+28.55,
+1.9
+],
+[
+90.05,
+116.05,
+2.7
+],
+[
+193.05,
+28.55,
+1.9
+],
+[
+198.55,
+28.55,
+3.4
+],
+[
+204.05,
+28.55,
+1.9
+],
+[
+48.55,
+45.55,
+1.9
+],
+[
+54.05,
+45.55,
+3.4
+],
+[
+59.55,
+45.55,
+1.9
+],
+[
+116.55,
+45.55,
+1.9
+],
+[
+122.05,
+45.55,
+3.4
+],
+[
+127.55,
+45.55,
+1.9
+],
+[
+57.05,
+79.55,
+1.9
+],
+[
+62.55,
+79.55,
+3.4
+],
+[
+68.05,
+79.55,
+1.9
+],
+[
+91.05,
+28.55,
+1.9
+],
+[
+96.55,
+28.55,
+3.4
+],
+[
+102.05,
+28.55,
+1.9
+],
+[
+91.05,
+79.55,
+1.9
+],
+[
+96.55,
+79.55,
+3.4
+],
+[
+102.05,
+79.55,
+1.9
+],
+[
+142.05,
+79.55,
+1.9
+],
+[
+147.55,
+79.55,
+3.4
+],
+[
+153.05,
+79.55,
+1.9
+],
+[
+133.55,
+45.55,
+1.9
+],
+[
+139.05,
+45.55,
+3.4
+],
+[
+144.55,
+45.55,
+1.9
+],
+[
+23.05,
+28.55,
+1.9
+],
+[
+28.55,
+28.55,
+3.4
+],
+[
+34.05,
+28.55,
+1.9
+],
+[
+57.05,
+11.55,
+1.9
+],
+[
+62.55,
+11.55,
+3.4
+],
+[
+68.05,
+11.55,
+1.9
+],
+[
+14.55,
+79.55,
+1.9
+],
+[
+20.05,
+79.55,
+3.4
+],
+[
+25.55,
+79.55,
+1.9
+],
+[
+227.05,
+28.55,
+1.9
+],
+[
+232.55,
+28.55,
+3.4
+],
+[
+238.05,
+28.55,
+1.9
+],
+[
+193.05,
+11.55,
+1.9
+],
+[
+198.55,
+11.55,
+3.4
+],
+[
+204.05,
+11.55,
+1.9
+],
+[
+99.55,
+45.55,
+1.9
+],
+[
+105.05,
+45.55,
+3.4
+],
+[
+110.55,
+45.55,
+1.9
+],
+[
+150.55,
+45.55,
+1.9
+],
+[
+156.05,
+45.55,
+3.4
+],
+[
+161.55,
+45.55,
+1.9
+],
+[
+40.05,
+28.55,
+1.9
+],
+[
+45.55,
+28.55,
+3.4
+],
+[
+51.05,
+28.55,
+1.9
+],
+[
+82.55,
+62.55,
+1.9
+],
+[
+88.05,
+62.55,
+3.4
+],
+[
+93.55,
+62.55,
+1.9
+],
+[
+133.55,
+62.55,
+1.9
+],
+[
+139.05,
+62.55,
+3.4
+],
+[
+144.55,
+62.55,
+1.9
+],
+[
+50.675,
+96.55,
+1.9
+],
+[
+56.175,
+96.55,
+3.4
+],
+[
+61.675,
+96.55,
+1.9
+],
+[
+227.05,
+96.55,
+1.9
+],
+[
+232.55,
+96.55,
+3.4
+],
+[
+238.05,
+96.55,
+1.9
+],
+[
+108.05,
+28.55,
+1.9
+],
+[
+113.55,
+28.55,
+3.4
+],
+[
+119.05,
+28.55,
+1.9
+],
+[
+167.55,
+45.55,
+1.9
+],
+[
+173.05,
+45.55,
+3.4
+],
+[
+178.55,
+45.55,
+1.9
+],
+[
+31.55,
+45.55,
+1.9
+],
+[
+37.05,
+45.55,
+3.4
+],
+[
+42.55,
+45.55,
+1.9
+],
+[
+201.55,
+62.55,
+1.9
+],
+[
+207.05,
+62.55,
+3.4
+],
+[
+212.55,
+62.55,
+1.9
+],
+[
+159.05,
+28.55,
+1.9
+],
+[
+164.55,
+28.55,
+3.4
+],
+[
+170.05,
+28.55,
+1.9
+],
+[
+116.55,
+62.55,
+1.9
+],
+[
+122.05,
+62.55,
+3.4
+],
+[
+127.55,
+62.55,
+1.9
+],
+[
+108.05,
+79.55,
+1.9
+],
+[
+113.55,
+79.55,
+3.4
+],
+[
+119.05,
+79.55,
+1.9
+],
+[
+8.175,
+96.55,
+1.9
+],
+[
+13.675,
+96.55,
+3.4
+],
+[
+19.175,
+96.55,
+1.9
+],
+[
+6.05,
+28.55,
+1.9
+],
+[
+11.55,
+28.55,
+3.4
+],
+[
+17.05,
+28.55,
+1.9
+],
+[
+31.55,
+62.55,
+1.9
+],
+[
+37.05,
+62.55,
+3.4
+],
+[
+42.55,
+62.55,
+1.9
+],
+[
+29.425,
+96.55,
+1.9
+],
+[
+34.925,
+96.55,
+3.4
+],
+[
+40.425,
+96.55,
+1.9
+],
+[
+150.55,
+62.55,
+1.9
+],
+[
+156.05,
+62.55,
+3.4
+],
+[
+161.55,
+62.55,
+1.9
+],
+[
+23.05,
+11.55,
+1.9
+],
+[
+28.55,
+11.55,
+3.4
+],
+[
+34.05,
+11.55,
+1.9
+],
+[
+193.05,
+79.55,
+1.9
+],
+[
+198.55,
+79.55,
+3.4
+],
+[
+204.05,
+79.55,
+1.9
+],
+[
+91.05,
+11.55,
+1.9
+],
+[
+96.55,
+11.55,
+3.4
+],
+[
+102.05,
+11.55,
+1.9
+],
+[
+125.05,
+28.55,
+1.9
+],
+[
+130.55,
+28.55,
+3.4
+],
+[
+136.05,
+28.55,
+1.9
+],
+[
+57.05,
+28.55,
+1.9
+],
+[
+62.55,
+28.55,
+3.4
+],
+[
+68.05,
+28.55,
+1.9
+],
+[
+201.55,
+45.55,
+1.9
+],
+[
+207.05,
+45.55,
+3.4
+],
+[
+212.55,
+45.55,
+1.9
+],
+[
+210.05,
+11.55,
+1.9
+],
+[
+215.55,
+11.55,
+3.4
+],
+[
+221.05,
+11.55,
+1.9
+],
+[
+65.55,
+45.55,
+1.9
+],
+[
+71.05,
+45.55,
+3.4
+],
+[
+76.55,
+45.55,
+1.9
+],
+[
+167.55,
+62.55,
+1.9
+],
+[
+173.05,
+62.55,
+3.4
+],
+[
+178.55,
+62.55,
+1.9
+],
+[
+222.8,
+45.55,
+1.9
+],
+[
+228.3,
+45.55,
+3.4
+],
+[
+233.8,
+45.55,
+1.9
+],
+[
+240.55,
+116.05,
+2.7
+],
+[
+112.3,
+96.55,
+1.9
+],
+[
+117.8,
+96.55,
+3.4
+],
+[
+123.3,
+96.55,
+1.9
+],
+[
+173.925,
+96.55,
+1.9
+],
+[
+179.425,
+96.55,
+3.4
+],
+[
+184.925,
+96.55,
+1.9
+],
+[
+227.05,
+11.55,
+1.9
+],
+[
+232.55,
+11.55,
+3.4
+],
+[
+238.05,
+11.55,
+1.9
+],
+[
+184.55,
+62.55,
+1.9
+],
+[
+190.05,
+62.55,
+3.4
+],
+[
+195.55,
+62.55,
+1.9
+],
+[
+65.55,
+62.55,
+1.9
+],
+[
+71.05,
+62.55,
+3.4
+],
+[
+76.55,
+62.55,
+1.9
+],
+[
+176.05,
+79.55,
+1.9
+],
+[
+181.55,
+79.55,
+3.4
+],
+[
+187.05,
+79.55,
+1.9
+],
+[
+10.3,
+45.55,
+1.9
+],
+[
+15.8,
+45.55,
+3.4
+],
+[
+21.3,
+45.55,
+1.9
+],
+[
+176.05,
+11.55,
+1.9
+],
+[
+181.55,
+11.55,
+3.4
+],
+[
+187.05,
+11.55,
+1.9
+],
+[
+10.3,
+62.55,
+1.9
+],
+[
+15.8,
+62.55,
+3.4
+],
+[
+21.3,
+62.55,
+1.9
+],
+[
+227.05,
+79.55,
+1.9
+],
+[
+232.55,
+79.55,
+3.4
+],
+[
+238.05,
+79.55,
+1.9
+],
+[
+125.05,
+79.55,
+1.9
+],
+[
+130.55,
+79.55,
+3.4
+],
+[
+136.05,
+79.55,
+1.9
+],
+[
+74.05,
+79.55,
+1.9
+],
+[
+79.55,
+79.55,
+3.4
+],
+[
+85.05,
+79.55,
+1.9
+],
+[
+74.05,
+28.55,
+1.9
+],
+[
+79.55,
+28.55,
+3.4
+],
+[
+85.05,
+28.55,
+1.9
+],
+[
+82.55,
+45.55,
+1.9
+],
+[
+88.05,
+45.55,
+3.4
+],
+[
+93.55,
+45.55,
+1.9
+],
+[
+210.05,
+96.55,
+1.9
+],
+[
+215.55,
+96.55,
+3.4
+],
+[
+221.05,
+96.55,
+1.9
+],
+[
+142.05,
+11.55,
+1.9
+],
+[
+147.55,
+11.55,
+3.4
+],
+[
+153.05,
+11.55,
+1.9
+],
+[
+40.05,
+11.55,
+1.9
+],
+[
+45.55,
+11.55,
+3.4
+],
+[
+51.05,
+11.55,
+1.9
+],
+[
+125.05,
+11.55,
+1.9
+],
+[
+130.55,
+11.55,
+3.4
+],
+[
+136.05,
+11.55,
+1.9
+],
+[
+108.05,
+11.55,
+1.9
+],
+[
+113.55,
+11.55,
+3.4
+],
+[
+119.05,
+11.55,
+1.9
+],
+[
+99.55,
+62.55,
+1.9
+],
+[
+105.05,
+62.55,
+3.4
+],
+[
+110.55,
+62.55,
+1.9
+],
+[
+210.05,
+28.55,
+1.9
+],
+[
+215.55,
+28.55,
+3.4
+],
+[
+221.05,
+28.55,
+1.9
+],
+[
+159.05,
+79.55,
+1.9
+],
+[
+164.55,
+79.55,
+3.4
+],
+[
+170.05,
+79.55,
+1.9
+]
+],
+"parts": [
+{
+"ref": "SW1",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 11.55,
+"y": 11.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+3.775,
+3.775,
+19.325,
+19.325
+]
+},
+{
+"ref": "H1",
+"value": "M2.5",
+"footprint": "MountingHole_2.7mm_M2.5",
+"x": 3.55,
+"y": 116.05,
+"rot": 0.0,
+"back": false,
+"models": [],
+"bbox": [
+0.575,
+113.075,
+6.525,
+119.025
+]
+},
+{
+"ref": "SW54",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 228.3,
+"y": 62.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+220.525,
+54.775,
+236.075,
+70.325
+]
+},
+{
+"ref": "SW5",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 79.55,
+"y": 11.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+71.775,
+3.775,
+87.325,
+19.325
+]
+},
+{
+"ref": "SW44",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 54.05,
+"y": 62.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+46.275,
+54.775,
+61.825,
+70.325
+]
+},
+{
+"ref": "SW66",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 215.55,
+"y": 79.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+207.775,
+71.775,
+223.325,
+87.325
+]
+},
+{
+"ref": "SW39",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 190.05,
+"y": 45.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+182.275,
+37.775,
+197.825,
+53.325
+]
+},
+{
+"ref": "SW56",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 45.55,
+"y": 79.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+37.775,
+71.775,
+53.325,
+87.325
+]
+},
+{
+"ref": "SW25",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 181.55,
+"y": 28.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+173.775,
+20.775,
+189.325,
+36.325
+]
+},
+{
+"ref": "SW73",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 198.55,
+"y": 96.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+190.775,
+88.775,
+206.325,
+104.325
+]
+},
+{
+"ref": "SW10",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 164.55,
+"y": 11.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+156.775,
+3.775,
+172.325,
+19.325
+]
+},
+{
+"ref": "SW23",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 147.55,
+"y": 28.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+139.775,
+20.775,
+155.325,
+36.325
+]
+},
+{
+"ref": "H2",
+"value": "M2.5",
+"footprint": "MountingHole_2.7mm_M2.5",
+"x": 90.05,
+"y": 116.05,
+"rot": 0.0,
+"back": false,
+"models": [],
+"bbox": [
+87.075,
+113.075,
+93.025,
+119.025
+]
+},
+{
+"ref": "SW26",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 198.55,
+"y": 28.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+190.775,
+20.775,
+206.325,
+36.325
+]
+},
+{
+"ref": "SW31",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 54.05,
+"y": 45.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+46.275,
+37.775,
+61.825,
+53.325
+]
+},
+{
+"ref": "SW35",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 122.05,
+"y": 45.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+114.275,
+37.775,
+129.825,
+53.325
+]
+},
+{
+"ref": "SW57",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 62.55,
+"y": 79.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+54.775,
+71.775,
+70.325,
+87.325
+]
+},
+{
+"ref": "SW20",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 96.55,
+"y": 28.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+88.775,
+20.775,
+104.325,
+36.325
+]
+},
+{
+"ref": "SW59",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 96.55,
+"y": 79.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+88.775,
+71.775,
+104.325,
+87.325
+]
+},
+{
+"ref": "J1",
+"value": "KB_MATRIX",
+"footprint": "PinHeader_1x20_P2.54mm_Horizontal",
+"x": 62.05,
+"y": 115.55,
+"rot": -90.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x20_P2.54mm_Horizontal.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+11.995,
+113.755,
+63.845,
+126.115
+]
+},
+{
+"ref": "SW62",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 147.55,
+"y": 79.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+139.775,
+71.775,
+155.325,
+87.325
+]
+},
+{
+"ref": "SW36",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 139.05,
+"y": 45.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+131.275,
+37.775,
+146.825,
+53.325
+]
+},
+{
+"ref": "SW16",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 28.55,
+"y": 28.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+20.775,
+20.775,
+36.325,
+36.325
+]
+},
+{
+"ref": "SW4",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 62.55,
+"y": 11.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+54.775,
+3.775,
+70.325,
+19.325
+]
+},
+{
+"ref": "SW55",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 20.05,
+"y": 79.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+12.275,
+71.775,
+27.825,
+87.325
+]
+},
+{
+"ref": "SW28",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 232.55,
+"y": 28.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+224.775,
+20.775,
+240.325,
+36.325
+]
+},
+{
+"ref": "SW12",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 198.55,
+"y": 11.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+190.775,
+3.775,
+206.325,
+19.325
+]
+},
+{
+"ref": "SW34",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 105.05,
+"y": 45.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+97.275,
+37.775,
+112.825,
+53.325
+]
+},
+{
+"ref": "ST2",
+"value": "Stabilizer 6u",
+"footprint": "Kailh_Choc_Stabilizer_6u",
+"x": 117.8,
+"y": 96.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_Stabilizer_6u.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+75.625,
+92.275,
+159.975,
+100.825
+]
+},
+{
+"ref": "SW37",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 156.05,
+"y": 45.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+148.275,
+37.775,
+163.825,
+53.325
+]
+},
+{
+"ref": "SW17",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 45.55,
+"y": 28.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+37.775,
+20.775,
+53.325,
+36.325
+]
+},
+{
+"ref": "SW46",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 88.05,
+"y": 62.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+80.275,
+54.775,
+95.825,
+70.325
+]
+},
+{
+"ref": "SW49",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 139.05,
+"y": 62.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+131.275,
+54.775,
+146.825,
+70.325
+]
+},
+{
+"ref": "SW70",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 56.175,
+"y": 96.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+48.4,
+88.775,
+63.95,
+104.325
+]
+},
+{
+"ref": "SW75",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 232.55,
+"y": 96.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+224.775,
+88.775,
+240.325,
+104.325
+]
+},
+{
+"ref": "SW21",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 113.55,
+"y": 28.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+105.775,
+20.775,
+121.325,
+36.325
+]
+},
+{
+"ref": "ST1",
+"value": "Stabilizer 2u",
+"footprint": "Kailh_Choc_Stabilizer_2u",
+"x": 20.05,
+"y": 79.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_Stabilizer_2u.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+3.875,
+75.275,
+36.225,
+83.825
+]
+},
+{
+"ref": "SW38",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 173.05,
+"y": 45.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+165.275,
+37.775,
+180.825,
+53.325
+]
+},
+{
+"ref": "SW30",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 37.05,
+"y": 45.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+29.275,
+37.775,
+44.825,
+53.325
+]
+},
+{
+"ref": "SW53",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 207.05,
+"y": 62.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+199.275,
+54.775,
+214.825,
+70.325
+]
+},
+{
+"ref": "SW24",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 164.55,
+"y": 28.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+156.775,
+20.775,
+172.325,
+36.325
+]
+},
+{
+"ref": "SW48",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 122.05,
+"y": 62.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+114.275,
+54.775,
+129.825,
+70.325
+]
+},
+{
+"ref": "SW60",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 113.55,
+"y": 79.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+105.775,
+71.775,
+121.325,
+87.325
+]
+},
+{
+"ref": "SW68",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 13.675,
+"y": 96.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+5.9,
+88.775,
+21.45,
+104.325
+]
+},
+{
+"ref": "SW15",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 11.55,
+"y": 28.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+3.775,
+20.775,
+19.325,
+36.325
+]
+},
+{
+"ref": "SW43",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 37.05,
+"y": 62.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+29.275,
+54.775,
+44.825,
+70.325
+]
+},
+{
+"ref": "SW69",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 34.925,
+"y": 96.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+27.15,
+88.775,
+42.7,
+104.325
+]
+},
+{
+"ref": "SW50",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 156.05,
+"y": 62.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+148.275,
+54.775,
+163.825,
+70.325
+]
+},
+{
+"ref": "SW2",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 28.55,
+"y": 11.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+20.775,
+3.775,
+36.325,
+19.325
+]
+},
+{
+"ref": "SW65",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 198.55,
+"y": 79.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+190.775,
+71.775,
+206.325,
+87.325
+]
+},
+{
+"ref": "SW6",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 96.55,
+"y": 11.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+88.775,
+3.775,
+104.325,
+19.325
+]
+},
+{
+"ref": "SW22",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 130.55,
+"y": 28.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+122.775,
+20.775,
+138.325,
+36.325
+]
+},
+{
+"ref": "SW18",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 62.55,
+"y": 28.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+54.775,
+20.775,
+70.325,
+36.325
+]
+},
+{
+"ref": "SW40",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 207.05,
+"y": 45.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+199.275,
+37.775,
+214.825,
+53.325
+]
+},
+{
+"ref": "SW13",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 215.55,
+"y": 11.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+207.775,
+3.775,
+223.325,
+19.325
+]
+},
+{
+"ref": "SW32",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 71.05,
+"y": 45.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+63.275,
+37.775,
+78.825,
+53.325
+]
+},
+{
+"ref": "SW51",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 173.05,
+"y": 62.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+165.275,
+54.775,
+180.825,
+70.325
+]
+},
+{
+"ref": "SW41",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 228.3,
+"y": 45.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+220.525,
+37.775,
+236.075,
+53.325
+]
+},
+{
+"ref": "H3",
+"value": "M2.5",
+"footprint": "MountingHole_2.7mm_M2.5",
+"x": 240.55,
+"y": 116.05,
+"rot": 0.0,
+"back": false,
+"models": [],
+"bbox": [
+237.575,
+113.075,
+243.525,
+119.025
+]
+},
+{
+"ref": "SW71",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 117.8,
+"y": 96.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+110.025,
+88.775,
+125.575,
+104.325
+]
+},
+{
+"ref": "SW72",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 179.425,
+"y": 96.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+171.65,
+88.775,
+187.2,
+104.325
+]
+},
+{
+"ref": "SW14",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 232.55,
+"y": 11.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+224.775,
+3.775,
+240.325,
+19.325
+]
+},
+{
+"ref": "SW52",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 190.05,
+"y": 62.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+182.275,
+54.775,
+197.825,
+70.325
+]
+},
+{
+"ref": "SW45",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 71.05,
+"y": 62.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+63.275,
+54.775,
+78.825,
+70.325
+]
+},
+{
+"ref": "SW64",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 181.55,
+"y": 79.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+173.775,
+71.775,
+189.325,
+87.325
+]
+},
+{
+"ref": "SW29",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 15.8,
+"y": 45.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+8.025,
+37.775,
+23.575,
+53.325
+]
+},
+{
+"ref": "SW11",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 181.55,
+"y": 11.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+173.775,
+3.775,
+189.325,
+19.325
+]
+},
+{
+"ref": "SW42",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 15.8,
+"y": 62.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+8.025,
+54.775,
+23.575,
+70.325
+]
+},
+{
+"ref": "SW67",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 232.55,
+"y": 79.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+224.775,
+71.775,
+240.325,
+87.325
+]
+},
+{
+"ref": "SW61",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 130.55,
+"y": 79.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+122.775,
+71.775,
+138.325,
+87.325
+]
+},
+{
+"ref": "SW58",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 79.55,
+"y": 79.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+71.775,
+71.775,
+87.325,
+87.325
+]
+},
+{
+"ref": "SW19",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 79.55,
+"y": 28.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+71.775,
+20.775,
+87.325,
+36.325
+]
+},
+{
+"ref": "SW33",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 88.05,
+"y": 45.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+80.275,
+37.775,
+95.825,
+53.325
+]
+},
+{
+"ref": "SW74",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 215.55,
+"y": 96.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+207.775,
+88.775,
+223.325,
+104.325
+]
+},
+{
+"ref": "SW9",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 147.55,
+"y": 11.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+139.775,
+3.775,
+155.325,
+19.325
+]
+},
+{
+"ref": "SW3",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 45.55,
+"y": 11.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+37.775,
+3.775,
+53.325,
+19.325
+]
+},
+{
+"ref": "SW8",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 130.55,
+"y": 11.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+122.775,
+3.775,
+138.325,
+19.325
+]
+},
+{
+"ref": "SW7",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 113.55,
+"y": 11.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+105.775,
+3.775,
+121.325,
+19.325
+]
+},
+{
+"ref": "SW47",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 105.05,
+"y": 62.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+97.275,
+54.775,
+112.825,
+70.325
+]
+},
+{
+"ref": "SW27",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 215.55,
+"y": 28.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+207.775,
+20.775,
+223.325,
+36.325
+]
+},
+{
+"ref": "SW63",
+"value": "Choc_V1",
+"footprint": "Kailh_Choc_V1",
+"x": 164.55,
+"y": 79.55,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Kailh_Choc_V1.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+156.775,
+71.775,
+172.325,
+87.325
+]
+},
+{
+"ref": "D15",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 11.55,
+"y": 32.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+9.13,
+30.975,
+13.925,
+33.325
+]
+},
+{
+"ref": "D21",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 113.55,
+"y": 32.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+111.13,
+30.975,
+115.925,
+33.325
+]
+},
+{
+"ref": "D30",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 37.05,
+"y": 49.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+34.63,
+47.975,
+39.425,
+50.325
+]
+},
+{
+"ref": "D31",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 54.05,
+"y": 49.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+51.63,
+47.975,
+56.425,
+50.325
+]
+},
+{
+"ref": "D41",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 228.3,
+"y": 49.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+225.88,
+47.975,
+230.675,
+50.325
+]
+},
+{
+"ref": "D75",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 232.55,
+"y": 100.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+230.13,
+98.975,
+234.925,
+101.325
+]
+},
+{
+"ref": "D62",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 147.55,
+"y": 83.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+145.13,
+81.975,
+149.925,
+84.325
+]
+},
+{
+"ref": "D22",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 130.55,
+"y": 32.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+128.13,
+30.975,
+132.925,
+33.325
+]
+},
+{
+"ref": "D72",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 179.425,
+"y": 100.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+177.005,
+98.975,
+181.8,
+101.325
+]
+},
+{
+"ref": "D66",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 215.55,
+"y": 83.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+213.13,
+81.975,
+217.925,
+84.325
+]
+},
+{
+"ref": "D59",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 96.55,
+"y": 83.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+94.13,
+81.975,
+98.925,
+84.325
+]
+},
+{
+"ref": "D70",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 56.175,
+"y": 100.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+53.755,
+98.975,
+58.55,
+101.325
+]
+},
+{
+"ref": "D60",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 113.55,
+"y": 83.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+111.13,
+81.975,
+115.925,
+84.325
+]
+},
+{
+"ref": "D26",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 198.55,
+"y": 32.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+196.13,
+30.975,
+200.925,
+33.325
+]
+},
+{
+"ref": "D11",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 181.55,
+"y": 15.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+179.13,
+13.975,
+183.925,
+16.325
+]
+},
+{
+"ref": "D52",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 190.05,
+"y": 66.149999,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+187.63,
+64.974999,
+192.425,
+67.324999
+]
+},
+{
+"ref": "D4",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 62.55,
+"y": 15.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+60.13,
+13.975,
+64.925,
+16.325
+]
+},
+{
+"ref": "D1",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 11.55,
+"y": 15.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+9.13,
+13.975,
+13.925,
+16.325
+]
+},
+{
+"ref": "D23",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 147.55,
+"y": 32.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+145.13,
+30.975,
+149.925,
+33.325
+]
+},
+{
+"ref": "D51",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 173.05,
+"y": 66.149999,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+170.63,
+64.974999,
+175.425,
+67.324999
+]
+},
+{
+"ref": "D32",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 71.05,
+"y": 49.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+68.63,
+47.975,
+73.425,
+50.325
+]
+},
+{
+"ref": "D49",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 139.05,
+"y": 66.149999,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+136.63,
+64.974999,
+141.425,
+67.324999
+]
+},
+{
+"ref": "D6",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 96.55,
+"y": 15.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+94.13,
+13.975,
+98.925,
+16.325
+]
+},
+{
+"ref": "D55",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 20.05,
+"y": 83.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+17.63,
+81.975,
+22.425,
+84.325
+]
+},
+{
+"ref": "D46",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 88.05,
+"y": 66.149999,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+85.63,
+64.974999,
+90.425,
+67.324999
+]
+},
+{
+"ref": "FID2",
+"value": "Fiducial",
+"footprint": "Fiducial_1mm_Mask2mm",
+"x": 232.05,
+"y": 117.55,
+"rot": 0.0,
+"back": true,
+"models": [],
+"bbox": [
+230.775,
+116.275,
+233.325,
+118.825
+]
+},
+{
+"ref": "D27",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 215.55,
+"y": 32.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+213.13,
+30.975,
+217.925,
+33.325
+]
+},
+{
+"ref": "D25",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 181.55,
+"y": 32.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+179.13,
+30.975,
+183.925,
+33.325
+]
+},
+{
+"ref": "D47",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 105.05,
+"y": 66.149999,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+102.63,
+64.974999,
+107.425,
+67.324999
+]
+},
+{
+"ref": "D12",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 198.55,
+"y": 15.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+196.13,
+13.975,
+200.925,
+16.325
+]
+},
+{
+"ref": "D28",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 232.55,
+"y": 32.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+230.13,
+30.975,
+234.925,
+33.325
+]
+},
+{
+"ref": "D68",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 13.675,
+"y": 100.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+11.255,
+98.975,
+16.05,
+101.325
+]
+},
+{
+"ref": "D13",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 215.55,
+"y": 15.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+213.13,
+13.975,
+217.925,
+16.325
+]
+},
+{
+"ref": "D2",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 28.55,
+"y": 15.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+26.13,
+13.975,
+30.925,
+16.325
+]
+},
+{
+"ref": "D50",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 156.05,
+"y": 66.149999,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+153.63,
+64.974999,
+158.425,
+67.324999
+]
+},
+{
+"ref": "FID1",
+"value": "Fiducial",
+"footprint": "Fiducial_1mm_Mask2mm",
+"x": 70.05,
+"y": 117.55,
+"rot": 0.0,
+"back": true,
+"models": [],
+"bbox": [
+68.775,
+116.275,
+71.325,
+118.825
+]
+},
+{
+"ref": "D24",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 164.55,
+"y": 32.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+162.13,
+30.975,
+166.925,
+33.325
+]
+},
+{
+"ref": "D54",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 228.3,
+"y": 66.149999,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+225.88,
+64.974999,
+230.675,
+67.324999
+]
+},
+{
+"ref": "D18",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 62.55,
+"y": 32.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+60.13,
+30.975,
+64.925,
+33.325
+]
+},
+{
+"ref": "D3",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 45.55,
+"y": 15.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+43.13,
+13.975,
+47.925,
+16.325
+]
+},
+{
+"ref": "D40",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 207.05,
+"y": 49.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+204.63,
+47.975,
+209.425,
+50.325
+]
+},
+{
+"ref": "D8",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 130.55,
+"y": 15.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+128.13,
+13.975,
+132.925,
+16.325
+]
+},
+{
+"ref": "D56",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 45.55,
+"y": 83.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+43.13,
+81.975,
+47.925,
+84.325
+]
+},
+{
+"ref": "D48",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 122.05,
+"y": 66.149999,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+119.63,
+64.974999,
+124.425,
+67.324999
+]
+},
+{
+"ref": "D43",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 37.05,
+"y": 66.149999,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+34.63,
+64.974999,
+39.425,
+67.324999
+]
+},
+{
+"ref": "D67",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 232.55,
+"y": 83.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+230.13,
+81.975,
+234.925,
+84.325
+]
+},
+{
+"ref": "D9",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 147.55,
+"y": 15.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+145.13,
+13.975,
+149.925,
+16.325
+]
+},
+{
+"ref": "D42",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 15.8,
+"y": 66.149999,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+13.38,
+64.974999,
+18.175,
+67.324999
+]
+},
+{
+"ref": "D17",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 45.55,
+"y": 32.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+43.13,
+30.975,
+47.925,
+33.325
+]
+},
+{
+"ref": "D36",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 139.05,
+"y": 49.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+136.63,
+47.975,
+141.425,
+50.325
+]
+},
+{
+"ref": "D16",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 28.55,
+"y": 32.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+26.13,
+30.975,
+30.925,
+33.325
+]
+},
+{
+"ref": "D71",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 117.8,
+"y": 100.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+115.38,
+98.975,
+120.175,
+101.325
+]
+},
+{
+"ref": "D5",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 79.55,
+"y": 15.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+77.13,
+13.975,
+81.925,
+16.325
+]
+},
+{
+"ref": "FID3",
+"value": "Fiducial",
+"footprint": "Fiducial_1mm_Mask2mm",
+"x": 241.55,
+"y": 30.05,
+"rot": 0.0,
+"back": true,
+"models": [],
+"bbox": [
+240.275,
+28.775,
+242.825,
+31.325
+]
+},
+{
+"ref": "D29",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 15.8,
+"y": 49.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+13.38,
+47.975,
+18.175,
+50.325
+]
+},
+{
+"ref": "D64",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 181.55,
+"y": 83.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+179.13,
+81.975,
+183.925,
+84.325
+]
+},
+{
+"ref": "D44",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 54.05,
+"y": 66.149999,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+51.63,
+64.974999,
+56.425,
+67.324999
+]
+},
+{
+"ref": "D33",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 88.05,
+"y": 49.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+85.63,
+47.975,
+90.425,
+50.325
+]
+},
+{
+"ref": "D34",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 105.05,
+"y": 49.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+102.63,
+47.975,
+107.425,
+50.325
+]
+},
+{
+"ref": "D57",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 62.55,
+"y": 83.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+60.13,
+81.975,
+64.925,
+84.325
+]
+},
+{
+"ref": "D74",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 215.55,
+"y": 100.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+213.13,
+98.975,
+217.925,
+101.325
+]
+},
+{
+"ref": "D65",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 198.55,
+"y": 83.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+196.13,
+81.975,
+200.925,
+84.325
+]
+},
+{
+"ref": "D69",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 34.925,
+"y": 100.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+32.505,
+98.975,
+37.3,
+101.325
+]
+},
+{
+"ref": "D37",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 156.05,
+"y": 49.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+153.63,
+47.975,
+158.425,
+50.325
+]
+},
+{
+"ref": "D39",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 190.05,
+"y": 49.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+187.63,
+47.975,
+192.425,
+50.325
+]
+},
+{
+"ref": "D38",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 173.05,
+"y": 49.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+170.63,
+47.975,
+175.425,
+50.325
+]
+},
+{
+"ref": "D7",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 113.55,
+"y": 15.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+111.13,
+13.975,
+115.925,
+16.325
+]
+},
+{
+"ref": "D35",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 122.05,
+"y": 49.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+119.63,
+47.975,
+124.425,
+50.325
+]
+},
+{
+"ref": "D19",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 79.55,
+"y": 32.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+77.13,
+30.975,
+81.925,
+33.325
+]
+},
+{
+"ref": "D53",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 207.05,
+"y": 66.149999,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+204.63,
+64.974999,
+209.425,
+67.324999
+]
+},
+{
+"ref": "D45",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 71.05,
+"y": 66.149999,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+68.63,
+64.974999,
+73.425,
+67.324999
+]
+},
+{
+"ref": "D10",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 164.55,
+"y": 15.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+162.13,
+13.975,
+166.925,
+16.325
+]
+},
+{
+"ref": "D63",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 164.55,
+"y": 83.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+162.13,
+81.975,
+166.925,
+84.325
+]
+},
+{
+"ref": "D73",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 198.55,
+"y": 100.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+196.13,
+98.975,
+200.925,
+101.325
+]
+},
+{
+"ref": "D14",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 232.55,
+"y": 15.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+230.13,
+13.975,
+234.925,
+16.325
+]
+},
+{
+"ref": "D58",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 79.55,
+"y": 83.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+77.13,
+81.975,
+81.925,
+84.325
+]
+},
+{
+"ref": "D61",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 130.55,
+"y": 83.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+128.13,
+81.975,
+132.925,
+84.325
+]
+},
+{
+"ref": "D20",
+"value": "1N4148W",
+"footprint": "D_SOD-123",
+"x": 96.55,
+"y": 32.15,
+"rot": 0.0,
+"back": true,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Diode_SMD.3dshapes/D_SOD-123.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+94.13,
+30.975,
+98.925,
+33.325
+]
+}
+]
+}

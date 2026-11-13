@@ -1,0 +1,6 @@
+"Designators","Value","Footprint","MPN","Spec","Qty"
+"D1-D75","1N4148W","Diode_SMD:D_SOD-123","1N4148W-7-F","","75"
+"J1","KB_MATRIX","pico-comp:PinHeader_1x20_P2.54mm_Horizontal","","1x20 2.54 mm right-angle header","1"
+"ST1","Stabilizer 2u","pico-comp:Kailh_Choc_Stabilizer_2u","","Kailh PG1350 stabilizer 2U kit (wire BWPG1350-07003)","1"
+"ST2","Stabilizer 6u","pico-comp:Kailh_Choc_Stabilizer_6u","","Kailh PG1350 stabilizer 6.25U kit (wire BWPG1350-07002)","1"
+"SW1-SW75","Choc_V1","pico-comp:Kailh_Choc_V1","CPG135001D01","","75"

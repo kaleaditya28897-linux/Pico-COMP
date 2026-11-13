@@ -4,3 +4,6 @@ build/
 fp-info-cache
 *.FCBak
 *.bak
+__pycache__/
+*.pyc
+~*.lck

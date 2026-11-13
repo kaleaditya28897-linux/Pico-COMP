@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Convert a PSF1 console font (with Unicode table) to a CP437-ordered C array.
 
-Usage: tools/psf2c.py /usr/share/kbd/consolefonts/ter-v16n.psf.gz firmware/common/font8x16.c
+Usage: tools/psf2c.py /usr/share/kbd/consolefonts/ter-v16n.psf.gz firmware/ui/font8x16.c
 Terminus is licensed under the SIL Open Font License 1.1.
 """
 import gzip

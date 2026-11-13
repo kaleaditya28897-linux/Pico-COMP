@@ -1,0 +1,4807 @@
+{
+"board": "mainboard",
+"width": 152.1,
+"height": 84.1,
+"thickness": 1.6,
+"npth": [
+[
+4.05,
+80.05,
+2.7
+],
+[
+148.05,
+4.05,
+2.7
+],
+[
+4.05,
+4.05,
+2.7
+],
+[
+145.575,
+18.94,
+0.65
+],
+[
+145.575,
+13.16,
+0.65
+],
+[
+148.05,
+80.05,
+2.7
+]
+],
+"parts": [
+{
+"ref": "H3",
+"value": "M2.5",
+"footprint": "MountingHole_2.7mm_M2.5",
+"x": 4.05,
+"y": 80.05,
+"rot": 0.0,
+"back": false,
+"models": [],
+"bbox": [
+1.075,
+77.075,
+7.025,
+83.025
+]
+},
+{
+"ref": "H2",
+"value": "M2.5",
+"footprint": "MountingHole_2.7mm_M2.5",
+"x": 148.05,
+"y": 4.05,
+"rot": 0.0,
+"back": false,
+"models": [],
+"bbox": [
+145.075,
+1.075,
+151.025,
+7.025
+]
+},
+{
+"ref": "L1",
+"value": "3.3uH",
+"footprint": "L_Abracon_AOTA-B201610S",
+"x": 111.65,
+"y": 59.961764,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Inductor_SMD.3dshapes/L_Abracon_AOTA-B201610S.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+110.225,
+58.841764,
+113.075,
+61.081764
+]
+},
+{
+"ref": "C15",
+"value": "100nF",
+"footprint": "C_0402_1005Metric",
+"x": 105.65,
+"y": 44.273529,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+104.715,
+43.788529,
+106.585,
+44.758529
+]
+},
+{
+"ref": "C2A",
+"value": "4.7uF",
+"footprint": "C_0603_1608Metric",
+"x": 53.65,
+"y": 62.061764,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0603_1608Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+52.145,
+61.306764,
+55.155,
+62.816764
+]
+},
+{
+"ref": "FID3",
+"value": "Fiducial",
+"footprint": "Fiducial_1mm_Mask2mm",
+"x": 4.05,
+"y": 69.22647,
+"rot": 0.0,
+"back": false,
+"models": [],
+"bbox": [
+2.775,
+67.95147,
+5.325,
+70.50147
+]
+},
+{
+"ref": "C81",
+"value": "10uF",
+"footprint": "C_0805_2012Metric",
+"x": 83.55,
+"y": 61.197058,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0805_2012Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+81.825,
+60.192058,
+85.275,
+62.202058
+]
+},
+{
+"ref": "C12",
+"value": "100nF",
+"footprint": "C_0402_1005Metric",
+"x": 98.45,
+"y": 44.273529,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+97.515,
+43.788529,
+99.385,
+44.758529
+]
+},
+{
+"ref": "F1",
+"value": "W25Q128JVS",
+"footprint": "SOIC-8_5.3x5.3mm_P1.27mm",
+"x": 114.05,
+"y": 49.461764,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Package_SO.3dshapes/SOIC-8_5.3x5.3mm_P1.27mm.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+109.375,
+46.431764,
+118.725,
+52.386764
+]
+},
+{
+"ref": "C26",
+"value": "100nF",
+"footprint": "C_0402_1005Metric",
+"x": 58.05,
+"y": 46.744117,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+57.115,
+46.259117,
+58.985,
+47.229117
+]
+},
+{
+"ref": "C57",
+"value": "10uF",
+"footprint": "C_0805_2012Metric",
+"x": 36.05,
+"y": 34.638235,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0805_2012Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+34.325,
+33.633235,
+37.775,
+35.643235
+]
+},
+{
+"ref": "C65",
+"value": "22uF",
+"footprint": "C_0805_2012Metric",
+"x": 70.05,
+"y": 30.932352,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0805_2012Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+68.325,
+29.927352,
+71.775,
+31.937352
+]
+},
+{
+"ref": "J6",
+"value": "HDMI to panel",
+"footprint": "HDMI_A_Molex_208658-1001_Horizontal",
+"x": 116.05,
+"y": 8.305,
+"rot": 90.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Connector_Video.3dshapes/HDMI_A_Molex_208658-1001_Horizontal.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+107.525,
+-0.25,
+124.575,
+13.42
+]
+},
+{
+"ref": "C68",
+"value": "10uF",
+"footprint": "C_0805_2012Metric",
+"x": 79.85,
+"y": 11.167647,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0805_2012Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+78.125,
+10.162647,
+81.575,
+12.172647
+]
+},
+{
+"ref": "RUD2",
+"value": "27",
+"footprint": "R_0402_1005Metric",
+"x": 132.05,
+"y": 19.814705,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+131.095,
+19.319705,
+133.005,
+20.309705
+]
+},
+{
+"ref": "D1",
+"value": "PWR",
+"footprint": "LED_0603_1608Metric",
+"x": 101.05,
+"y": 4.991176,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/LED_SMD.3dshapes/LED_0603_1608Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+99.505,
+4.196176,
+102.555,
+5.786176
+]
+},
+{
+"ref": "C18",
+"value": "100nF",
+"footprint": "C_0402_1005Metric",
+"x": 98.45,
+"y": 59.591176,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+97.515,
+59.106176,
+99.385,
+60.076176
+]
+},
+{
+"ref": "RCC2",
+"value": "5.1k",
+"footprint": "R_0402_1005Metric",
+"x": 138.05,
+"y": 27.22647,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+137.095,
+26.73147,
+139.005,
+27.72147
+]
+},
+{
+"ref": "BZ1",
+"value": "Piezo",
+"footprint": "Buzzer_Murata_PKMCS0909E",
+"x": 128.05,
+"y": 37.108823,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Buzzer_Beeper.3dshapes/Buzzer_Murata_PKMCS0909E.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+122.775,
+32.333823,
+133.325,
+41.883823
+]
+},
+{
+"ref": "R53",
+"value": "47k",
+"footprint": "R_0402_1005Metric",
+"x": 40.05,
+"y": 30.932352,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+39.095,
+30.437352,
+41.005,
+31.427352
+]
+},
+{
+"ref": "C5A",
+"value": "10uF",
+"footprint": "C_0805_2012Metric",
+"x": 21.05,
+"y": 42.05,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0805_2012Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+19.325,
+41.045,
+22.775,
+43.055
+]
+},
+{
+"ref": "C73",
+"value": "22uF",
+"footprint": "C_0805_2012Metric",
+"x": 98.05,
+"y": 28.461764,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0805_2012Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+96.325,
+27.456764,
+99.775,
+29.466764
+]
+},
+{
+"ref": "C21",
+"value": "100nF",
+"footprint": "C_0402_1005Metric",
+"x": 46.05,
+"y": 46.744117,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+45.115,
+46.259117,
+46.985,
+47.229117
+]
+},
+{
+"ref": "C1A",
+"value": "4.7uF",
+"footprint": "C_0603_1608Metric",
+"x": 103.65,
+"y": 59.591176,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0603_1608Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+102.145,
+58.836176,
+105.155,
+60.346176
+]
+},
+{
+"ref": "R80",
+"value": "270",
+"footprint": "R_0402_1005Metric",
+"x": 102.05,
+"y": 34.638235,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+101.095,
+34.143235,
+103.005,
+35.133235
+]
+},
+{
+"ref": "C90",
+"value": "100nF",
+"footprint": "C_0402_1005Metric",
+"x": 124.05,
+"y": 58.108823,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+123.115,
+57.623823,
+124.985,
+58.593823
+]
+},
+{
+"ref": "SW4",
+"value": "RESET",
+"footprint": "SW_SPST_B3U-1000P",
+"x": 68.05,
+"y": 72.314705,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Button_Switch_SMD.3dshapes/SW_SPST_B3U-1000P.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+65.625,
+70.639705,
+70.475,
+73.989705
+]
+},
+{
+"ref": "Y2",
+"value": "12MHz",
+"footprint": "Crystal_SMD_3225-4Pin_3.2x2.5mm",
+"x": 40.05,
+"y": 54.402941,
+"rot": 90.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Crystal.3dshapes/Crystal_SMD_3225-4Pin_3.2x2.5mm.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+38.275,
+52.277941,
+41.825,
+56.527941
+]
+},
+{
+"ref": "R58",
+"value": "8.2k",
+"footprint": "R_0402_1005Metric",
+"x": 40.05,
+"y": 33.402941,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+39.095,
+32.907941,
+41.005,
+33.897941
+]
+},
+{
+"ref": "C61",
+"value": "10uF",
+"footprint": "C_0805_2012Metric",
+"x": 55.05,
+"y": 14.873529,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0805_2012Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+53.325,
+13.868529,
+56.775,
+15.878529
+]
+},
+{
+"ref": "C55",
+"value": "47nF",
+"footprint": "C_0402_1005Metric",
+"x": 35.05,
+"y": 25.991176,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+34.115,
+25.506176,
+35.985,
+26.476176
+]
+},
+{
+"ref": "F2",
+"value": "W25Q128JVS",
+"footprint": "SOIC-8_5.3x5.3mm_P1.27mm",
+"x": 64.05,
+"y": 51.932352,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Package_SO.3dshapes/SOIC-8_5.3x5.3mm_P1.27mm.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+59.375,
+48.902352,
+68.725,
+54.857352
+]
+},
+{
+"ref": "U6",
+"value": "TPS62933",
+"footprint": "SOT-583-8",
+"x": 62.05,
+"y": 14.873529,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Package_TO_SOT_SMD.3dshapes/SOT-583-8.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+60.705,
+13.373529,
+63.395,
+16.198529
+]
+},
+{
+"ref": "R22",
+"value": "1k",
+"footprint": "R_0402_1005Metric",
+"x": 64.05,
+"y": 58.108823,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+63.095,
+57.613823,
+65.005,
+58.603823
+]
+},
+{
+"ref": "FID1",
+"value": "Fiducial",
+"footprint": "Fiducial_1mm_Mask2mm",
+"x": 10.05,
+"y": 3.05,
+"rot": 0.0,
+"back": false,
+"models": [],
+"bbox": [
+8.775,
+1.775,
+11.325,
+4.325
+]
+},
+{
+"ref": "SW3",
+"value": "BOOTSEL",
+"footprint": "SW_SPST_B3U-1000P",
+"x": 68.05,
+"y": 66.138235,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Button_Switch_SMD.3dshapes/SW_SPST_B3U-1000P.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+65.625,
+64.463235,
+70.475,
+67.813235
+]
+},
+{
+"ref": "R11",
+"value": "1k",
+"footprint": "R_0402_1005Metric",
+"x": 90.05,
+"y": 56.873529,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+89.095,
+56.378529,
+91.005,
+57.368529
+]
+},
+{
+"ref": "R83",
+"value": "270",
+"footprint": "R_0402_1005Metric",
+"x": 108.65,
+"y": 34.638235,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+107.695,
+34.143235,
+109.605,
+35.133235
+]
+},
+{
+"ref": "R61",
+"value": "10k",
+"footprint": "R_0402_1005Metric",
+"x": 69.05,
+"y": 18.579411,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+68.095,
+18.084411,
+70.005,
+19.074411
+]
+},
+{
+"ref": "J4",
+"value": "SWD",
+"footprint": "PinHeader_1x03_P1.27mm_Vertical_SMD_Pin1Left",
+"x": 33.05,
+"y": 59.344117,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Connector_PinHeader_1.27mm.3dshapes/PinHeader_1x03_P1.27mm_Vertical_SMD_Pin1Left.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+29.525,
+56.909117,
+36.575,
+61.779117
+]
+},
+{
+"ref": "C53",
+"value": "10uF",
+"footprint": "C_0805_2012Metric",
+"x": 21.05,
+"y": 33.402941,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0805_2012Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+19.325,
+32.397941,
+22.775,
+34.407941
+]
+},
+{
+"ref": "R97",
+"value": "10k",
+"footprint": "R_0402_1005Metric",
+"x": 90.05,
+"y": 61.197058,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+89.095,
+60.702058,
+91.005,
+61.692058
+]
+},
+{
+"ref": "U2",
+"value": "RP2350A (NET)",
+"footprint": "QFN-60-1EP_7x7mm_P0.4mm_EP3.4x3.4mm",
+"x": 52.05,
+"y": 54.402941,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/QFN-60-1EP_7x7mm_P0.4mm_EP3.4x3.4mm.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+47.925,
+50.277941,
+56.175,
+58.527941
+]
+},
+{
+"ref": "J2",
+"value": "BATTERY 2S",
+"footprint": "AMASS_XT30PW-M_1x02_P2.50mm_Horizontal",
+"x": 13.375,
+"y": 23.55,
+"rot": 90.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/AMASS_XT30PW-M_1x02_P2.50mm_Horizontal.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+-0.25,
+18.875,
+15.65,
+33.225
+]
+},
+{
+"ref": "U3",
+"value": "USBLC6-2SC6",
+"footprint": "SOT-23-6",
+"x": 140.05,
+"y": 9.932352,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Package_TO_SOT_SMD.3dshapes/SOT-23-6.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+137.975,
+8.032352,
+142.125,
+11.657352
+]
+},
+{
+"ref": "C71",
+"value": "100nF",
+"footprint": "C_0402_1005Metric",
+"x": 96.05,
+"y": 11.167647,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+95.115,
+10.682647,
+96.985,
+11.652647
+]
+},
+{
+"ref": "C59",
+"value": "10uF",
+"footprint": "C_0805_2012Metric",
+"x": 21.05,
+"y": 38.344117,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0805_2012Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+19.325,
+37.339117,
+22.775,
+39.349117
+]
+},
+{
+"ref": "R70",
+"value": "4.7k",
+"footprint": "R_0402_1005Metric",
+"x": 98.05,
+"y": 4.991176,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+97.095,
+4.496176,
+99.005,
+5.486176
+]
+},
+{
+"ref": "D2",
+"value": "UI",
+"footprint": "LED_0603_1608Metric",
+"x": 109.05,
+"y": 69.22647,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/LED_SMD.3dshapes/LED_0603_1608Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+107.505,
+68.43147,
+110.555,
+70.02147
+]
+},
+{
+"ref": "R57",
+"value": "10k",
+"footprint": "R_0402_1005Metric",
+"x": 44.05,
+"y": 30.932352,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+43.095,
+30.437352,
+45.005,
+31.427352
+]
+},
+{
+"ref": "C56",
+"value": "4.7uF",
+"footprint": "C_0603_1608Metric",
+"x": 35.05,
+"y": 29.697058,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0603_1608Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+33.545,
+28.942058,
+36.555,
+30.452058
+]
+},
+{
+"ref": "C67",
+"value": "1uF",
+"footprint": "C_0402_1005Metric",
+"x": 76.05,
+"y": 15.491176,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+75.115,
+15.006176,
+76.985,
+15.976176
+]
+},
+{
+"ref": "C51",
+"value": "10uF",
+"footprint": "C_0805_2012Metric",
+"x": 21.05,
+"y": 25.991176,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0805_2012Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+19.325,
+24.986176,
+22.775,
+26.996176
+]
+},
+{
+"ref": "C16",
+"value": "100nF",
+"footprint": "C_0402_1005Metric",
+"x": 108.05,
+"y": 44.273529,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+107.115,
+43.788529,
+108.985,
+44.758529
+]
+},
+{
+"ref": "C2E",
+"value": "15pF",
+"footprint": "C_0402_1005Metric",
+"x": 37.55,
+"y": 58.72647,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+36.615,
+58.24147,
+38.485,
+59.21147
+]
+},
+{
+"ref": "R12",
+"value": "1k",
+"footprint": "R_0402_1005Metric",
+"x": 114.05,
+"y": 55.638235,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+113.095,
+55.143235,
+115.005,
+56.133235
+]
+},
+{
+"ref": "R56",
+"value": "10k",
+"footprint": "R_0402_1005Metric",
+"x": 44.05,
+"y": 28.461764,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+43.095,
+27.966764,
+45.005,
+28.956764
+]
+},
+{
+"ref": "C23",
+"value": "100nF",
+"footprint": "C_0402_1005Metric",
+"x": 50.85,
+"y": 46.744117,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+49.915,
+46.259117,
+51.785,
+47.229117
+]
+},
+{
+"ref": "R52",
+"value": "47k",
+"footprint": "R_0402_1005Metric",
+"x": 40.05,
+"y": 28.461764,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+39.095,
+27.966764,
+41.005,
+28.956764
+]
+},
+{
+"ref": "C1C",
+"value": "100nF",
+"footprint": "C_0402_1005Metric",
+"x": 114.05,
+"y": 43.902941,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+113.115,
+43.417941,
+114.985,
+44.387941
+]
+},
+{
+"ref": "C70",
+"value": "10uF",
+"footprint": "C_0805_2012Metric",
+"x": 84.05,
+"y": 17.344117,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0805_2012Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+82.325,
+16.339117,
+85.775,
+18.349117
+]
+},
+{
+"ref": "U7",
+"value": "AP63203WU",
+"footprint": "TSOT-23-6",
+"x": 90.05,
+"y": 12.402941,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Package_TO_SOT_SMD.3dshapes/TSOT-23-6.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+87.975,
+10.502941,
+92.125,
+14.127941
+]
+},
+{
+"ref": "U1",
+"value": "RP2350A (UI)",
+"footprint": "QFN-60-1EP_7x7mm_P0.4mm_EP3.4x3.4mm",
+"x": 102.05,
+"y": 51.932352,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/QFN-60-1EP_7x7mm_P0.4mm_EP3.4x3.4mm.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+97.925,
+47.807352,
+106.175,
+56.057352
+]
+},
+{
+"ref": "R92",
+"value": "10k",
+"footprint": "R_0402_1005Metric",
+"x": 124.05,
+"y": 55.638235,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+123.095,
+55.143235,
+125.005,
+56.133235
+]
+},
+{
+"ref": "C5B",
+"value": "1nF",
+"footprint": "C_0402_1005Metric",
+"x": 44.05,
+"y": 33.402941,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+43.115,
+32.917941,
+44.985,
+33.887941
+]
+},
+{
+"ref": "C60",
+"value": "10uF",
+"footprint": "C_0805_2012Metric",
+"x": 55.05,
+"y": 11.167647,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0805_2012Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+53.325,
+10.162647,
+56.775,
+12.172647
+]
+},
+{
+"ref": "R95",
+"value": "1k",
+"footprint": "R_0402_1005Metric",
+"x": 106.05,
+"y": 69.22647,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+105.095,
+68.73147,
+107.005,
+69.72147
+]
+},
+{
+"ref": "SW2",
+"value": "RESET",
+"footprint": "SW_SPST_B3U-1000P",
+"x": 118.05,
+"y": 69.844117,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Button_Switch_SMD.3dshapes/SW_SPST_B3U-1000P.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+115.625,
+68.169117,
+120.475,
+71.519117
+]
+},
+{
+"ref": "R21",
+"value": "1k",
+"footprint": "R_0402_1005Metric",
+"x": 40.05,
+"y": 59.344117,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+39.095,
+58.849117,
+41.005,
+59.839117
+]
+},
+{
+"ref": "C17",
+"value": "100nF",
+"footprint": "C_0402_1005Metric",
+"x": 96.05,
+"y": 59.591176,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+95.115,
+59.106176,
+96.985,
+60.076176
+]
+},
+{
+"ref": "C25",
+"value": "100nF",
+"footprint": "C_0402_1005Metric",
+"x": 55.65,
+"y": 46.744117,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+54.715,
+46.259117,
+56.585,
+47.229117
+]
+},
+{
+"ref": "J3",
+"value": "SWD",
+"footprint": "PinHeader_1x03_P1.27mm_Vertical_SMD_Pin1Left",
+"x": 83.05,
+"y": 40.814705,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Connector_PinHeader_1.27mm.3dshapes/PinHeader_1x03_P1.27mm_Vertical_SMD_Pin1Left.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+79.525,
+38.379705,
+86.575,
+43.249705
+]
+},
+{
+"ref": "C54",
+"value": "47nF",
+"footprint": "C_0402_1005Metric",
+"x": 35.05,
+"y": 23.520588,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+34.115,
+23.035588,
+35.985,
+24.005588
+]
+},
+{
+"ref": "L7",
+"value": "4.7uH",
+"footprint": "L_Bourns_SRN6045TA",
+"x": 90.05,
+"y": 24.755882,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Inductor_SMD.3dshapes/L_Bourns_SRN6045TA.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+86.525,
+21.480882,
+93.575,
+28.030882
+]
+},
+{
+"ref": "C14",
+"value": "100nF",
+"footprint": "C_0402_1005Metric",
+"x": 103.25,
+"y": 44.273529,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+102.315,
+43.788529,
+104.185,
+44.758529
+]
+},
+{
+"ref": "J8",
+"value": "AUX 5V",
+"footprint": "JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical",
+"x": 81.05,
+"y": 4.991176,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Connector_JST.3dshapes/JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+78.575,
+2.766176,
+85.525,
+8.316176
+]
+},
+{
+"ref": "R99",
+"value": "100k",
+"footprint": "R_0402_1005Metric",
+"x": 79.85,
+"y": 15.491176,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+78.895,
+14.996176,
+80.805,
+15.986176
+]
+},
+{
+"ref": "FID2",
+"value": "Fiducial",
+"footprint": "Fiducial_1mm_Mask2mm",
+"x": 148.05,
+"y": 37.108823,
+"rot": 0.0,
+"back": false,
+"models": [],
+"bbox": [
+146.775,
+35.833823,
+149.325,
+38.383823
+]
+},
+{
+"ref": "C1B",
+"value": "4.7uF",
+"footprint": "C_0603_1608Metric",
+"x": 106.85,
+"y": 59.591176,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0603_1608Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+105.345,
+58.836176,
+108.355,
+60.346176
+]
+},
+{
+"ref": "R54",
+"value": "4.7k",
+"footprint": "R_0402_1005Metric",
+"x": 44.05,
+"y": 23.520588,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+43.095,
+23.025588,
+45.005,
+24.015588
+]
+},
+{
+"ref": "C74",
+"value": "22uF",
+"footprint": "C_0805_2012Metric",
+"x": 98.05,
+"y": 32.167647,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0805_2012Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+96.325,
+31.162647,
+99.775,
+33.172647
+]
+},
+{
+"ref": "J7",
+"value": "PANEL 5V",
+"footprint": "JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical",
+"x": 72.05,
+"y": 4.991176,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Connector_JST.3dshapes/JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+69.575,
+2.766176,
+76.525,
+8.316176
+]
+},
+{
+"ref": "R90",
+"value": "10k",
+"footprint": "R_0402_1005Metric",
+"x": 124.05,
+"y": 50.697058,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+123.095,
+50.202058,
+125.005,
+51.192058
+]
+},
+{
+"ref": "L5",
+"value": "2.2uH",
+"footprint": "L_Bourns_SRP7028A_7.3x6.6mm",
+"x": 28.05,
+"y": 46.991176,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/L_Bourns_SRP7028A_7.3x6.6mm.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+23.575,
+43.416176,
+32.525,
+50.566176
+]
+},
+{
+"ref": "C69",
+"value": "1nF",
+"footprint": "C_0402_1005Metric",
+"x": 72.85,
+"y": 11.167647,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+71.915,
+10.682647,
+73.785,
+11.652647
+]
+},
+{
+"ref": "C29",
+"value": "100nF",
+"footprint": "C_0402_1005Metric",
+"x": 50.85,
+"y": 62.061764,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+49.915,
+61.576764,
+51.785,
+62.546764
+]
+},
+{
+"ref": "H1",
+"value": "M2.5",
+"footprint": "MountingHole_2.7mm_M2.5",
+"x": 4.05,
+"y": 4.05,
+"rot": 0.0,
+"back": false,
+"models": [],
+"bbox": [
+1.075,
+1.075,
+7.025,
+7.025
+]
+},
+{
+"ref": "R86",
+"value": "270",
+"footprint": "R_0402_1005Metric",
+"x": 115.25,
+"y": 34.638235,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+114.295,
+34.143235,
+116.205,
+35.133235
+]
+},
+{
+"ref": "C19",
+"value": "100nF",
+"footprint": "C_0402_1005Metric",
+"x": 100.85,
+"y": 59.591176,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+99.915,
+59.106176,
+101.785,
+60.076176
+]
+},
+{
+"ref": "U8",
+"value": "RM2",
+"footprint": "RaspberryPi_RM2",
+"x": 85.05,
+"y": 75.8,
+"rot": 180.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/RaspberryPi_RM2.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+67.275,
+66.675,
+102.825,
+97.575
+]
+},
+{
+"ref": "RUD1",
+"value": "27",
+"footprint": "R_0402_1005Metric",
+"x": 132.05,
+"y": 17.344117,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+131.095,
+16.849117,
+133.005,
+17.839117
+]
+},
+{
+"ref": "C24",
+"value": "100nF",
+"footprint": "C_0402_1005Metric",
+"x": 53.25,
+"y": 46.744117,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+52.315,
+46.259117,
+54.185,
+47.229117
+]
+},
+{
+"ref": "C1E",
+"value": "15pF",
+"footprint": "C_0402_1005Metric",
+"x": 87.55,
+"y": 56.255882,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+86.615,
+55.770882,
+88.485,
+56.740882
+]
+},
+{
+"ref": "U9",
+"value": "TPS22917",
+"footprint": "SOT-23-6",
+"x": 76.05,
+"y": 11.167647,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Package_TO_SOT_SMD.3dshapes/SOT-23-6.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+73.975,
+9.267647,
+78.125,
+12.892647
+]
+},
+{
+"ref": "J1",
+"value": "USB-C",
+"footprint": "USB_C_Receptacle_HRO_TYPE-C-31-M-12",
+"x": 148.175,
+"y": 16.05,
+"rot": 90.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/USB_C_Receptacle_HRO_TYPE-C-31-M-12.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+142.88,
+10.705,
+152.35,
+21.395
+]
+},
+{
+"ref": "Y1",
+"value": "12MHz",
+"footprint": "Crystal_SMD_3225-4Pin_3.2x2.5mm",
+"x": 90.05,
+"y": 51.932352,
+"rot": 90.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Crystal.3dshapes/Crystal_SMD_3225-4Pin_3.2x2.5mm.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+88.275,
+49.807352,
+91.825,
+54.057352
+]
+},
+{
+"ref": "C58",
+"value": "10uF",
+"footprint": "C_0805_2012Metric",
+"x": 36.05,
+"y": 38.344117,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0805_2012Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+34.325,
+37.339117,
+37.775,
+39.349117
+]
+},
+{
+"ref": "R87",
+"value": "270",
+"footprint": "R_0402_1005Metric",
+"x": 117.45,
+"y": 34.638235,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+116.495,
+34.143235,
+118.405,
+35.133235
+]
+},
+{
+"ref": "J12",
+"value": "PRINTER",
+"footprint": "JST_SH_SM06B-SRSS-TB_1x06-1MP_P1.00mm_Horizontal",
+"x": 140.05,
+"y": 79.108823,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Connector_JST.3dshapes/JST_SH_SM06B-SRSS-TB_1x06-1MP_P1.00mm_Horizontal.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+135.125,
+75.803823,
+144.975,
+82.413823
+]
+},
+{
+"ref": "C72",
+"value": "22uF",
+"footprint": "C_0805_2012Metric",
+"x": 98.05,
+"y": 24.755882,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0805_2012Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+96.325,
+23.750882,
+99.775,
+25.760882
+]
+},
+{
+"ref": "C64",
+"value": "22uF",
+"footprint": "C_0805_2012Metric",
+"x": 70.05,
+"y": 27.22647,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0805_2012Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+68.325,
+26.22147,
+71.775,
+28.23147
+]
+},
+{
+"ref": "R85",
+"value": "270",
+"footprint": "R_0402_1005Metric",
+"x": 113.05,
+"y": 34.638235,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+112.095,
+34.143235,
+114.005,
+35.133235
+]
+},
+{
+"ref": "R51",
+"value": "30.1k",
+"footprint": "R_0402_1005Metric",
+"x": 40.05,
+"y": 25.991176,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+39.095,
+25.496176,
+41.005,
+26.486176
+]
+},
+{
+"ref": "H4",
+"value": "M2.5",
+"footprint": "MountingHole_2.7mm_M2.5",
+"x": 148.05,
+"y": 80.05,
+"rot": 0.0,
+"back": false,
+"models": [],
+"bbox": [
+145.075,
+77.075,
+151.025,
+83.025
+]
+},
+{
+"ref": "RCC1",
+"value": "5.1k",
+"footprint": "R_0402_1005Metric",
+"x": 138.05,
+"y": 24.755882,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+137.095,
+24.260882,
+139.005,
+25.250882
+]
+},
+{
+"ref": "R13",
+"value": "10k",
+"footprint": "R_0402_1005Metric",
+"x": 117.05,
+"y": 55.638235,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+116.095,
+55.143235,
+118.005,
+56.133235
+]
+},
+{
+"ref": "R23",
+"value": "10k",
+"footprint": "R_0402_1005Metric",
+"x": 67.05,
+"y": 58.108823,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+66.095,
+57.613823,
+68.005,
+58.603823
+]
+},
+{
+"ref": "L6",
+"value": "4.7uH",
+"footprint": "L_Bourns_SRP7028A_7.3x6.6mm",
+"x": 62.05,
+"y": 27.22647,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/L_Bourns_SRP7028A_7.3x6.6mm.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+57.575,
+23.65147,
+66.525,
+30.80147
+]
+},
+{
+"ref": "C2D",
+"value": "15pF",
+"footprint": "C_0402_1005Metric",
+"x": 37.55,
+"y": 50.079411,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+36.615,
+49.594411,
+38.485,
+50.564411
+]
+},
+{
+"ref": "C50",
+"value": "10uF",
+"footprint": "C_0805_2012Metric",
+"x": 21.05,
+"y": 22.285294,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0805_2012Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+19.325,
+21.280294,
+22.775,
+23.290294
+]
+},
+{
+"ref": "R81",
+"value": "270",
+"footprint": "R_0402_1005Metric",
+"x": 104.25,
+"y": 34.638235,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+103.295,
+34.143235,
+105.205,
+35.133235
+]
+},
+{
+"ref": "R82",
+"value": "270",
+"footprint": "R_0402_1005Metric",
+"x": 106.45,
+"y": 34.638235,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+105.495,
+34.143235,
+107.405,
+35.133235
+]
+},
+{
+"ref": "R60",
+"value": "52.3k",
+"footprint": "R_0402_1005Metric",
+"x": 69.05,
+"y": 16.108823,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+68.095,
+15.613823,
+70.005,
+16.603823
+]
+},
+{
+"ref": "C62",
+"value": "100nF",
+"footprint": "C_0402_1005Metric",
+"x": 69.05,
+"y": 11.167647,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+68.115,
+10.682647,
+69.985,
+11.652647
+]
+},
+{
+"ref": "J11",
+"value": "KB_MATRIX",
+"footprint": "PinHeader_1x20_P2.54mm_Horizontal",
+"x": 61.05,
+"y": 79.55,
+"rot": -90.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x20_P2.54mm_Horizontal.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+10.995,
+77.755,
+62.845,
+90.115
+]
+},
+{
+"ref": "J13",
+"value": "EXPANSION",
+"footprint": "PinHeader_1x10_P1.27mm_Vertical",
+"x": 120.05,
+"y": 76.638235,
+"rot": 90.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Connector_PinHeader_1.27mm.3dshapes/PinHeader_1x10_P1.27mm_Vertical.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+118.885,
+75.063235,
+132.645,
+78.213235
+]
+},
+{
+"ref": "R91",
+"value": "10k",
+"footprint": "R_0402_1005Metric",
+"x": 124.05,
+"y": 53.167647,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+123.095,
+52.672647,
+125.005,
+53.662647
+]
+},
+{
+"ref": "R55",
+"value": "4.7k",
+"footprint": "R_0402_1005Metric",
+"x": 44.05,
+"y": 25.991176,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+43.095,
+25.496176,
+45.005,
+26.486176
+]
+},
+{
+"ref": "R59",
+"value": "100",
+"footprint": "R_0402_1005Metric",
+"x": 40.05,
+"y": 35.873529,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+39.095,
+35.378529,
+41.005,
+36.368529
+]
+},
+{
+"ref": "C80",
+"value": "100nF",
+"footprint": "C_0402_1005Metric",
+"x": 80.55,
+"y": 61.197058,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+79.615,
+60.712058,
+81.485,
+61.682058
+]
+},
+{
+"ref": "C28",
+"value": "100nF",
+"footprint": "C_0402_1005Metric",
+"x": 48.45,
+"y": 62.061764,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+47.515,
+61.576764,
+49.385,
+62.546764
+]
+},
+{
+"ref": "R98",
+"value": "100",
+"footprint": "R_0402_1005Metric",
+"x": 128.05,
+"y": 44.520588,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+127.095,
+44.025588,
+129.005,
+45.015588
+]
+},
+{
+"ref": "C13",
+"value": "100nF",
+"footprint": "C_0402_1005Metric",
+"x": 100.85,
+"y": 44.273529,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+99.915,
+43.788529,
+101.785,
+44.758529
+]
+},
+{
+"ref": "SW1",
+"value": "BOOTSEL",
+"footprint": "SW_SPST_B3U-1000P",
+"x": 118.05,
+"y": 63.667647,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Button_Switch_SMD.3dshapes/SW_SPST_B3U-1000P.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+115.625,
+61.992647,
+120.475,
+65.342647
+]
+},
+{
+"ref": "C52",
+"value": "10uF",
+"footprint": "C_0805_2012Metric",
+"x": 21.05,
+"y": 29.697058,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0805_2012Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+19.325,
+28.692058,
+22.775,
+30.702058
+]
+},
+{
+"ref": "R84",
+"value": "270",
+"footprint": "R_0402_1005Metric",
+"x": 110.85,
+"y": 34.638235,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+109.895,
+34.143235,
+111.805,
+35.133235
+]
+},
+{
+"ref": "C1D",
+"value": "15pF",
+"footprint": "C_0402_1005Metric",
+"x": 87.55,
+"y": 47.608823,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+86.615,
+47.123823,
+88.485,
+48.093823
+]
+},
+{
+"ref": "J5",
+"value": "NTC",
+"footprint": "JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical",
+"x": 10.05,
+"y": 56.873529,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Connector_JST.3dshapes/JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+7.575,
+54.648529,
+14.525,
+60.198529
+]
+},
+{
+"ref": "R96",
+"value": "470",
+"footprint": "R_0402_1005Metric",
+"x": 87.55,
+"y": 61.197058,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+86.595,
+60.702058,
+88.505,
+61.692058
+]
+},
+{
+"ref": "J9",
+"value": "microSD",
+"footprint": "microSD_HC_Hirose_DM3AT-SF-PEJM5",
+"x": 138.575,
+"y": 52.08,
+"rot": 90.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Connector_Card.3dshapes/microSD_HC_Hirose_DM3AT-SF-PEJM5.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+129.73,
+44.175,
+152.35,
+59.925
+]
+},
+{
+"ref": "U5",
+"value": "BQ25798",
+"footprint": "Texas_RQM0029A_VQFN-29_4x4mm_P0.4mm",
+"x": 28.05,
+"y": 32.167647,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/home/aditya/Project/Pico-COMP/hardware/kicad/pico-comp.3dshapes/Texas_RQM0029A_VQFN-29_4x4mm_P0.4mm.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+25.198427,
+29.692647,
+30.525,
+34.642647
+]
+},
+{
+"ref": "R50",
+"value": "5.23k",
+"footprint": "R_0402_1005Metric",
+"x": 40.05,
+"y": 23.520588,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+39.095,
+23.025588,
+41.005,
+24.015588
+]
+},
+{
+"ref": "C2C",
+"value": "100nF",
+"footprint": "C_0402_1005Metric",
+"x": 64.05,
+"y": 46.373529,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+63.115,
+45.888529,
+64.985,
+46.858529
+]
+},
+{
+"ref": "C2B",
+"value": "4.7uF",
+"footprint": "C_0603_1608Metric",
+"x": 56.85,
+"y": 62.061764,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0603_1608Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+55.345,
+61.306764,
+58.355,
+62.816764
+]
+},
+{
+"ref": "C22",
+"value": "100nF",
+"footprint": "C_0402_1005Metric",
+"x": 48.45,
+"y": 46.744117,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+47.515,
+46.259117,
+49.385,
+47.229117
+]
+},
+{
+"ref": "C66",
+"value": "22uF",
+"footprint": "C_0805_2012Metric",
+"x": 70.05,
+"y": 34.638235,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0805_2012Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+68.325,
+33.633235,
+71.775,
+35.643235
+]
+},
+{
+"ref": "L2",
+"value": "3.3uH",
+"footprint": "L_Abracon_AOTA-B201610S",
+"x": 61.65,
+"y": 62.432352,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Inductor_SMD.3dshapes/L_Abracon_AOTA-B201610S.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+60.225,
+61.312352,
+63.075,
+63.552352
+]
+},
+{
+"ref": "C27",
+"value": "100nF",
+"footprint": "C_0402_1005Metric",
+"x": 46.05,
+"y": 62.061764,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+45.115,
+61.576764,
+46.985,
+62.546764
+]
+},
+{
+"ref": "C11",
+"value": "100nF",
+"footprint": "C_0402_1005Metric",
+"x": 96.05,
+"y": 44.273529,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+95.115,
+43.788529,
+96.985,
+44.758529
+]
+},
+{
+"ref": "C63",
+"value": "10nF",
+"footprint": "C_0402_1005Metric",
+"x": 69.05,
+"y": 13.638235,
+"rot": 0.0,
+"back": false,
+"models": [
+{
+"path": "/usr/share/kicad/3dmodels/Capacitor_SMD.3dshapes/C_0402_1005Metric.step",
+"offset": [
+0.0,
+0.0,
+0.0
+],
+"rot": [
+0.0,
+0.0,
+0.0
+],
+"scale": [
+1.0,
+1.0,
+1.0
+]
+}
+],
+"bbox": [
+68.115,
+13.153235,
+69.985,
+14.123235
+]
+}
+]
+}

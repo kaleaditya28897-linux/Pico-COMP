@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "pico-comp")(type "KiCad")(uri "${KIPRJMOD}/pico-comp.pretty")(options "")(descr "Pico-COMP project footprints"))
+)

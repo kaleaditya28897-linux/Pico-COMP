@@ -1,0 +1,173 @@
+{
+ "board": [
+  152.0,
+  84.0
+ ],
+ "holes": [
+  [
+   4,
+   4
+  ],
+  [
+   148.0,
+   4
+  ],
+  [
+   4,
+   80.0
+  ],
+  [
+   148.0,
+   80.0
+  ]
+ ],
+ "rf_keepout": [
+  67.25,
+  79.0,
+  102.75,
+  97.5
+ ],
+ "connectors": {
+  "J1": {
+   "bbox": [
+    142.83,
+    10.655,
+    152.3,
+    21.345
+   ],
+   "value": "USB-C"
+  },
+  "J2": {
+   "bbox": [
+    -0.3,
+    18.825,
+    15.6,
+    33.175
+   ],
+   "value": "BATTERY 2S"
+  },
+  "J6": {
+   "bbox": [
+    107.475,
+    -0.3,
+    124.525,
+    13.37
+   ],
+   "value": "HDMI to panel"
+  },
+  "J9": {
+   "bbox": [
+    129.68,
+    44.125,
+    152.3,
+    59.875
+   ],
+   "value": "microSD"
+  },
+  "J11": {
+   "bbox": [
+    10.945,
+    77.705,
+    62.795,
+    90.065
+   ],
+   "value": "KB_MATRIX"
+  },
+  "J12": {
+   "bbox": [
+    135.075,
+    75.754,
+    144.925,
+    82.364
+   ],
+   "value": "PRINTER"
+  },
+  "J13": {
+   "bbox": [
+    118.835,
+    75.013,
+    132.595,
+    78.163
+   ],
+   "value": "EXPANSION"
+  },
+  "J7": {
+   "bbox": [
+    69.525,
+    2.716,
+    76.475,
+    8.266
+   ],
+   "value": "PANEL 5V"
+  },
+  "J8": {
+   "bbox": [
+    78.525,
+    2.716,
+    85.475,
+    8.266
+   ],
+   "value": "AUX 5V"
+  },
+  "J5": {
+   "bbox": [
+    7.525,
+    54.599,
+    14.475,
+    60.149
+   ],
+   "value": "NTC"
+  },
+  "U8": {
+   "bbox": [
+    67.225,
+    66.625,
+    102.775,
+    97.525
+   ],
+   "value": "RM2"
+  }
+ },
+ "symbols": {
+  "U1": [
+   "MCU_RaspberryPi",
+   "RP2350A"
+  ],
+  "F1": [
+   "Memory_Flash",
+   "W25Q128JVS"
+  ],
+  "U2": [
+   "MCU_RaspberryPi",
+   "RP2350A"
+  ],
+  "F2": [
+   "Memory_Flash",
+   "W25Q128JVS"
+  ],
+  "U3": [
+   "Power_Protection",
+   "USBLC6-2SC6"
+  ],
+  "U5": [
+   "Battery_Management",
+   "BQ25798"
+  ],
+  "U6": [
+   "Regulator_Switching",
+   "TPS62933"
+  ],
+  "U7": [
+   "Regulator_Switching",
+   "AP63203WU"
+  ],
+  "U9": [
+   "Power_Management",
+   "TPS22917DBV"
+  ],
+  "U8": [
+   "pico-comp",
+   "RaspberryPi_RM2"
+  ]
+ }
+}
