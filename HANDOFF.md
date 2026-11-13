@@ -19,7 +19,9 @@ Routing pipeline (all in `hardware/mainboard/`):
    --refill-zones`) to 0/0, copy over `mainboard.kicad_pcb`, `sh ../kicad/fab.sh mainboard`.
 
 Results so far: Freerouting alone stalls at ~31-46 unrouted; maze alone at 85; maze then Freerouting at
-~46. Leftovers cluster at the BQ25798 charger, the NET MCU / 5 V buck and the UI flash (fine-pitch
+~46. **With the signal dog-bone fan-out (step 1), Freerouting reached 8-9 unrouted in ~15 min (16:26)**,
+so that is the way forward. Next session: run 3-4 Freerouting copies on a fresh `fanout.py` board. If they
+stall at a handful, use `maze_route.py` on the saved result, or route those few by hand in KiCad. Leftovers cluster at the BQ25798 charger, the NET MCU / 5 V buck and the UI flash (fine-pitch
 escape), which is why step 1 now fans out signal pins too. Runs on that board started 16:10 (logs in
 `/tmp/claude-1000/route/`, boards `hardware/kicad/fr1/fr2/mz3.kicad_pcb`).
 If it still stalls: relieve the charger area (move R50-R59/C5x further out), or route the last few by
