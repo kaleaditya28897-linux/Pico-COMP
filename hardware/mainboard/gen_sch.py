@@ -51,15 +51,15 @@ def symbol_for(fp):
 
 GROUPS = [
     ("USB-C input, protection, BQ25798 2S charger, battery",
-     lambda r: r in ("J1", "U3", "RCC1", "RCC2", "RUD1", "RUD2", "U5", "L5", "J2", "J5") or r.startswith(("C5", "R5"))),
+     lambda r: r in ("J1", "U3", "U10", "R100", "C100", "RUD1", "RUD2", "U5", "L5", "J2", "J5") or r.startswith(("C5", "R5"))),
     ("Rails: TPS62933 VSYS->5 V, AP63203 5 V->3.3 V, panel power",
      lambda r: r in ("U6", "L6", "U7", "L7", "D1", "J7", "J8", "U9", "R99") or r.startswith(("C6", "R6", "C7", "R7"))),
     ("UI MCU (U1): display (HSTX->HDMI), microSD, printer, expansion, USB",
-     lambda r: r in ("U1", "L1", "F1", "Y1", "SW1", "SW2", "J3", "J6", "J9", "J12", "J13", "D2", "R95", "BZ1")
+     lambda r: r in ("U1", "L1", "F1", "Y1", "SW1", "SW2", "J3", "J6", "J9", "J12", "J13", "D2", "R95", "BZ1", "U12")
      or r.startswith(("C1", "R1", "R8", "R9", "C9")) and r not in ("R96", "R97")),
     ("NET MCU (U2): keyboard matrix, RM2 Wi-Fi, charger I2C",
      lambda r: r in ("U2", "L2", "F2", "Y2", "SW3", "SW4", "J4", "U8", "R96", "R97", "C80", "C81", "J11",
-                     "J14", "RNU1", "RNU2")
+                     "J14", "RNU1", "RNU2", "RCC3", "RCC4", "U11")
      or r.startswith(("C2", "R2"))),
     ("Mechanical", lambda r: r.startswith(("H", "FID"))),
 ]

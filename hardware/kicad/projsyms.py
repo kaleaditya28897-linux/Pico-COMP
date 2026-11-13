@@ -47,8 +47,59 @@ def rm2():
 '''
 
 
+# JEDEC eMMC 153-ball FBGA (11.5 x 13), ball map from the Kimtigo KM110SS1064GxA datasheet (v1.3 table 2.1)
+EMMC_SIG = {"A3": "DAT0", "A4": "DAT1", "A5": "DAT2", "B2": "DAT3", "B3": "DAT4", "B4": "DAT5", "B5": "DAT6",
+            "B6": "DAT7", "M5": "CMD", "M6": "CLK", "K5": "RSTN", "H5": "STROBE"}
+EMMC_PWR = {"C2": "VDDi", "E6": "VCC", "F5": "VCC", "J10": "VCC", "K9": "VCC",
+            "C6": "VCCQ", "M4": "VCCQ", "N4": "VCCQ", "P3": "VCCQ", "P5": "VCCQ"}
+EMMC_GND = ["A6", "C4", "E7", "G5", "H10", "J5", "K8", "N2", "N5", "P4", "P6"]
+
+
+def emmc_balls():
+    import re
+    fp = "/usr/share/kicad/footprints/Package_BGA.pretty/LFBGA-153_11.5x13mm_Layout14x14_P0.5mm.kicad_mod"
+    return sorted(set(re.findall(r'\(pad "([A-Z][0-9]+)"', open(fp).read())), key=lambda b: (b[0], int(b[1:])))
+
+
+def emmc():
+    w, top = 12.7, 20.32
+    pins = []
+
+    def pin(num, name, et, x, y, a, hide=False):
+        pins.append(f'      (pin {et} line (at {x:.2f} {y:.2f} {a}) (length 5.08){" hide" if hide else ""}\n'
+                    f'        (name "{name}" (effects (font (size 1.27 1.27))))\n'
+                    f'        (number "{num}" (effects (font (size 1.27 1.27)))))\n')
+    left = ["M6", "M5", "A3", "A4", "A5", "B2", "B3", "B4", "B5", "B6", "K5", "H5"]
+    for i, b in enumerate(left):
+        pin(b, EMMC_SIG[b], "bidirectional" if b != "M6" else "input", -w - 5.08, top - 2.54 - i * 2.54 - (2.54 if i >= 2 else 0) - (2.54 if i >= 10 else 0), 0)
+    right = list(EMMC_PWR)
+    for i, b in enumerate(right):
+        stacked = EMMC_PWR[b] in [EMMC_PWR[r] for r in right[:i]]
+        pin(b, EMMC_PWR[b], "power_in" if not stacked else "passive", w + 5.08,
+            top - 2.54 - (0 if b == "C2" else (2.54 * 2 if EMMC_PWR[b] == "VCC" else 2.54 * 4)), 180, hide=stacked)
+    for i, b in enumerate(EMMC_GND):
+        pin(b, "GND", "power_in" if i == 0 else "passive", 0, -top - 5.08, 90, hide=i > 0)
+    used = set(EMMC_SIG) | set(EMMC_PWR) | set(EMMC_GND)
+    for b in emmc_balls():
+        if b not in used:
+            pin(b, "NC", "no_connect", w + 5.08, -top + 2.54, 180, hide=True)
+    return f'''  (symbol "eMMC_FBGA153" (pin_names (offset 1.016)) (exclude_from_sim no) (in_bom yes) (on_board yes)
+    (property "Reference" "U" (at {-w:.2f} {top + 1.5:.2f} 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Value" "eMMC_FBGA153" (at {-w:.2f} {-top - 8:.2f} 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Footprint" "Package_BGA:LFBGA-153_11.5x13mm_Layout14x14_P0.5mm" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Datasheet" "https://files.pine64.org/doc/datasheet/pinephone/Kimtigo_fbga153_16_32_64_eMMC_datasheet_v1.3.pdf" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "JEDEC eMMC 5.1, 153-ball FBGA 11.5x13 mm (e.g. Kimtigo KM110SS1064GxA 64 GB)" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (symbol "eMMC_FBGA153_0_1"
+      (rectangle (start {-w:.2f} {top:.2f}) (end {w:.2f} {-top:.2f}) (stroke (width 0.254) (type default)) (fill (type background)))
+    )
+    (symbol "eMMC_FBGA153_1_1"
+{"".join(pins)}    )
+  )
+'''
+
+
 def write():
-    body = rm2()
+    body = rm2() + emmc()
     open(os.path.join(here, "pico-comp.kicad_sym"), "w").write(
         '(kicad_symbol_lib (version 20241209) (generator "pico-comp-projsyms")\n' + body + ")\n")
 

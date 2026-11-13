@@ -179,6 +179,9 @@ for g in EXP_GPIO:
     UI_GPIO[g] = f"EXP{g}"
 # UI GPIO10/11 drive the NET MCU's SWD port: the UI firmware reflashes the NET MCU (one update file)
 UI_GPIO.update({10: "NET_SWCLK", 11: "NET_SWDIO"})
+# RP2350B extra GPIO: 64 GB eMMC, 4-bit SD/MMC bus via PIO (DAT0-3 consecutive for the PIO program)
+UI_GPIO.update({30: "EMMC_CLK", 31: "EMMC_CMD", 32: "EMMC_DAT0", 33: "EMMC_DAT1", 34: "EMMC_DAT2",
+                35: "EMMC_DAT3", 36: "EMMC_RST"})
 UI_GPIO.update({12: "TMDS_D0P", 13: "TMDS_D0N", 14: "TMDS_CKP", 15: "TMDS_CKN",
                 16: "TMDS_D2P", 17: "TMDS_D2N", 18: "TMDS_D1P", 19: "TMDS_D1N",
                 20: "SD_MISO", 21: "SD_CS", 22: "SD_SCK", 23: "SD_MOSI", 24: "SD_DET",
@@ -188,7 +191,8 @@ NET_GPIO = {g: NET_ALIAS.get(n, n) for g, n in NET_GPIO.items()}
 UI_GPIO = {g: NET_ALIAS.get(n, n) for g, n in UI_GPIO.items()}
 
 
-def rp2350(tag, ref, x, y, gpio, usb):
+def rp2350(tag, ref, x, y, gpio, usb, part="RP2350A"):
+    """part: RP2350A (QFN-60, GPIO0-29) or RP2350B (QFN-80, GPIO0-47)."""
     m = {"IOVDD": "V3V3", "USB_OTP_VDD": "V3V3", "QSPI_IOVDD": "V3V3", "VREG_AVDD": "V3V3",
          "VREG_VIN": "V3V3", "ADC_AVDD": "V3V3", "DVDD": f"{tag}_1V1", "VREG_FB": f"{tag}_1V1",
          "VREG_LX": f"{tag}_LX", "VREG_PGND": "GND", "GND": "GND",
@@ -198,12 +202,13 @@ def rp2350(tag, ref, x, y, gpio, usb):
          "QSPI_SD3": f"{tag}_QSD3", "QSPI_SCLK": f"{tag}_QSCK", "~{QSPI_SS}": f"{tag}_QSS"}
     if usb:   # _P/_N suffixes: KiCad's diff-pair router pairs them
         m.update({"USB_DM": f"{usb}_N", "USB_DP": f"{usb}_P"})
-    for g in range(30):
-        pn = [k for k in symlib.load("MCU_RaspberryPi", "RP2350A")[0] if k.startswith(f"GPIO{g}") and not k[len(f"GPIO{g}"):][:1].isdigit()][0]
+    pins = symlib.load("MCU_RaspberryPi", part)[0]
+    for g in range(48 if part == "RP2350B" else 30):
+        pn = [k for k in pins if k.startswith(f"GPIO{g}") and not k[len(f"GPIO{g}"):][:1].isdigit()][0]
         if g in gpio:
             m[pn] = gpio[g]
-    ic(ref, "Package_DFN_QFN", "QFN-60-1EP_7x7mm_P0.4mm_EP3.4x3.4mm", ("MCU_RaspberryPi", "RP2350A"),
-       x, y, m, value=f"RP2350A ({tag})", mpn="RP2350A")
+    fpn = "QFN-80-1EP_10x10mm_P0.4mm_EP3.4x3.4mm" if part == "RP2350B" else "QFN-60-1EP_7x7mm_P0.4mm_EP3.4x3.4mm"
+    ic(ref, "Package_DFN_QFN", fpn, ("MCU_RaspberryPi", part), x, y, m, value=f"{part} ({tag})", mpn=part)
 
 
 def support(tag, u, x, y, bootref, runref, swdref, usb=False, swd_dy=8):
@@ -249,7 +254,7 @@ def support(tag, u, x, y, bootref, runref, swdref, usb=False, swd_dy=8):
 # --------------------------------------------------------------------------------------
 UI_X, UI_Y = 102.0, 42.0
 NET_X, NET_Y = 52.0, 44.0
-rp2350("UI", "U1", UI_X, UI_Y, UI_GPIO, usb="UI_USB")
+rp2350("UI", "U1", UI_X, UI_Y, UI_GPIO, usb="UI_USB", part="RP2350B")
 support("UI", 1, UI_X, UI_Y, "SW1", None, "J3", usb=True, swd_dy=-9)
 rp2350("NET", "U2", NET_X, NET_Y, NET_GPIO, usb="NET_USB_MCU")
 support("NET", 2, NET_X, NET_Y, "SW3", "SW4", "J4", swd_dy=4)
@@ -262,8 +267,15 @@ conn("J1", {"A1": "GND", "A12": "GND", "B1": "GND", "B12": "GND", "SH": "GND",
             "A4": "VBUS", "A9": "VBUS", "B4": "VBUS", "B9": "VBUS",
             "A5": "CC1", "B5": "CC2", "A6": "USB_P", "B6": "USB_P", "A7": "USB_N", "B7": "USB_N"})
 place_edge("J1", "right", 16)
-R("RCC1", "5.1k", "CC1", "GND", 138, 20)
-R("RCC2", "5.1k", "CC2", "GND", 138, 22)
+# USB-C port 1 is dual-role: TUSB320 CC controller (I2C 0x60 on the charger bus, INT shared with the
+# charger's open-drain CHG_INT). Unpowered it still presents Rd, so a flat device charges from any
+# USB-C source. In host mode the BQ25798's OTG boost supplies VBUS (firmware).
+ic("U10", "Package_DFN_QFN", "Texas_X2QFN-12_1.6x1.6mm_P0.4mm", ("Interface_USB", "TUSB320"), 137, 21,
+   {"CC1": "CC1", "CC2": "CC2", "VBUS_DET": "VBUS_DET", "ADDR": "GND", "~{INT}/OUT3": "CHG_INT",
+    "SDA/OUT1": "I2C_SDA", "SCL/OUT2": "I2C_SCL", "GND": "GND", "~{EN}": "GND", "VDD": "V3V3"},
+   value="TUSB320", mpn="TUSB320LAIRWBR")    # PORT open = dual-role; ID open (state read over I2C)
+R("R100", "887k", "VBUS", "VBUS_DET", 140.5, 21)      # datasheet RVBUS 887k (855-920k)
+C("C100", "100nF", "V3V3", "GND", 133.5, 21)
 ic("U3", "Package_TO_SOT_SMD", "SOT-23-6", ("Power_Protection", "USBLC6-2SC6"), 140, 8, {
     "I/O1": "USB_P", "GND": "GND", "I/O2": "USB_N", "VBUS": "VBUS"}, value="USBLC6-2SC6", mpn="USBLC6-2SC6")
 R("RUD1", "27", "USB_P", "UI_USB_P", 132, 14)
@@ -410,13 +422,53 @@ place_edge("SW2", "right", 34)
 # the board powers itself; connect GND, D-, D+ from a PC)
 R("RNU1", "27", "NET_USB_MCU_P", "NET_USB_P", 44, 36)
 R("RNU2", "27", "NET_USB_MCU_N", "NET_USB_N", 44, 38)
-add("J14", "Connector_JST", "JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal", 0, 0, 270, "NET USB",
-    mpn="SM04B-SRSS-TB")
-conn("J14", {"2": "NET_USB_N", "3": "NET_USB_P", "4": "GND", "MP": "GND"})
-place_edge("J14", "left", 58)
-refs["J14"].Move(VECTOR2I(FromMM(1.0), 0))     # internal connector: keep its mounting pads off the edge
-R("R95", "1k", "UI_LED", "UI_LEDK", 106, 56)
-add("D2", "LED_SMD", "LED_0603_1608Metric", 109, 56, 0, "UI", spec="LED green 0603")
+# USB-C port 2 (right wall, below the microSD): the NET MCU's own USB, device-only (5.1k Rd), data only.
+# Its VBUS is isolated (ESD clamp only) so two plugged-in sources can never back-feed each other.
+add("J14", "Connector_USB", "USB_C_Receptacle_HRO_TYPE-C-31-M-12", 0, 0, 90, "USB-C NET", mpn="TYPE-C-31-M-12")
+conn("J14", {"A1": "GND", "A12": "GND", "B1": "GND", "B12": "GND", "SH": "GND",
+             "A4": "VBUS2", "A9": "VBUS2", "B4": "VBUS2", "B9": "VBUS2",
+             "A5": "CC3", "B5": "CC4", "A6": "NET_USB_P", "B6": "NET_USB_P", "A7": "NET_USB_N", "B7": "NET_USB_N"})
+place_edge("J14", "right", 65.5)
+R("RCC3", "5.1k", "CC3", "GND", 131, 55)
+R("RCC4", "5.1k", "CC4", "GND", 131, 57)
+ic("U11", "Package_TO_SOT_SMD", "SOT-23-6", ("Power_Protection", "USBLC6-2SC6"), 136, 54, {
+    "I/O1": "NET_USB_P", "GND": "GND", "I/O2": "NET_USB_N", "VBUS": "VBUS2"}, value="USBLC6-2SC6", mpn="USBLC6-2SC6")
+
+# 64 GB eMMC 5.1 (JEDEC 153-ball FBGA) below the UI MCU, 4-bit bus on GPIO30-36. VCC and VCCQ both 3.3 V.
+# Ball map + pull-up / VDDi values: Kimtigo KM110SS1064GxA datasheet (CMD 4.7-100k, DAT 10-100k, VDDi 1 uF).
+# Fab: the 0.5 mm-pitch balls use via-in-pad (filled + capped), placed by fanout.py.
+EMMC_X, EMMC_Y = 99.6, 70.5                      # real board coords: right of the RM2, below the UI MCU
+add("U12", "Package_BGA", "LFBGA-153_11.5x13mm_Layout14x14_P0.5mm", EMMC_X, EMMC_Y, 0, "eMMC 64GB",
+    mpn="KM110SS1064GxA-DDD00WT", fixed=True)
+SYMBOL["U12"] = (LOCAL_LIB, "eMMC_FBGA153")
+import sys as _s  # noqa: E402
+_s.path.insert(0, KICAD)
+import projsyms  # noqa: E402
+emmc_nets = {"A3": "EMMC_DAT0", "A4": "EMMC_DAT1", "A5": "EMMC_DAT2", "B2": "EMMC_DAT3",
+             "B3": "EMMC_DAT4", "B4": "EMMC_DAT5", "B5": "EMMC_DAT6", "B6": "EMMC_DAT7",
+             "M5": "EMMC_CMD", "M6": "EMMC_CLK", "K5": "EMMC_RST", "C2": "EMMC_VDDI"}
+emmc_nets.update({b: "V3V3" for b, n in projsyms.EMMC_PWR.items() if n in ("VCC", "VCCQ")})
+emmc_nets.update({b: "GND" for b in projsyms.EMMC_GND})
+conn("U12", emmc_nets)
+# passives: top row, right column, bottom row around the BGA (real coordinates)
+emmc_parts = [("R", "R110", "10k", "V3V3", "EMMC_CMD"), ("R", "R111", "10k", "V3V3", "EMMC_DAT0"),
+              ("R", "R112", "10k", "V3V3", "EMMC_DAT1"), ("R", "R113", "10k", "V3V3", "EMMC_DAT2"),
+              ("R", "R114", "10k", "V3V3", "EMMC_DAT3"), ("R", "R115", "10k", "V3V3", "EMMC_RST"),
+              ("R", "R116", "47k", "V3V3", "EMMC_DAT4"), ("R", "R117", "47k", "V3V3", "EMMC_DAT5"),
+              ("R", "R118", "47k", "V3V3", "EMMC_DAT6"), ("R", "R119", "47k", "V3V3", "EMMC_DAT7"),
+              ("C", "C110", "100nF", "V3V3", "GND"), ("C", "C111", "100nF", "V3V3", "GND"),
+              ("C", "C113", "100nF", "V3V3", "GND"), ("C", "C114", "100nF", "V3V3", "GND"),
+              ("C", "C116", "1uF", "EMMC_VDDI", "GND"),
+              ("C6", "C112", "4.7uF", "V3V3", "GND"), ("C6", "C115", "4.7uF", "V3V3", "GND")]
+slots = [(95.0 + i * 2.2, 61.7) for i in range(5)] + [(108.0, 63.5 + i * 1.7) for i in range(6)] + \
+        [(111.0, 63.5 + i * 1.9) for i in range(6)]
+for (kind, ref, val, a_, b_), (x, y) in zip(emmc_parts, slots):
+    if kind == "R":
+        R(ref, val, a_, b_, x, y / SY)
+    else:
+        C(ref, val, a_, b_, x, y / SY, "0603" if kind == "C6" else "0402")
+R("R95", "1k", "UI_LED", "UI_LEDK", 126, 59.5)
+add("D2", "LED_SMD", "LED_0603_1608Metric", 129, 59.5, 0, "UI", spec="LED green 0603")
 conn("D2", {"1": "GND", "2": "UI_LEDK"})
 
 # Beeper: piezo driven straight from GPIO26 (PWM) through 100R
@@ -523,8 +575,8 @@ power_pour("V5", (55, 2, 100, 32), 2)
 
 ds = board.GetDesignSettings()
 ds.m_TrackMinWidth = FromMM(0.127)
-ds.m_ViasMinSize = FromMM(0.4)
-ds.m_MinThroughDrill = FromMM(0.2)
+ds.m_ViasMinSize = FromMM(0.3)       # 0.3 / 0.15 mm via-in-pad under the eMMC BGA
+ds.m_MinThroughDrill = FromMM(0.15)
 ds.m_MinClearance = FromMM(0.127)
 ds.m_CopperEdgeClearance = FromMM(0.3)
 nc = ds.m_NetSettings.GetDefaultNetclass()

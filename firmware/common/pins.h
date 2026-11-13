@@ -26,6 +26,11 @@
 #define UI_PIN_LED       25
 #define UI_PIN_BUZZER    26  /* piezo via 100R: drive with PWM (~4 kHz resonance) */
 #define UI_PIN_PANEL_EN  27  /* TPS22917 panel 5 V switch, high = on (100k pull-down) */
+/* RP2350B only (UI MCU): 64 GB eMMC, 4-bit SD/MMC bus driven by PIO (DAT0-3 consecutive) */
+#define UI_PIN_EMMC_CLK  30
+#define UI_PIN_EMMC_CMD  31
+#define UI_PIN_EMMC_DAT0 32  /* DAT1-3 = 33-35 */
+#define UI_PIN_EMMC_RST  36  /* active low, 10k pull-up */
 #define UI_PIN_LINK_TX   28  /* UART0 TX to NET RX 29 */
 #define UI_PIN_LINK_RX   29
 

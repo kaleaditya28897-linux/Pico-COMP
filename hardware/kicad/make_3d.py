@@ -44,6 +44,10 @@ def qfn(name, size, h, ep):
 
 qfn("QFN-60-1EP_7x7mm_P0.4mm_EP3.4x3.4mm", 7.0, 0.85, 3.4)
 qfn("Texas_RQM0029A_VQFN-29_4x4mm_P0.4mm", 4.0, 0.9, 0)
+qfn("QFN-80-1EP_10x10mm_P0.4mm_EP3.4x3.4mm", 10.0, 0.85, 3.4)
+# eMMC FBGA-153 11.5 x 13 mm, ~1.0 mm tall (body over 0.25 mm balls)
+save("LFBGA-153_11.5x13mm_Layout14x14_P0.5mm", [("body", box(-5.75, -6.5, 5.75, 6.5, 0.25, 1.2)),
+                                                ("balls", box(-3.6, -3.6, 3.6, 3.6, 0.0, 0.25))])
 
 # Bourns SRP7028A: 7.3 x 6.6 x 2.8 mm shielded power inductor
 save("L_Bourns_SRP7028A_7.3x6.6mm", [("body", box(-3.65, -3.3, 3.65, 3.3, 0, 2.8))])

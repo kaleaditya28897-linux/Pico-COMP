@@ -19,6 +19,7 @@ from pcbnew import FromMM, ToMM, VECTOR2I
 
 PLANE_NETS = {"GND", "V3V3"}
 VIA_D, VIA_DRILL = 0.45, 0.2
+BGA_VIA = (0.35, 0.15)  # via-in-pad for the 0.5 mm-pitch BGA (0.1 mm annular ring)
 STUB_W = 0.2
 CLR = 0.15              # a little over the 0.127 mm rule
 EDGE = 0.35             # copper to board edge
@@ -138,7 +139,28 @@ def run(path):
         stubs.append((a, b, STUB_W, layer, netinfo.GetNetname()))
         added_t += 1
 
-    targets = [p for p in board.GetPads() if p.GetNetname() in PLANE_NETS and p.GetAttribute() == pcbnew.PAD_ATTRIB_SMD]
+    # BGA (the eMMC): every connected ball gets a via-in-pad (filled + capped at the fab). Plane balls reach
+    # their plane; signal balls get an escape the autorouter continues from on the inner layers.
+    for fp in board.GetFootprints():
+        if "BGA" not in str(fp.GetFPID().GetLibItemName()):
+            continue
+        for p in fp.Pads():
+            n = p.GetNetname()
+            if not n or n.startswith("unconnected-"):
+                continue
+            c = mm(p.GetPosition())
+            v = pcbnew.PCB_VIA(board)
+            v.SetPosition(p.GetPosition())
+            v.SetWidth(FromMM(BGA_VIA[0]))
+            v.SetDrill(FromMM(BGA_VIA[1]))
+            v.SetNet(p.GetNet())
+            v.SetLocked(True)
+            board.Add(v)
+            vias.append((c[0], c[1], n))
+            added_v += 1
+    bga_pads = {id(p) for fp in board.GetFootprints() if "BGA" in str(fp.GetFPID().GetLibItemName()) for p in fp.Pads()}
+    targets = [p for p in board.GetPads() if p.GetNetname() in PLANE_NETS and p.GetAttribute() == pcbnew.PAD_ATTRIB_SMD
+               and id(p) not in bga_pads]
     # exposed/thermal pads first: via grid inside the pad
     for p in targets:
         w, h = ToMM(p.GetSize().x), ToMM(p.GetSize().y)

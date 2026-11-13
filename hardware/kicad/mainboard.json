@@ -126,12 +126,30 @@
     97.525
    ],
    "value": "RM2"
+  },
+  "SW2": {
+   "bbox": [
+    146.75,
+    30.075,
+    152.3,
+    37.925
+   ],
+   "value": "RESET"
+  },
+  "J14": {
+   "bbox": [
+    142.83,
+    60.155,
+    152.3,
+    70.845
+   ],
+   "value": "USB-C NET"
   }
  },
  "symbols": {
   "U1": [
    "MCU_RaspberryPi",
-   "RP2350A"
+   "RP2350B"
   ],
   "F1": [
    "Memory_Flash",
@@ -144,6 +162,10 @@
   "F2": [
    "Memory_Flash",
    "W25Q128JVS"
+  ],
+  "U10": [
+   "Interface_USB",
+   "TUSB320"
   ],
   "U3": [
    "Power_Protection",
@@ -168,6 +190,14 @@
   "U8": [
    "pico-comp",
    "RaspberryPi_RM2"
+  ],
+  "U11": [
+   "Power_Protection",
+   "USBLC6-2SC6"
+  ],
+  "U12": [
+   "pico-comp",
+   "eMMC_FBGA153"
   ]
  }
 }

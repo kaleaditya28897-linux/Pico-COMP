@@ -37,6 +37,20 @@ planes. The planes are `LT_POWER` layers so nothing is ever routed on them.
   `CYW43_DEFAULT_PIN_WL_CLOCK` in the NET firmware.
 - The NET MCU's USB is not brought out: program it over SWD (J4).
 
+### Storage and USB (added 2026-11-13)
+- **UI MCU is an RP2350B** (QFN-80, GPIO0-47); the NET MCU stays RP2350A. Firmware: board header
+  `firmware/boards/pico_comp.h` (16 MB flash), UI target built with `PICO_RP2350A=0`.
+- **64 GB eMMC 5.1** (U12, JEDEC 153-ball FBGA 11.5 x 13 mm, e.g. Kimtigo KM110SS1064GxA-DDD00WT)
+  below the UI MCU: 4-bit bus via PIO on GPIO30 CLK, 31 CMD, 32-35 DAT0-3, 36 RST_n. VCC/VCCQ 3.3 V,
+  VDDi 1 uF, CMD/DAT0-3/RST 10k and DAT4-7 47k pull-ups (datasheet ranges). **Fab: via-in-pad
+  (filled + capped) under the BGA, 0.35/0.15 mm vias.** The microSD slot (J9) stays for extra storage.
+- **USB-C port 1 (J1, UI MCU) is dual-role** via a TUSB320 (U10, I2C 0x60 on the charger bus, INT shared
+  with CHG_INT): device for flashing/file transfer/serial, host for USB printers, scanners and keyboards
+  (VBUS from the BQ25798's OTG boost, enabled by firmware). Unpowered it still presents Rd, so a flat
+  battery charges from any USB-C charger.
+- **USB-C port 2 (J14, right wall below the microSD) is the NET MCU's own USB**: device-only (5.1k Rd),
+  data only (VBUS isolated, ESD only), for direct NET flashing or a second USB link.
+
 ### Firmware updates (both MCUs, nothing to open)
 - **Normal update:** USB-C to a PC. An "update firmware" hotkey/menu (or `picotool reboot -u`) calls
   `reset_usb_boot()` on the UI MCU, which shows up as a USB drive (RP2350 bootloader); copy one
@@ -47,8 +61,7 @@ planes. The planes are `LT_POWER` layers so nothing is ever routed on them.
 - **Recovery:** pinhole in the right wall over the side-push RESET (SW2, Panasonic EVQ-PUJ): double-tap
   = USB update drive (`pico_bootsel_via_double_reset`, linked into the UI firmware). If even that fails:
   BOOTSEL buttons inside (SW1 UI, SW3 NET).
-- **NET MCU USB:** its D+/D- (27R) go to internal JST-SH 4-pin J14 (pin 1 VBUS not connected, 2 D-, 3 D+,
-  4 GND) for factory or recovery flashing of the NET MCU directly.
+- **NET MCU USB:** on its own USB-C port (J14), see above.
 - Expansion header J13 now carries 6 GPIOs (0-3, 8, 9) plus GND/3V3 on pins 9/10.
 
 ### Keyboard (244 x 120 mm, 2 layers)

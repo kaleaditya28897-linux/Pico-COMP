@@ -5,6 +5,10 @@ if(NOT PICO_PLATFORM)
     set(PICO_PLATFORM rp2350-riscv)
 endif()
 
+# Project board header (firmware/boards/pico_comp.h): pins and 16 MB flash of the Pico-COMP main board
+set(PICO_BOARD pico_comp)
+set(PICO_BOARD_HEADER_DIRS ${CMAKE_CURRENT_LIST_DIR}/firmware/boards)
+
 include($ENV{PICO_SDK_PATH}/external/pico_sdk_import.cmake)
 
 # CXX/ASM are enabled only because the Pico SDK requires them; project code is C.
