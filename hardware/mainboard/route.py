@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Autoroute a KiCad board with Freerouting, then fill zones and save in place.
 
-Usage: python3 route.py board.kicad_pcb [max_passes] [--skip=NET1,NET2]
+Usage: python3 route.py board.kicad_pcb [max_passes] [--skip=NET1,NET2] [--keep]
        python3 route.py --cleanup board.kicad_pcb      (only remove router leftovers)
        python3 route.py --import board.kicad_pcb file.ses  (re-import a Freerouting session)
 Needs Java 21 (/usr/lib/jvm/openjdk21) and freerouting.jar (FREEROUTING_JAR env, default
@@ -67,9 +67,10 @@ def main():
         os.makedirs(os.path.dirname(JAR), exist_ok=True)
         urllib.request.urlretrieve(URL, JAR)
     board = pcbnew.LoadBoard(path)
-    for t in list(board.GetTracks()):          # clear earlier autorouting; locked items (fan-out) stay
-        if not t.IsLocked():
-            board.Delete(t)
+    if "--keep" not in sys.argv:                # --keep: start from the existing (e.g. maze-routed) copper
+        for t in list(board.GetTracks()):      # clear earlier autorouting; locked items (fan-out) stay
+            if not t.IsLocked():
+                board.Delete(t)
     tmp = tempfile.mkdtemp()
     dsn, ses = os.path.join(tmp, "b.dsn"), os.path.join(tmp, "b.ses")
     # hide every pour on a signal layer (named POUR_*) from the router: it would treat them as planes

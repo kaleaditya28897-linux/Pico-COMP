@@ -216,34 +216,58 @@ def route_pair(board, R, a, b, net, w, nets_info):
     path.reverse()
     # to board items: simplify straight runs, vias at layer changes
     ni = nets_info[net]
-    pts = [(p[0], R.x0 + (p[1] + i0) * RES, R.y0 + (p[2] + j0) * RES) for p in path]
-    pts[0] = (pts[0][0], a[0], a[1])
-    pts[-1] = (pts[-1][0], b[0], b[1])
+
+    def los(c0, c1, mask):
+        """Straight line c0->c1 stays on free cells (sampled at 1/3 cell)."""
+        n = int(max(abs(c1[0] - c0[0]), abs(c1[1] - c0[1])) * 3) + 1
+        for t in range(n + 1):
+            x = round(c0[0] + (c1[0] - c0[0]) * t / n)
+            y = round(c0[1] + (c1[1] - c0[1]) * t / n)
+            if not mask[y, x]:
+                return False
+        return True
+
+    # split into same-layer runs (a via sits between runs), then string-pull each run
+    runs, cur = [], [path[0]]
+    for st in path[1:]:
+        if st[0] != cur[-1][0]:
+            runs.append(cur)
+            cur = [st]
+        else:
+            cur.append(st)
+    runs.append(cur)
+
+    def world(c):
+        return (R.x0 + (c[1] + i0) * RES, R.y0 + (c[2] + j0) * RES)
     out_t, out_v = 0, 0
-    seg_start = pts[0]
-    for k in range(1, len(pts)):
-        cur, prv = pts[k], pts[k - 1]
-        if cur[0] != prv[0]:                        # layer change: close segment, drop via
-            if (seg_start[1], seg_start[2]) != (prv[1], prv[2]):
-                out_t += add_track(board, R, seg_start, prv, LAYERS[prv[0]], w, ni)
+    for ri, run in enumerate(runs):
+        lay = run[0][0]
+        keep = [run[0]]
+        k = 0
+        while k < len(run) - 1:
+            m = len(run) - 1
+            while m > k + 1 and not los((run[k][1], run[k][2]), (run[m][1], run[m][2]), free[lay]):
+                m -= 1
+            keep.append(run[m])
+            k = m
+        wp = [world(c) for c in keep]
+        if ri == 0:
+            wp[0] = a
+        if ri == len(runs) - 1:
+            wp[-1] = b
+        for p0, p1 in zip(wp, wp[1:]):
+            out_t += add_track(board, R, (lay,) + tuple(p0), (lay,) + tuple(p1), LAYERS[lay], w, ni)
+        if ri < len(runs) - 1:                                       # via to the next run
+            vx, vy = wp[-1]
             v = pcbnew.PCB_VIA(board)
-            v.SetPosition(VECTOR2I(FromMM(prv[1]), FromMM(prv[2])))
+            v.SetPosition(VECTOR2I(FromMM(vx), FromMM(vy)))
             v.SetWidth(FromMM(VIA_D))
             v.SetDrill(FromMM(VIA_DRILL))
             v.SetNet(ni)
             board.Add(v)
             for L in LAYERS:
-                R.circle(L, (prv[1], prv[2]), VIA_D / 2, net)
+                R.circle(L, (vx, vy), VIA_D / 2, net)
             out_v += 1
-            seg_start = cur
-            continue
-        nxt = pts[k + 1] if k + 1 < len(pts) else None
-        straight = nxt is not None and nxt[0] == cur[0] and \
-            (cur[1] - prv[1]) * (nxt[2] - cur[2]) - (cur[2] - prv[2]) * (nxt[1] - cur[1]) == 0 and \
-            ((cur[1] - prv[1]) * (nxt[1] - cur[1]) + (cur[2] - prv[2]) * (nxt[2] - cur[2])) > 0
-        if not straight:
-            out_t += add_track(board, R, seg_start, cur, LAYERS[cur[0]], w, ni)
-            seg_start = cur
     return out_t, out_v
 
 
@@ -261,7 +285,21 @@ def add_track(board, R, a, b, layer, w, ni):
     return 1
 
 
-def main(path, only=None):
+def main(path, only=None, passes=(6.0, 15.0, 40.0)):
+    """Route every DRC-unconnected pair, shortest first; repeat with wider search windows."""
+    global MARGIN
+    total = 0
+    for m in passes:
+        MARGIN = m
+        done, left = one_pass(path, only)
+        total += done
+        print(f"pass (window {m} mm): routed {done}, still unconnected {left}", flush=True)
+        if left == 0 or done == 0 and m == passes[-1]:
+            break
+    return total
+
+
+def one_pass(path, only=None):
     board = pcbnew.LoadBoard(path)
     pcbnew.ZONE_FILLER(board).Fill(board.Zones())
     items = {}
@@ -270,7 +308,8 @@ def main(path, only=None):
     nets_info = {n.GetNetCode(): n for n in board.GetNetsByNetcode().values()}
     R = build(board)
     done, failed = 0, []
-    for a, b, ua, ub in drc_unconnected(path):
+    pairs = sorted(drc_unconnected(path), key=lambda q: math.hypot(q[0][0] - q[1][0], q[0][1] - q[1][1]))
+    for a, b, ua, ub in pairs:
         ia = items.get(ua)
         if ia is None:
             continue
@@ -285,9 +324,11 @@ def main(path, only=None):
             done += 1
         else:
             failed.append(name)
+        if done and done % 20 == 0:                   # checkpoint: partial progress is never lost
+            pcbnew.SaveBoard(path, board)
     pcbnew.ZONE_FILLER(board).Fill(board.Zones())
     pcbnew.SaveBoard(path, board)
-    print(f"maze-routed {done} connection(s); failed: {failed or 'none'}")
+    return done, len(drc_unconnected(path))
 
 
 if __name__ == "__main__":

@@ -3,16 +3,27 @@
 Nothing is committed yet: all of the work is uncommitted changes on `master`. Read `CLAUDE.md` and
 `docs/hardware-plan.md` first.
 
-## Overnight (2026-11-13)
-- Stabilizers added (Kailh PG1350 plate-mount, from Kailh's own drawings): plate openings, keyboard PCB
-  cut-outs + BOM lines (ST1 2u, ST2 6.25u kit), keycap cross pegs, 3D models.
-- Switch stack-up taken from the Kailh CPG135001D01 drawing: plate 1.2 mm, 2.2 mm above the PCB.
-- Keyboard re-routed: DRC 0 / unconnected 0 / parity 0; `hardware/fab/keyboard*` regenerated.
-- Main board: 6 layers (approved), 5-mil rules, 152 x 84 mm, diff-pair classes for TMDS/USB. Not
-  routed: Aditya routes it by hand in KiCad, following `docs/mainboard-routing.md`. The autorouter runs
-  were stopped. `gen_pcb.py` now refuses to overwrite a board that has tracks.
-- FreeCAD: 482 objects, real PCB copper/silk/mask layers, stabilizers, palm-rest pocket for the
-  keyboard header; interference report: none.
+## Main board routing status (2026-11-13, 16:20)
+Design is final: RP2350B UI MCU + 64 GB eMMC, dual-role USB-C (TUSB320) + NET USB-C, reset pinhole,
+UI->NET SWD reflash. ERC 0; DRC clean except unrouted. **Not routed yet.**
+
+Routing pipeline (all in `hardware/mainboard/`):
+1. `python3 fanout.py ../kicad/<board>.kicad_pcb`: GND/3V3 plane fan-out, BGA via-in-pad (0.35/0.15),
+   and dog-bone fan-out of signal pins on U1/U2/U5/U10 (fine-pitch escape). All locked.
+2. `python3 maze_route.py ../kicad/<board>.kicad_pcb`: own A* grid router with line-of-sight smoothing;
+   routes DRC-unconnected pairs shortest-first and saves progress. Clean (0 clearance errors), but greedy:
+   it stalls when early routes block later ones.
+3. `python3 route.py ../kicad/<board>.kicad_pcb 40 [--keep]`: Freerouting (rip-up and reroute); `--keep`
+   starts from the maze-routed copper. It only saves at 0 unrouted, so run several in parallel.
+4. `python3 tidy_tracks.py`, `route.py --cleanup`, then DRC (`kicad-cli pcb drc --schematic-parity
+   --refill-zones`) to 0/0, copy over `mainboard.kicad_pcb`, `sh ../kicad/fab.sh mainboard`.
+
+Results so far: Freerouting alone stalls at ~31-46 unrouted; maze alone at 85; maze then Freerouting at
+~46. Leftovers cluster at the BQ25798 charger, the NET MCU / 5 V buck and the UI flash (fine-pitch
+escape), which is why step 1 now fans out signal pins too. Runs on that board started 16:10 (logs in
+`/tmp/claude-1000/route/`, boards `hardware/kicad/fr1/fr2/mz3.kicad_pcb`).
+If it still stalls: relieve the charger area (move R50-R59/C5x further out), or route the last few by
+hand in KiCad (`docs/mainboard-routing.md`).
 
 ## Done
 - **Keyboard PCB: finished.** Routed, KiCad DRC 0 (warnings included), 0 unconnected, schematic parity 0,

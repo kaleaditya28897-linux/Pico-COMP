@@ -18,6 +18,10 @@ import pcbnew
 from pcbnew import FromMM, ToMM, VECTOR2I
 
 PLANE_NETS = {"GND", "V3V3"}
+# Fine-pitch ICs whose signal pins also get a dog-bone (stub + via) so routers start on inner layers.
+SIGNAL_FANOUT = {"U1", "U2", "U5", "U10"}
+LOCAL_MM = 3.0          # skip a signal pin whose only partner pad is this close (easy on the top layer)
+POUR_NETS = {"VBUS", "PMID", "VSYS", "VBAT", "V5"}   # carried by F.Cu pours: no fan-out
 VIA_D, VIA_DRILL = 0.45, 0.2
 BGA_VIA = (0.35, 0.15)  # via-in-pad for the 0.5 mm-pitch BGA (0.1 mm annular ring)
 STUB_W = 0.2
@@ -161,6 +165,25 @@ def run(path):
     bga_pads = {id(p) for fp in board.GetFootprints() if "BGA" in str(fp.GetFPID().GetLibItemName()) for p in fp.Pads()}
     targets = [p for p in board.GetPads() if p.GetNetname() in PLANE_NETS and p.GetAttribute() == pcbnew.PAD_ATTRIB_SMD
                and id(p) not in bga_pads]
+    net_pads = {}
+    for p in board.GetPads():
+        net_pads.setdefault(p.GetNetname(), []).append(p)
+
+    def wants_signal_fanout(p):
+        n = p.GetNetname()
+        if not n or n.startswith("unconnected-") or n in PLANE_NETS or n in POUR_NETS:
+            return False
+        if p.GetParentFootprint().GetReference() not in SIGNAL_FANOUT or p.GetAttribute() != pcbnew.PAD_ATTRIB_SMD:
+            return False
+        w, h = ToMM(p.GetSize().x), ToMM(p.GetSize().y)
+        if w >= 2.0 and h >= 2.0:
+            return False
+        others = [q for q in net_pads[n] if q is not p]
+        c = mm(p.GetPosition())
+        if len(others) == 1 and math.hypot(*(a - b for a, b in zip(mm(others[0].GetPosition()), c))) < LOCAL_MM:
+            return False
+        return True
+    targets += [p for p in board.GetPads() if wants_signal_fanout(p)]
     # exposed/thermal pads first: via grid inside the pad
     for p in targets:
         w, h = ToMM(p.GetSize().x), ToMM(p.GetSize().y)
