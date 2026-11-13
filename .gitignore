@@ -10,3 +10,10 @@ __pycache__/
 hardware/mechanical/render/*.stl
 hardware/mechanical/render/scene.json
 *.FCStd.tmp
+hardware/kicad/.history/
+hardware/kicad/try*.kicad_p*
+hardware/kicad/fr[0-9]*.kicad_p*
+hardware/kicad/hy[0-9]*.kicad_p*
+hardware/kicad/mz*.kicad_p*
+hardware/kicad/sfo.kicad_p*
+*.lck
