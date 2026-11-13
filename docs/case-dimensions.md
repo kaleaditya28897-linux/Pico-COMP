@@ -4,19 +4,19 @@
 |---|---|
 | Overall closed footprint | 250 x 140 mm |
 | Base height (rim) / plate top / wall / floor | 37 / 29 / 2.5 / 2.5 mm |
-| Lid height (flat, screen up) | 14 mm |
-| Closed height (base rim + lid) | 51 mm |
+| Lid height (flat, screen up) | 15 mm |
+| Closed height (base rim + lid) | 52 mm |
 | Keyboard plate / key pitch | 244 x 108 x 1.2 mm, 17 mm pitch, 13.8 mm cutouts |
 | Keyboard PCB | 244 x 120 x 1.6 mm, underside z=24.0, 3x M2 (front strip) |
 | Keycaps | Choc V1, 16 mm per 1u, 2.4 mm tall, top z=36.0 (1.0 mm under the closed lid) |
 | Main PCB | 152 x 84 mm at x=95.0, front edge y=24.5, underside z=6.5, 4x M2.5 |
-| Palm rest | 244 x 25.4 x 1.5 mm deck, separate print, covers the RM2 antenna |
+| Top deck (C-cover) | 250 x 135 x 2.0 mm, keyboard opening, 3x M2x30 from below; covers the RM2 antenna |
 | 18650 cells | 4x 18.6 x 65.2 mm, 2S2P, axis along Y |
 | Display module | 164.9 x 124.27 x 10.0 mm (thickness assumed) |
 | Visible window | 154.08 x 85.92 mm |
 | Hinge | pin dia 3 mm, knuckle dia 8 mm, axis at y=140, z=37 |
 | Ports | USB-C + microSD on the right wall (from the board), HDMI internal via the hinge cable slot |
-| Wi-Fi | RM2 onboard antenna at the main board's front edge, under the plastic palm rest |
+| Wi-Fi | RM2 onboard antenna at the main board's front edge, under the plastic top deck |
 | Feet / vents | 4x dia 12 x 1.2 mm feet pockets, 8 bottom vent slots 3 x 36 mm |
 
-Printable parts: `hardware/mechanical/print/` (base, lid, palm rest, key plate). Keycaps: `hardware/mechanical/keycaps/`.
+Printable parts: `hardware/mechanical/print/` (base, deck, lid, key plate). Keycaps: `hardware/mechanical/keycaps/`.
