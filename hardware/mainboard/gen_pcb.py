@@ -524,8 +524,9 @@ for pat in ("VBUS", "VBAT", "VSYS", "V5", "V5_PANEL", "SW1", "SW2", "SW5", "SW3"
 # Differential pairs for interactive routing (Route > Differential Pair). Width/gap are starting values
 # for ~100 ohm (TMDS) / ~90 ohm (USB) on an outer layer over the In1 GND plane: confirm them with the
 # fab's 6-layer stack-up in KiCad's calculator before routing.
-for name, w, gap, pats in (("HDMI_TMDS", 0.15, 0.15, ("TMDS_*", "HD_D*", "HD_CK*")),
-                           ("USB", 0.2, 0.15, ("USB_P", "USB_N", "UI_USB_*"))):
+# 1.6 mm 6-layer with ~0.1 mm L1-L2 prepreg (IPC-2141 estimate): 0.132/0.20 = ~100 ohm, 0.162/0.20 = ~90 ohm
+for name, w, gap, pats in (("HDMI_TMDS", 0.132, 0.2, ("TMDS_*", "HD_D*", "HD_CK*")),
+                           ("USB", 0.162, 0.2, ("USB_P", "USB_N", "UI_USB_*"))):
     dp = pcbnew.NETCLASS(name)
     dp.SetClearance(FromMM(0.15))
     dp.SetTrackWidth(FromMM(w))

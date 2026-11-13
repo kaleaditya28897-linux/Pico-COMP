@@ -21,10 +21,13 @@ Update PCB from Schematic**. Don't rerun the generators.
 |---|---|---|---|
 | Default | 0.127 / 0.127 | 0.45 / 0.2 | |
 | Power (VBUS, PMID, VSYS, VBAT, V5, V5_PANEL, SW*) | 0.25 / 0.15 | 0.6 / 0.3 | the F.Cu pours carry the current; the traces only guarantee connection |
-| HDMI_TMDS (TMDS_*, HD_*) | diff pair 0.15 / gap 0.15 | 0.45 / 0.2 | ~100 ohm starting value |
-| USB (USB_P/N, UI_USB_P/N) | diff pair 0.2 / gap 0.15 | 0.45 / 0.2 | ~90 ohm starting value |
+| HDMI_TMDS (TMDS_*, HD_*) | diff pair 0.132 / gap 0.20 | 0.45 / 0.2 | ~100 ohm for ~0.1 mm L1-L2 prepreg |
+| USB (USB_P/N, UI_USB_P/N) | diff pair 0.162 / gap 0.20 | 0.45 / 0.2 | ~90 ohm for ~0.1 mm L1-L2 prepreg |
 
-Before routing the pairs, get the fab's 6-layer stack-up (prepreg thickness under F.Cu) and set the
+Board: **1.6 mm** (robu.in offers 0.8/1.0/1.2/1.6/2.0; the case and 3D model assume 1.6). The pair values
+above assume a ~0.1 mm prepreg between F.Cu and In1 (typical 1.6 mm 6-layer); with ~0.2 mm prepreg use
+0.19/0.15 (100 ohm) and 0.24/0.15 (90 ohm). Easiest: order with impedance control ("100 ohm diff on L1
+ref L2, 90 ohm diff USB") and let the fab tune widths. Otherwise get the fab's 6-layer stack-up (prepreg thickness under F.Cu) and set the
 pair width/gap with **Inspect > Calculator Tools > Transmission Lines** (coupled microstrip), in
 **Board Setup > Net Classes**.
 
