@@ -43,8 +43,10 @@ def symbol_for(fp):
     for k, v in GENERIC.items():
         if name.startswith(k):
             return v
-    n = len({p.GetNumber() for p in fp.Pads() if p.GetNumber()})
-    return ("Connector_Generic", f"Conn_01x{n:02d}")
+    nums = {p.GetNumber() for p in fp.Pads() if p.GetNumber()}
+    if "MP" in nums:                                   # connectors with mounting pads
+        return ("Connector_Generic_MountingPin", f"Conn_01x{len(nums) - 1:02d}_MountingPin")
+    return ("Connector_Generic", f"Conn_01x{len(nums):02d}")
 
 
 GROUPS = [
@@ -56,7 +58,8 @@ GROUPS = [
      lambda r: r in ("U1", "L1", "F1", "Y1", "SW1", "SW2", "J3", "J6", "J9", "J12", "J13", "D2", "R95", "BZ1")
      or r.startswith(("C1", "R1", "R8", "R9", "C9")) and r not in ("R96", "R97")),
     ("NET MCU (U2): keyboard matrix, RM2 Wi-Fi, charger I2C",
-     lambda r: r in ("U2", "L2", "F2", "Y2", "SW3", "SW4", "J4", "U8", "R96", "R97", "C80", "C81", "J11")
+     lambda r: r in ("U2", "L2", "F2", "Y2", "SW3", "SW4", "J4", "U8", "R96", "R97", "C80", "C81", "J11",
+                     "J14", "RNU1", "RNU2")
      or r.startswith(("C2", "R2"))),
     ("Mechanical", lambda r: r.startswith(("H", "FID"))),
 ]

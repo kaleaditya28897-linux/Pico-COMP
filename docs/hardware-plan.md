@@ -37,6 +37,20 @@ planes. The planes are `LT_POWER` layers so nothing is ever routed on them.
   `CYW43_DEFAULT_PIN_WL_CLOCK` in the NET firmware.
 - The NET MCU's USB is not brought out: program it over SWD (J4).
 
+### Firmware updates (both MCUs, nothing to open)
+- **Normal update:** USB-C to a PC. An "update firmware" hotkey/menu (or `picotool reboot -u`) calls
+  `reset_usb_boot()` on the UI MCU, which shows up as a USB drive (RP2350 bootloader); copy one
+  `pico-comp.uf2`.
+- **NET MCU:** the UI image carries the NET firmware. At boot the UI asks the NET for its version over the
+  UART link and, if it differs, rewrites the NET flash over SWD (UI GPIO10 -> NET SWCLK, GPIO11 -> NET SWDIO;
+  J4 stays in parallel for a debug probe). New boards: flash the UI once over USB and the NET follows.
+- **Recovery:** pinhole in the right wall over the side-push RESET (SW2, Panasonic EVQ-PUJ): double-tap
+  = USB update drive (`pico_bootsel_via_double_reset`, linked into the UI firmware). If even that fails:
+  BOOTSEL buttons inside (SW1 UI, SW3 NET).
+- **NET MCU USB:** its D+/D- (27R) go to internal JST-SH 4-pin J14 (pin 1 VBUS not connected, 2 D-, 3 D+,
+  4 GND) for factory or recovery flashing of the NET MCU directly.
+- Expansion header J13 now carries 6 GPIOs (0-3, 8, 9) plus GND/3V3 on pins 9/10.
+
 ### Keyboard (244 x 120 mm, 2 layers)
 - 75 Kailh Choc V1 (CPG135001D01, soldered), 6 rows x 14 columns, 17 mm pitch, inverted-T arrows.
   Stack-up from the Kailh drawing: plate 1.2 mm, its underside 2.2 mm above the PCB; stem top 8.0 mm

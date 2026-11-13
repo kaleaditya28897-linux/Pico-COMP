@@ -167,6 +167,8 @@ uyc, syc = (uy0 + uy1) / 2, (sy0 + sy1) / 2
 base = base.cut(rounded_box(W - WALL - 1.5, uyc - 4.9, PCB_TOP + 1.63 - 1.9, WALL + 4, 9.8, 3.8, 1.5))  # USB-C 8.94 x 3.26
 base = base.cut(box(W - WALL - 1.5, syc - 6.5, PCB_TOP + 0.1, WALL + 4, 13.0, 2.2))                     # microSD
 base = base.cut(box(W - 0.8, syc - 5.0, PCB_TOP - 2.0, 1.0, 10.0, 6.0))                                   # finger scoop
+rx0, ry0, rx1, ry1 = mb_bbox_case("SW2")                 # side-push UI reset: pinhole (double-tap = update mode)
+base = base.cut(cyl(0.8, WALL + 4, W - WALL - 1.5, (ry0 + ry1) / 2, PCB_TOP + 1.75, EX))
 # HDMI (J6) is internal: the panel cable leaves J6 rearward and rises through this slot to the lid
 hx0, hy0, hx1, hy1 = mb_bbox_case("J6")
 hx_ = (hx0 + hx1) / 2

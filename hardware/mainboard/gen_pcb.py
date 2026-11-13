@@ -174,9 +174,11 @@ NET_GPIO.update({20: "I2C_SDA", 21: "I2C_SCL", 22: "CHG_INT", 23: "WL_ON", 24: "
 # card detect 24, LED 25, buzzer 26, panel power 27, UART to NET 28/29
 # UART0 is the MCU link on 28/29, so the printer uses UART1 (GPIO4 TX, 5 RX, 6 CTS, 7 RTS)
 UI_GPIO = {4: "PRN_TX", 5: "PRN_RX", 6: "PRN_CTS", 7: "PRN_RTS"}
-EXP_GPIO = [0, 1, 2, 3, 8, 9, 10, 11]
+EXP_GPIO = [0, 1, 2, 3, 8, 9]
 for g in EXP_GPIO:
     UI_GPIO[g] = f"EXP{g}"
+# UI GPIO10/11 drive the NET MCU's SWD port: the UI firmware reflashes the NET MCU (one update file)
+UI_GPIO.update({10: "NET_SWCLK", 11: "NET_SWDIO"})
 UI_GPIO.update({12: "TMDS_D0P", 13: "TMDS_D0N", 14: "TMDS_CKP", 15: "TMDS_CKN",
                 16: "TMDS_D2P", 17: "TMDS_D2N", 18: "TMDS_D1P", 19: "TMDS_D1N",
                 20: "SD_MISO", 21: "SD_CS", 22: "SD_SCK", 23: "SD_MOSI", 24: "SD_DET",
@@ -194,8 +196,8 @@ def rp2350(tag, ref, x, y, gpio, usb):
          "SWCLK": f"{tag}_SWCLK", "SWDIO": f"{tag}_SWDIO",
          "QSPI_SD0": f"{tag}_QSD0", "QSPI_SD1": f"{tag}_QSD1", "QSPI_SD2": f"{tag}_QSD2",
          "QSPI_SD3": f"{tag}_QSD3", "QSPI_SCLK": f"{tag}_QSCK", "~{QSPI_SS}": f"{tag}_QSS"}
-    if usb:
-        m.update({"USB_DM": "UI_USB_N", "USB_DP": "UI_USB_P"})   # _P/_N: KiCad's diff-pair router pairs them
+    if usb:   # _P/_N suffixes: KiCad's diff-pair router pairs them
+        m.update({"USB_DM": f"{usb}_N", "USB_DP": f"{usb}_P"})
     for g in range(30):
         pn = [k for k in symlib.load("MCU_RaspberryPi", "RP2350A")[0] if k.startswith(f"GPIO{g}") and not k[len(f"GPIO{g}"):][:1].isdigit()][0]
         if g in gpio:
@@ -234,8 +236,9 @@ def support(tag, u, x, y, bootref, runref, swdref, usb=False, swd_dy=8):
     add(bootref, "Button_Switch_SMD", "SW_SPST_B3U-1000P", x + 16, y + 9.5, 0, "BOOTSEL", mpn="B3U-1000P")
     conn(bootref, {"1": f"{tag}_BOOT", "2": "GND"})
     R(f"R{u}3", "10k", "V3V3", f"{tag}_RUN", x + 15, y + 3.0)
-    add(runref, "Button_Switch_SMD", "SW_SPST_B3U-1000P", x + 16, y + 14.5, 0, "RESET", mpn="B3U-1000P")
-    conn(runref, {"1": f"{tag}_RUN", "2": "GND"})
+    if runref:                      # UI reset is a side-push switch on the board edge instead (pinhole)
+        add(runref, "Button_Switch_SMD", "SW_SPST_B3U-1000P", x + 16, y + 14.5, 0, "RESET", mpn="B3U-1000P")
+        conn(runref, {"1": f"{tag}_RUN", "2": "GND"})
     # SWD
     add(swdref, "Connector_PinHeader_1.27mm", "PinHeader_1x03_P1.27mm_Vertical_SMD_Pin1Left", x - 19, y + swd_dy, 0, "SWD", spec="1x03 1.27 mm SMD header")
     conn(swdref, {"1": f"{tag}_SWCLK", "2": "GND", "3": f"{tag}_SWDIO"})
@@ -246,9 +249,9 @@ def support(tag, u, x, y, bootref, runref, swdref, usb=False, swd_dy=8):
 # --------------------------------------------------------------------------------------
 UI_X, UI_Y = 102.0, 42.0
 NET_X, NET_Y = 52.0, 44.0
-rp2350("UI", "U1", UI_X, UI_Y, UI_GPIO, usb=True)
-support("UI", 1, UI_X, UI_Y, "SW1", "SW2", "J3", usb=True, swd_dy=-9)
-rp2350("NET", "U2", NET_X, NET_Y, NET_GPIO, usb=False)
+rp2350("UI", "U1", UI_X, UI_Y, UI_GPIO, usb="UI_USB")
+support("UI", 1, UI_X, UI_Y, "SW1", None, "J3", usb=True, swd_dy=-9)
+rp2350("NET", "U2", NET_X, NET_Y, NET_GPIO, usb="NET_USB_MCU")
 support("NET", 2, NET_X, NET_Y, "SW3", "SW4", "J4", swd_dy=4)
 
 # --------------------------------------------------------------------------------------
@@ -395,7 +398,23 @@ conn("J11", {str(i + 1): n for i, n in enumerate([f"ROW{r}" for r in range(6)] +
 add("J12", "Connector_JST", "JST_SH_SM06B-SRSS-TB_1x06-1MP_P1.00mm_Horizontal", 140, 64, 0, "PRINTER", mpn="SM06B-SRSS-TB")
 conn("J12", {"MP": "GND", "1": "V5", "2": "PRN_TX", "3": "PRN_RX", "4": "PRN_RTS", "5": "PRN_CTS", "6": "GND"})
 add("J13", "Connector_PinHeader_1.27mm", "PinHeader_1x10_P1.27mm_Vertical", 120, 62, 90, "EXPANSION", spec="1x10 1.27 mm header")
-conn("J13", {"1": "V3V3", "2": "GND", **{str(3 + i): f"EXP{g}" for i, g in enumerate(EXP_GPIO)}})
+conn("J13", {"1": "V3V3", "2": "GND", **{str(3 + i): f"EXP{g}" for i, g in enumerate(EXP_GPIO)}, "9": "GND", "10": "V3V3"})
+
+# UI reset on the right edge, side-actuated, behind a pinhole in the case wall. Double-tap = USB update
+# mode (pico_bootsel_via_double_reset in the UI firmware).
+add("SW2", "Button_Switch_SMD", "Panasonic_EVQPUJ_EVQPUA", 0, 0, 270, "RESET", mpn="EVQ-PUJ02K")
+conn("SW2", {"1": "UI_RUN", "2": "GND"})
+place_edge("SW2", "right", 34)
+
+# NET MCU USB for factory/recovery flashing: 27R series, internal JST-SH 4-pin (pin 1 VBUS not connected:
+# the board powers itself; connect GND, D-, D+ from a PC)
+R("RNU1", "27", "NET_USB_MCU_P", "NET_USB_P", 44, 36)
+R("RNU2", "27", "NET_USB_MCU_N", "NET_USB_N", 44, 38)
+add("J14", "Connector_JST", "JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal", 0, 0, 270, "NET USB",
+    mpn="SM04B-SRSS-TB")
+conn("J14", {"2": "NET_USB_N", "3": "NET_USB_P", "4": "GND", "MP": "GND"})
+place_edge("J14", "left", 58)
+refs["J14"].Move(VECTOR2I(FromMM(1.0), 0))     # internal connector: keep its mounting pads off the edge
 R("R95", "1k", "UI_LED", "UI_LEDK", 106, 56)
 add("D2", "LED_SMD", "LED_0603_1608Metric", 109, 56, 0, "UI", spec="LED green 0603")
 conn("D2", {"1": "GND", "2": "UI_LEDK"})
@@ -411,7 +430,7 @@ for i, (x, y) in enumerate(HOLES):
     add(f"H{i + 1}", "MountingHole", "MountingHole_2.7mm_M2.5", x, y, 0, "M2.5", fixed=True)
 
 # Fiducials for SMT assembly
-for i, (x, y) in enumerate([(10, 3), (BW - 4, 30 * SY), (4, 56 * SY)]):
+for i, (x, y) in enumerate([(10, 3), (138, 3), (4, 56 * SY)]):
     add(f"FID{i + 1}", "Fiducial", "Fiducial_1mm_Mask2mm", x, y, 0, "Fiducial", fixed=True)
     refs[f"FID{i + 1}"].Reference().SetVisible(False)
     fplib.keepout_circle(board, x, y, 1.8)
@@ -551,7 +570,7 @@ RM2_X, RM2_Y = 85, BH - 8.25
 json.dump({"board": [BW, BH], "holes": HOLES,
            "rf_keepout": [RM2_X - 17.75, BH - 5.0, RM2_X + 17.75, BH + 13.5],
            "connectors": {r: {"bbox": bbox(r), "value": refs[r].GetValue()}
-                          for r in ("J1", "J2", "J6", "J9", "J11", "J12", "J13", "J7", "J8", "J5", "U8")},
+                          for r in ("J1", "J2", "J6", "J9", "J11", "J12", "J13", "J7", "J8", "J5", "U8", "SW2", "J14")},
            "symbols": SYMBOL},
           open(os.path.join(KICAD, "mainboard.json"), "w"), indent=1)
 print(f"{len(refs)} footprints, {len(_nets)} nets, {BW:.0f} x {BH:.0f} mm -> {OUT}")

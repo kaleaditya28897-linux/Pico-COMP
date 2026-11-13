@@ -1,7 +1,12 @@
 #ifndef COMP_PINS_H
 #define COMP_PINS_H
 
-/* GPIO map of the main board (hardware/mainboard/gen_pcb.py is the source of truth). */
+/* GPIO map of the main board (hardware/mainboard/gen_pcb.py is the source of truth).
+ *
+ * Firmware updates: one .uf2 on the UI MCU (USB-C, BOOTSEL drive mode via an "update" hotkey,
+ * reset_usb_boot(), or a double tap of the pinhole RESET button). The UI image carries the NET MCU
+ * image and writes it over SWD (UI_PIN_NET_SWCLK/SWDIO) when the NET version differs. The NET MCU's
+ * own USB is on internal connector J14 (factory / recovery flashing). */
 
 /* ---- UI MCU (U1) ---- */
 #define UI_PIN_EXP_0_3   0   /* expansion header J13 pins 3-6 = GPIO0-3 */
@@ -9,7 +14,9 @@
 #define UI_PIN_PRN_RX    5   /* printer UART1 RX */
 #define UI_PIN_PRN_CTS   6   /* printer UART1 CTS */
 #define UI_PIN_PRN_RTS   7   /* printer UART1 RTS */
-#define UI_PIN_EXP_8_11  8   /* expansion header J13 pins 7-10 = GPIO8-11 (I2C0 8/9, SPI1 8-11) */
+#define UI_PIN_EXP_8_9   8   /* expansion header J13 pins 7-8 = GPIO8-9 (I2C0); pins 9/10 = GND/3V3 */
+#define UI_PIN_NET_SWCLK 10  /* UI drives the NET MCU's SWD port: the UI firmware reflashes the NET MCU */
+#define UI_PIN_NET_SWDIO 11
 #define UI_PIN_TMDS_FIRST 12 /* HSTX: D0 12/13, CK 14/15, D2 16/17, D1 18/19 (see dvi_text.c) */
 #define UI_PIN_SD_MISO   20  /* SPI0 */
 #define UI_PIN_SD_CS     21
