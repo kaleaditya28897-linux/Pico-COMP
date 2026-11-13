@@ -396,10 +396,6 @@
         "pattern": "V5_PANEL"
       },
       {
-        "netclass": "Power",
-        "pattern": "V3V3"
-      },
-      {
         "netclass": "HDMI_TMDS",
         "pattern": "TMDS_*"
       },
