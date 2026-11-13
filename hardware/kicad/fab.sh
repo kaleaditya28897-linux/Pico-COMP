@@ -35,6 +35,7 @@ for b in ${@:-mainboard keyboard}; do
   kicad-cli pcb export pdf --layers "B.Fab,Edge.Cuts" --mode-single --mirror -o "$d/assembly/$b-assembly-bottom.pdf" $b.kicad_pcb >/dev/null
   kicad-cli pcb export step --subst-models --force -o "$d/$b.step" $b.kicad_pcb >/dev/null
   kicad-cli pcb export step --subst-models --force -o $b.step $b.kicad_pcb >/dev/null
+  [ $b = keyboard ] && cp ../keyboard/plate.dxf "$d/keyboard-plate.dxf"      # laser-cut switch plate
   (cd "$d" && rm -f ../$b-gerbers.zip && zip -qr ../$b-gerbers.zip gerber)
   echo "$b: outputs in hardware/fab/$b, Gerber zip hardware/fab/$b-gerbers.zip"
 done

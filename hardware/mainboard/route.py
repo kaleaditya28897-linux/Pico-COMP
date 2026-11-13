@@ -67,8 +67,9 @@ def main():
         os.makedirs(os.path.dirname(JAR), exist_ok=True)
         urllib.request.urlretrieve(URL, JAR)
     board = pcbnew.LoadBoard(path)
-    for t in list(board.GetTracks()):          # start from a clean ratsnest
-        board.Remove(t)
+    for t in list(board.GetTracks()):          # clear earlier autorouting; locked items (fan-out) stay
+        if not t.IsLocked():
+            board.Delete(t)
     tmp = tempfile.mkdtemp()
     dsn, ses = os.path.join(tmp, "b.dsn"), os.path.join(tmp, "b.ses")
     # hide every pour on a signal layer (named POUR_*) from the router: it would treat them as planes

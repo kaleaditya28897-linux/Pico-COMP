@@ -300,7 +300,7 @@
     <Enterprise id="UNKNOWN" code="NONE"/>
     <Person name="UNKNOWN" enterpriseRef="UNKNOWN" roleRef="Owner"/>
   </LogisticHeader>
-  <HistoryRecord number="1" origination="2026-11-13T02:49:50" software="KiCad EDA" lastChange="2026-11-13T02:49:50">
+  <HistoryRecord number="1" origination="2026-11-13T12:10:20" software="KiCad EDA" lastChange="2026-11-13T12:10:20">
     <FileRevision fileRevisionId="1" comment="NO COMMENT" label="NO LABEL">
       <SoftwarePackage name="KiCad" revision="10.0.8" vendor="KiCad EDA">
         <Certification certificationStatus="SELFTEST"/>
@@ -57060,7 +57060,7 @@
     </CadData>
   </Ecad>
   <Avl name="Primary_Vendor_List">
-    <AvlHeader title="BOM" source="KiCad" author="OWNER" datetime="2026-11-13T02:49:51" version="1"/>
+    <AvlHeader title="BOM" source="KiCad" author="OWNER" datetime="2026-11-13T12:10:21" version="1"/>
     <AvlItem OEMDesignNumber="pico-comp_Kailh_Choc_V1_Choc_V1"/>
     <AvlItem OEMDesignNumber="MountingHole_MountingHole_2.7mm_M2.5_M2.5"/>
     <AvlItem OEMDesignNumber="pico-comp_PinHeader_1x20_P2.54mm_Horizontal_KB_MATRIX"/>
