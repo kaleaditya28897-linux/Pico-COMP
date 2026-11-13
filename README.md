@@ -181,4 +181,4 @@ custom Li-ion packs); the files are standard and work with any fab.
 Designed by Aditya Kale. Terminus font (SIL OFL 1.1). Built on the Raspberry Pi Pico SDK, KiCad,
 FreeCAD and Freerouting.
 
-© 2026 Aditya Kale. All rights reserved unless a license file is added.
+© 2026 Aditya Kale. Licensed under the GNU General Public License v3.0, see [LICENSE](LICENSE).
