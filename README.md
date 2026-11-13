@@ -10,16 +10,16 @@ display driven in 80-column text mode (amber, green or white on black), a week o
 18650 pack, and Wi-Fi for mail, chat and file sync. Everything is programmed in C on the RP2350's RISC-V
 cores, and every board, case part and keycap is generated from scripts in this repository.
 
-> **Status (Nov 2026):** the keyboard PCB, switch plate, keycaps and battery spec are ready to order. The
-> main board design is final (schematic ERC-clean, placement and design rules done) and is being routed:
-> automated routing is down to a handful of connections. Firmware: display driver and project skeleton.
+> **Status (Nov 2026):** both boards, the switch plate, keycaps and battery spec are ready to order. The
+> main board is routed and passes ERC, DRC (with schematic parity) and a power-copper audit; the case
+> prints wait for the measured battery pack and display. Firmware: display driver and project skeleton.
 
 | Part | State |
 |---|---|
 | Keyboard PCB (2 layers) | Routed, KiCad DRC 0 / ERC 0, fab package in `hardware/fab/keyboard/` |
 | Switch plate | Laser-cut DXF ready (1.2 mm) |
 | Keycaps (75) | Print-ready STEP/STL with debossed legends + inlays |
-| Main board (6 layers) | Schematic + placement final; routing in progress |
+| Main board (6 layers) | Routed, ERC 0 / DRC 0 / power audit pass, fab package + order sheet in `hardware/fab/mainboard/` |
 | Case | Parametric FreeCAD assembly, printable parts, no interferences |
 | Firmware | Builds for both MCUs; HSTX DVI text driver (untested on hardware) |
 
@@ -40,6 +40,8 @@ cores, and every board, case part and keycap is generated from scripts in this r
   - USB-C port 2: the network MCU's own USB.
 - **Power:** custom 2S2P 18650 pack (7.4 V, 44 Wh), TI BQ25798 USB-C buck-boost charger, 5 V and 3.3 V
   buck converters, switched panel power for standby. Target: one week standby, ~4 days of normal use.
+- **Buttons:** a real power button (charger ship mode disconnects the pack through a ship FET; press to
+  turn on, hold 10 s for a hardware power cycle) and a system-reset pinhole that resets both MCUs.
 - **I/O:** serial printer port (JST-SH, UART with RTS/CTS), expansion header (6 GPIO + I2C/SPI),
   piezo beeper.
 - **Software (planned):** text editor, spreadsheet, database, mail, IM (IRC/Matrix), file sync web
@@ -74,8 +76,9 @@ Two RP2350s split the work so the UI never stalls on the network:
 - **Normal update:** connect USB-C port 1 to a computer. An "update firmware" hotkey (or
   `picotool reboot -u`) puts the UI MCU into the RP2350 USB bootloader, where it appears as a drive. Copy
   one `.uf2`. The UI image carries the NET MCU firmware and rewrites it over SWD when the version differs.
-- **Recovery:** double-tap the reset button through the pinhole in the right side wall, which brings up
-  the USB update drive (`pico_bootsel_via_double_reset`). BOOTSEL buttons inside the case are the last
+- **Recovery:** double-tap the system-reset button through the pinhole in the right side wall, which
+  brings up the USB update drive (`pico_bootsel_via_double_reset`). If anything hangs, hold the power
+  button for 10 s: the charger power-cycles the whole machine. BOOTSEL buttons inside the case are the last
   resort.
 - **NET MCU direct:** USB-C port 2.
 
@@ -141,8 +144,10 @@ FreeCADCmd hardware/kicad/make_3d.py                       # STEP models missing
 python3 hardware/mainboard/gen_pcb.py && python3 hardware/mainboard/gen_sch.py
 python3 hardware/keyboard/gen_pcb.py  && python3 hardware/keyboard/gen_sch.py
 python3 hardware/mainboard/fanout.py hardware/kicad/mainboard.kicad_pcb    # plane, BGA, dog-bone fan-out
-python3 hardware/mainboard/route.py  hardware/kicad/<board>.kicad_pcb 40   # Freerouting
-python3 hardware/mainboard/maze_route.py hardware/kicad/<board>.kicad_pcb  # finish leftovers
+ROUTE_EXTRA=--router.job_timeout=00:40:00 python3 hardware/mainboard/route.py hardware/kicad/<board>.kicad_pcb 40
+python3 hardware/mainboard/maze_route.py hardware/kicad/<board>.kicad_pcb  # finish leftovers (route_from.py)
+python3 hardware/mainboard/route.py --prune hardware/kicad/<board>.kicad_pcb
+python3 hardware/mainboard/check_power.py hardware/kicad/mainboard.kicad_pcb  # power-copper gate
 sh hardware/kicad/fab.sh                                   # ERC/DRC gate + all fab outputs
 python3 hardware/kicad/export_parts.py && FreeCADCmd hardware/mechanical/case.py
 FreeCAD hardware/mechanical/open_gui.py                    # open the assembly (saves colours)
@@ -170,11 +175,11 @@ custom Li-ion packs); the files are standard and work with any fab.
 
 ## Open items
 
-- Finish main board routing, then its fab package and order sheet.
 - Measure the display module (thickness, outline) and the HDMI cable; adjust the lid.
 - Size the battery bay to the delivered pack.
 - Firmware: key scanner, UART link, eMMC (PIO SD/MMC) and USB host drivers, NET reflash over SWD,
-  file system, apps.
+  file system, apps; power key (GPIO37) and power-off via the charger's ship mode (SDRV_CTRL = 10),
+  charge-current limit (<= 2 A, the BAT copper is sized for it).
 
 ## Credits
 

@@ -6,7 +6,15 @@
  * Firmware updates: one .uf2 on the UI MCU (USB-C, BOOTSEL drive mode via an "update" hotkey,
  * reset_usb_boot(), or a double tap of the pinhole RESET button). The UI image carries the NET MCU
  * image and writes it over SWD (UI_PIN_NET_SWCLK/SWDIO) when the NET version differs. The NET MCU's
- * own USB is on internal connector J14 (factory / recovery flashing). */
+ * own USB is on USB-C port 2 (J14, factory / recovery flashing).
+ *
+ * Buttons (right wall):
+ *  - POWER (SW5): pulls the BQ25798's QON and UI GPIO37 low through a dual diode. Short press: firmware
+ *    event (sleep / wake / ask to power off). Power off = NET writes SDRV_CTRL = 10 (REG0x0F bits 2:1, ship
+ *    mode): the ship FET Q50 disconnects the pack. Power on = press >= 1 s (15 ms if WKUP_DLY = 1) or plug
+ *    in USB. Holding it 10 s power-cycles everything in hardware (BQ25798 tRST), even if firmware hangs.
+ *  - RESET pinhole (SW2): resets both MCUs at once (UI_RUN and NET_RUN through a dual diode).
+ *    Double tap = UI USB update mode (pico_bootsel_via_double_reset). */
 
 /* ---- UI MCU (U1) ---- */
 #define UI_PIN_EXP_0_3   0   /* expansion header J13 pins 3-6 = GPIO0-3 */
@@ -31,6 +39,7 @@
 #define UI_PIN_EMMC_CMD  31
 #define UI_PIN_EMMC_DAT0 32  /* DAT1-3 = 33-35 */
 #define UI_PIN_EMMC_RST  36  /* active low, 10k pull-up */
+#define UI_PIN_PWR_KEY   37  /* power button, active low (10k pull-up; shared with charger QON via D50) */
 #define UI_PIN_LINK_TX   28  /* UART0 TX to NET RX 29 */
 #define UI_PIN_LINK_RX   29
 

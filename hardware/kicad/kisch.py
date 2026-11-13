@@ -289,7 +289,7 @@ def link_pcb(board, sch, sheetfile):
             fp.SetPath(pcbnew.KIID_PATH(f"/{su}"))
             for pad in fp.Pads():
                 pname = getattr(sch, "nc", {}).get((fp.GetReference(), pad.GetNumber()))
-                if pname is not None and not pad.GetNetname():
+                if pname is not None and (not pad.GetNetname() or pad.GetNetname().startswith("unconnected-(")):
                     pn = "" if pname in ("", "~") else pname.replace("/", "{slash}") + "-"
                     name = f"unconnected-({fp.GetReference()}-{pn}Pad{pad.GetNumber()})"
                     net = board.FindNet(name)

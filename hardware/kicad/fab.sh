@@ -12,7 +12,10 @@ LAYERS2="F.Cu,B.Cu,F.Paste,B.Paste,F.Silkscreen,B.Silkscreen,F.Mask,B.Mask,Edge.
 
 for b in ${@:-mainboard keyboard}; do
   d="$OUT/$b"
-  rm -rf "$d"; mkdir -p "$d/gerber" "$d/assembly" "$d/reports"
+  # clear only generated outputs: the hand-written ORDER.md next to them stays
+  rm -rf "$d/gerber" "$d/assembly" "$d/reports" "$d/$b.step" "$d/$b-ipc2581.xml" "$d/$b-odb.zip" \
+         "$d/$b-schematic.pdf" "$d/keyboard-plate.dxf"
+  mkdir -p "$d/gerber" "$d/assembly" "$d/reports"
   kicad-cli sch erc --severity-error --exit-code-violations -o "$d/reports/erc.rpt" $b.kicad_sch >/dev/null \
     || { echo "$b: ERC errors, see $d/reports/erc.rpt"; exit 1; }
   kicad-cli pcb drc --schematic-parity --refill-zones --severity-error --severity-warning --exit-code-violations \

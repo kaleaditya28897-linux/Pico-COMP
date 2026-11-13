@@ -136,6 +136,15 @@
    ],
    "value": "RESET"
   },
+  "SW5": {
+   "bbox": [
+    146.75,
+    21.625,
+    152.3,
+    29.475
+   ],
+   "value": "POWER"
+  },
   "J14": {
    "bbox": [
     142.83,
@@ -175,6 +184,10 @@
    "Battery_Management",
    "BQ25798"
   ],
+  "Q50": [
+   "pico-comp",
+   "NMOS_SON8_Q3A"
+  ],
   "U6": [
    "Regulator_Switching",
    "TPS62933"
@@ -190,6 +203,14 @@
   "U8": [
    "pico-comp",
    "RaspberryPi_RM2"
+  ],
+  "D51": [
+   "Diode",
+   "BAT54C"
+  ],
+  "D50": [
+   "Diode",
+   "BAT54C"
   ],
   "U11": [
    "Power_Protection",

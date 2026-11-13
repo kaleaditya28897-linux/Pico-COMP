@@ -22,13 +22,17 @@ JAR = os.environ.get("FREEROUTING_JAR", os.path.expanduser("~/.cache/freerouting
 URL = "https://github.com/freerouting/freerouting/releases/download/v2.1.0/freerouting-2.1.0.jar"
 
 
+# nets whose every pad sits on its own F.Cu pour (gen_pcb.py PWR_* / VREG_*): nothing for the router to do
+POUR_ONLY = ["PMID", "SW1", "SW2", "SW3", "SW5", "VSYS", "VBAT", "VBAT_PACK", "UI_LX", "NET_LX"]
+
+
 def remove_dangling(board, path):
     """Router clean-up: zero-length and duplicate segments, then whatever KiCad's DRC itself reports
     as track_dangling / via_dangling (deleted by UUID, repeated until none). Saves to `path`."""
     import json
     removed = 0
     seen = set()
-    for t in list(board.GetTracks()):
+    for t in sorted(board.GetTracks(), key=lambda t: not t.IsLocked()):   # locked first: keep those
         if t.GetClass() == "PCB_VIA":
             p = t.GetPosition()
             key = ("v", p.x, p.y, t.GetNetCode())
@@ -39,7 +43,7 @@ def remove_dangling(board, path):
                 removed += 1
                 continue
             key = (t.GetLayer(), a, b, t.GetNetCode())
-        if key in seen:
+        if key in seen and not t.IsLocked():
             board.Delete(t)
             removed += 1
         else:
@@ -52,7 +56,9 @@ def remove_dangling(board, path):
                        check=True, capture_output=True)
         ids = {it["uuid"] for v in json.load(open(rpt))["violations"]
                if v["type"] in ("track_dangling", "via_dangling") for it in v["items"]}
-        dead = [t for t in board.GetTracks() if t.m_Uuid.AsString() in ids]
+        # locked copper is the fan-out (plane vias, BGA via-in-pad, dog-bones): it can look dangling
+        # before its route exists, or where a pad's only other connection is a plane, so keep it
+        dead = [t for t in board.GetTracks() if t.m_Uuid.AsString() in ids and not t.IsLocked()]
         if not dead:
             return removed
         for t in dead:
@@ -83,6 +89,17 @@ def main():
     for z in pours:
         board.Add(z)
     skip = [n for a in sys.argv[3:] if a.startswith("--skip=") for n in a[7:].split(",")]
+    # F.Cu pours (PWR_* power stages, VREG_* RP2350 regulators): KiCad exports them as "plane" areas, which
+    # Freerouting happily routes other nets through (it expects planes to be split). Add a matching F.Cu
+    # keep-out for each, and leave out the nets those pours connect completely.
+    txt = open(dsn).read()
+    polys = re.findall(r'\(plane "?([^\s"]+)"? \(polygon F\.Cu 0 ([^)]*)\)\)', txt)
+    if polys:
+        ko = "".join(f'    (keepout "" (polygon F.Cu 0 {pts.strip()}))\n' for _, pts in polys)
+        txt = txt.replace("    (plane ", ko + "    (plane ", 1)
+        open(dsn, "w").write(txt)
+        skip += [n for n in POUR_ONLY if n not in skip]
+        print(f"pour keep-outs: {len(polys)}")
     if skip:                     # leave these nets out (Freerouting retries an unroutable net forever)
         txt = open(dsn).read()
         for n in skip:
@@ -97,13 +114,42 @@ def main():
                     "-de", dsn, "-do", ses, "-mp", passes, "-mt", "1"],
                    check=True)
     assert os.path.exists(ses), "freerouting produced no session file"
+    # the session holds the whole routed board: drop the unlocked copper it started from (--keep), or
+    # wires Freerouting ripped up would stay behind next to their replacements
+    for t in list(board.GetTracks()):
+        if not t.IsLocked():
+            board.Delete(t)
     print("imported segs/vias:", import_ses(board, ses))
     print("removed dangling track/via items:", remove_dangling(board, path))
     print("routed:", len(board.GetTracks()), "track/via items ->", path)
 
 
+def prune_fanout(board, path):
+    """Final step once everything is connected: delete fan-out that the routing never used (dog-bone and
+    BGA vias reported dangling, then the stubs that leaves), locked or not; plane nets are left alone."""
+    import json
+    rpt = os.path.join(tempfile.mkdtemp(), "drc.json")
+    removed = 0
+    while True:
+        pcbnew.ZONE_FILLER(board).Fill(board.Zones())
+        pcbnew.SaveBoard(path, board)
+        subprocess.run(["kicad-cli", "pcb", "drc", "--format", "json", "--severity-all", "-o", rpt, path],
+                       check=True, capture_output=True)
+        ids = {it["uuid"] for v in json.load(open(rpt))["violations"]
+               if v["type"] in ("track_dangling", "via_dangling") for it in v["items"]}
+        dead = [t for t in board.GetTracks() if t.m_Uuid.AsString() in ids and t.GetNetname() not in ("GND", "V3V3")]
+        if not dead:
+            return removed
+        for t in dead:
+            board.Delete(t)
+        removed += len(dead)
+
+
 if __name__ == "__main__":
-    if sys.argv[1] == "--cleanup":                    # clean an already-routed board in place
+    if sys.argv[1] == "--prune":                      # drop unused fan-out from a fully routed board
+        p = os.path.abspath(sys.argv[2])
+        print("pruned:", prune_fanout(pcbnew.LoadBoard(p), p))
+    elif sys.argv[1] == "--cleanup":                  # clean an already-routed board in place
         p = os.path.abspath(sys.argv[2])
         print("removed:", remove_dangling(pcbnew.LoadBoard(p), p))
     elif sys.argv[1] == "--import":                   # route.py --import board.kicad_pcb session.ses

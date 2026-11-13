@@ -43,9 +43,19 @@ How it fits together:
 - Reviewing the 3D model: `FreeCADCmd hardware/mechanical/render_export.py && python3 hardware/mechanical/render.py [hero top side back closed detail_kb detail_ports]` writes offscreen VTK renders to `hardware/mechanical/render/*.png` (colours from `palette.py`). FreeCADCmd can't store colours (no view providers), so run `FreeCAD hardware/mechanical/open_gui.py` after `case.py`: it applies `palette.py` and saves the colours into the FCStd. The case is a D-cover (`Base`) plus a separate top deck (`Deck`, C-cover) and a lid shell plus back cover (`LidBack`); the FCStd is saved with the lid 110 deg open (`LID_SHOW`), and interference checks use the closed lid.
 - Run DRC/ERC yourself with `kicad-cli pcb drc --schematic-parity --refill-zones` and `kicad-cli sch erc` from `hardware/kicad`.
 
-**Main board is hand-routed in KiCad** (`docs/mainboard-routing.md`): Freerouting couldn't finish it with
-intact planes. `mainboard/gen_pcb.py` refuses to overwrite a board that has tracks, so make main-board
-netlist changes in KiCad (schematic, then Update PCB from Schematic). The keyboard is still fully
-script-generated and auto-routed.
+**Main board pipeline** (all in `hardware/mainboard/`, boards in `hardware/kicad/`):
+1. `gen_pcb.py` places everything and lays down locked "recipe" copper: the RP2350 core regulators copied
+   from Raspberry Pi's minimal design (`rp2350_vreg.py`, made by `kicad/import_rp2350_vreg.py`), the power
+   stages with explicit `PWR_*` pours, and the 1.2 mm VBUS trunk. It refuses to overwrite a routed board
+   (`--force`; `GEN_PCB_OUT=...` writes elsewhere).
+2. `fanout.py` (run once, fresh board): plane vias, BGA via-in-pad, signal dog-bones; keeps recipe copper.
+3. `route.py` Freerouting race with `ROUTE_EXTRA=--router.job_timeout=00:40:00` (it only saves at 0
+   unrouted or at the timeout). Leftovers: `maze_route.py`, `route_from.py NET:REF.PAD:via>REF.PAD`
+   (start from an escape via; DRC reports opens at the boxed-in pin), `rip_route.py`, `fanout.py --only=`.
+4. `merge_vias.py`, `route.py --prune` (unused fan-out), then `gen_sch.py` and `sh ../kicad/fab.sh mainboard`.
+5. Release gates: ERC 0, DRC 0 incl. warnings and parity, and `check_power.py` (high-current pads on their
+   pour, no long thin power traces): DRC cannot see current.
+Small netlist changes on a routed board: edit `gen_pcb.py`, generate to a scratch file, `eco.py` it onto the
+routed board, route the new connections. The keyboard is fully script-generated and auto-routed.
 
 Design constraints worth knowing: the RM2 antenna end must stay flush with the mainboard's front edge, under plastic (palm rest), with no copper in either keep-out. The switch stack-up (plate 1.2 mm, 2.2 mm above the PCB) and the Kailh PG1350 stabilizers come from Kailh's drawings (sources in `docs/hardware-plan.md`). Panel thickness and the HDMI cable are still unmeasured.

@@ -16,13 +16,14 @@ import pcbnew
 from pcbnew import FromMM, VECTOR2I
 
 import symlib
+import rp2350_vreg  # noqa: E402  (Raspberry Pi minimal-design regulator layout, MIT)
 
 import sys  # noqa: E402
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "kicad"))
 import fplib  # noqa: E402
 
 here = os.path.dirname(os.path.abspath(__file__))
-OUT = os.path.join(here, "..", "kicad", "mainboard.kicad_pcb")
+OUT = os.environ.get("GEN_PCB_OUT") or os.path.join(here, "..", "kicad", "mainboard.kicad_pcb")   # override: scratch build
 FP = "/usr/share/kicad/footprints"
 KICAD = os.path.join(here, "..", "kicad")
 LOCAL_LIB = "pico-comp"                      # hardware/kicad/pico-comp.pretty (+ pico-comp.3dshapes)
@@ -35,8 +36,9 @@ SY = BH / 68.0
 import sys as _sys
 if os.path.exists(OUT) and "--force" not in _sys.argv:
     _old = pcbnew.LoadBoard(OUT)
-    if len(_old.GetTracks()) > 0:
-        _sys.exit(f"{OUT} has {len(_old.GetTracks())} tracks (hand routing). Refusing to overwrite it; "
+    _routed = [t for t in _old.GetTracks() if not t.IsLocked()]      # locked copper = generator recipes / fan-out
+    if _routed:
+        _sys.exit(f"{OUT} has {len(_routed)} routed tracks. Refusing to overwrite it; "
                   "make netlist changes in KiCad, or pass --force to regenerate from scratch.")
 board = pcbnew.NewBoard(OUT)
 board.SetCopperLayerCount(6)
@@ -115,14 +117,14 @@ def ic(ref, lib, name, sym, x, y, mapping, rot=0, value="", mpn=""):
     return fp
 
 
-HV_NETS = {"VBUS", "PMID", "VSYS", "VBAT", "SW1", "SW2", "SW5", "BTST1", "BTST2", "TS"}
+HV_NETS = {"VBUS", "PMID", "VSYS", "VBAT", "VBAT_PACK", "SW1", "SW2", "SW5", "BTST1", "BTST2", "TS"}
 
 
 def C(ref, val, a, b, x, y, size="0402", rot=0):
     volts = "25V" if {a, b} & HV_NETS else ("10V" if {a, b} & {"V5", "REGN", "BST5", "SS5"} else "6.3V")
     if val.endswith("pF") or val.endswith("nF"):
         diel = "C0G" if val.endswith("pF") else "X7R"
-        volts = "50V" if {a, b} & HV_NETS or ref == "C5B" else volts if volts != "6.3V" else "16V"
+        volts = "50V" if {a, b} & HV_NETS or ref == "C511" else volts if volts != "6.3V" else "16V"
     else:
         diel = "X5R"
     add(ref, "Capacitor_SMD", f"C_{size}_{ {'0402': '1005', '0603': '1608', '0805': '2012'}[size]}Metric", x, y, rot, val,
@@ -156,6 +158,46 @@ def place_edge(ref, edge, pos):
     fp.Move(VECTOR2I(int(dx), int(dy)))
 
 
+def zone_local(net, name, pts, priority, clearance=0.15, layer=pcbnew.F_Cu):
+    """Solid-connected copper pour with an explicit outline (real board mm), e.g. a switch node."""
+    z = pcbnew.ZONE(board)
+    z.SetLayer(layer)
+    z.SetNet(N(net))
+    z.SetZoneName(name)
+    z.SetAssignedPriority(priority)
+    ol = z.Outline()
+    ol.NewOutline()
+    for x, y in pts:
+        ol.Append(FromMM(x), FromMM(y))
+    z.SetPadConnection(pcbnew.ZONE_CONNECTION_FULL)
+    z.SetLocalClearance(FromMM(clearance))
+    z.SetMinThickness(FromMM(0.15))
+    board.Add(z)
+    return z
+
+
+def track(net, a, b, w, layer=pcbnew.F_Cu):
+    """Locked copper drawn by the generator (layout recipes): kept by fanout/route.py and the routers."""
+    t = pcbnew.PCB_TRACK(board)
+    t.SetStart(mm(*a))
+    t.SetEnd(mm(*b))
+    t.SetWidth(FromMM(w))
+    t.SetLayer(layer)
+    t.SetNet(N(net))
+    t.SetLocked(True)
+    board.Add(t)
+
+
+def via(net, at, d, drill):
+    v = pcbnew.PCB_VIA(board)
+    v.SetPosition(mm(*at))
+    v.SetWidth(FromMM(d))
+    v.SetDrill(FromMM(drill))
+    v.SetNet(N(net))
+    v.SetLocked(True)
+    board.Add(v)
+
+
 GPIO = lambda n: f"GPIO{n}"
 
 # --------------------------------------------------------------------------------------
@@ -180,6 +222,8 @@ for g in EXP_GPIO:
 # UI GPIO10/11 drive the NET MCU's SWD port: the UI firmware reflashes the NET MCU (one update file)
 UI_GPIO.update({10: "NET_SWCLK", 11: "NET_SWDIO"})
 # RP2350B extra GPIO: 64 GB eMMC, 4-bit SD/MMC bus via PIO (DAT0-3 consecutive for the PIO program)
+# power button sense (through D50, shared with the charger's QON): sleep/wake and soft power-off
+UI_GPIO.update({37: "UI_PWR_KEY"})
 UI_GPIO.update({30: "EMMC_CLK", 31: "EMMC_CMD", 32: "EMMC_DAT0", 33: "EMMC_DAT1", 34: "EMMC_DAT2",
                 35: "EMMC_DAT3", 36: "EMMC_RST"})
 UI_GPIO.update({12: "TMDS_D0P", 13: "TMDS_D0N", 14: "TMDS_CKP", 15: "TMDS_CKN",
@@ -193,7 +237,7 @@ UI_GPIO = {g: NET_ALIAS.get(n, n) for g, n in UI_GPIO.items()}
 
 def rp2350(tag, ref, x, y, gpio, usb, part="RP2350A"):
     """part: RP2350A (QFN-60, GPIO0-29) or RP2350B (QFN-80, GPIO0-47)."""
-    m = {"IOVDD": "V3V3", "USB_OTP_VDD": "V3V3", "QSPI_IOVDD": "V3V3", "VREG_AVDD": "V3V3",
+    m = {"IOVDD": "V3V3", "USB_OTP_VDD": "V3V3", "QSPI_IOVDD": "V3V3", "VREG_AVDD": f"{tag}_AVDD",   # RC-filtered (vreg)
          "VREG_VIN": "V3V3", "ADC_AVDD": "V3V3", "DVDD": f"{tag}_1V1", "VREG_FB": f"{tag}_1V1",
          "VREG_LX": f"{tag}_LX", "VREG_PGND": "GND", "GND": "GND",
          "XIN": f"{tag}_XIN", "XOUT": f"{tag}_XOUT", "RUN": f"{tag}_RUN",
@@ -211,31 +255,68 @@ def rp2350(tag, ref, x, y, gpio, usb, part="RP2350A"):
     ic(ref, "Package_DFN_QFN", fpn, ("MCU_RaspberryPi", part), x, y, m, value=f"{part} ({tag})", mpn=part)
 
 
-def support(tag, u, x, y, bootref, runref, swdref, usb=False, swd_dy=8):
-    """Flash, crystal, regulator inductor, decoupling and buttons for one RP2350."""
-    # decoupling: one 100 nF per supply pin group, plus bulk
-    for i in range(6):
+def vreg(tag, u, ref, part):
+    """RP2350 core regulator, copied from Raspberry Pi's minimal design (rp2350_vreg.py, MIT, see there):
+    L (AOTA-B201610S3R3-101-T, polarity dot on pad 1 = 1V1), 4.7 uF in/out, 33R + 4.7 uF VREG_AVDD filter,
+    their local pours, tracks and vias, all in the RP2350's frame. VREG_VIN is fed from the In4 3.3 V plane
+    through a via under the chip (the reference board has a 3.3 V top pour instead)."""
+    lay = rp2350_vreg.LAYOUT[part]
+    o = refs[ref].GetPosition()
+    ox, oy = o.x / 1e6, o.y / 1e6
+    net = {"LX": f"{tag}_LX", "1V1": f"{tag}_1V1", "AVDD": f"{tag}_AVDD", "3V3": "V3V3", "GND": "GND"}
+    cap = dict(lib="Capacitor_SMD", name="C_0402_1005Metric", value="4.7uF", mpn="GRM155R60J475ME47D",
+               spec="4.7uF 6.3V X5R 0402")
+    spec = {"L": dict(ref=f"L{u}", lib=LOCAL_LIB, name=rp2350_vreg.FOOTPRINTS["L1"], value="3.3uH",
+                      mpn="AOTA-B201610S3R3-101-T", spec=""),
+            "CIN": dict(cap, ref=f"C{u}21", lib=LOCAL_LIB, name=rp2350_vreg.FOOTPRINTS["C6"]),
+            "COUT": dict(cap, ref=f"C{u}20", lib=LOCAL_LIB, name=rp2350_vreg.FOOTPRINTS["C6"]),
+            "CAVDD": dict(cap, ref=f"C{u}25"),
+            "RAVDD": dict(ref=f"R{u}4", lib="Resistor_SMD", name="R_0402_1005Metric", value="33",
+                          mpn="", spec="33 1% 0402")}
+    for role, pl in lay["parts"].items():
+        sp = spec[role]
+        add(sp["ref"], sp["lib"], sp["name"], ox + pl["at"][0], oy + pl["at"][1], pl["rot"], sp["value"],
+            mpn=sp["mpn"], spec=sp["spec"], fixed=True)
+        conn(sp["ref"], {k: net[v] for k, v in pl["pads"].items()})
+    for z in lay["zones"]:
+        zone_local(net[z["net"]], f"VREG_{tag}_{z['net']}", [(ox + x, oy + y) for x, y in z["pts"]],
+                   z["priority"] + 10, z["clearance"])
+    for t in lay["tracks"]:
+        track(net[t["net"]], (ox + t["a"][0], oy + t["a"][1]), (ox + t["b"][0], oy + t["b"][1]), t["w"])
+    for v in lay["vias"]:
+        via(net[v["net"]], (ox + v["at"][0], oy + v["at"][1]), v["d"], v["drill"])
+    # VREG_VIN pin -> under-chip via to the In4 3.3 V plane (inside the pad ring, clear of the EP)
+    num = symlib.load("MCU_RaspberryPi", part)[0]["VREG_VIN"][0]
+    vin = [p for p in refs[ref].Pads() if p.GetNumber() == num][0]
+    vx, vy = vin.GetPosition().x / 1e6, vin.GetPosition().y / 1e6
+    inward = 1.0 if vy < oy else -1.0
+    track("V3V3", (vx, vy), (vx, vy + inward * 1.15), 0.2)
+    via("V3V3", (vx, vy + inward * 1.15), 0.45, 0.2)
+
+
+def support(tag, u, x, y, bootref, runref, swdref, usb=False, swd_dy=8, part="RP2350A", ref=None):
+    """Flash, crystal, core regulator (vreg), decoupling and buttons for one RP2350."""
+    # decoupling: one 100 nF per supply pin group (three above the chip, left of the regulator; three below)
+    for i in range(3):
         C(f"C{u}{i + 1}", "100nF", "V3V3", "GND", x - 6 + i * 2.4, y - 6.2)
+    for i in range(3):
+        C(f"C{u}{i + 4}", "100nF", "V3V3", "GND", x + 1.6 + i * 2.4, y + 6.2)
     C(f"C{u}7", "100nF", "V3V3", "GND", x - 6, y + 6.2)
     C(f"C{u}8", "100nF", f"{tag}_1V1", "GND", x - 3.6, y + 6.2)
     C(f"C{u}9", "100nF", f"{tag}_1V1", "GND", x - 1.2, y + 6.2)
-    C(f"C{u}A", "4.7uF", f"{tag}_1V1", "GND", x + 1.6, y + 6.2, "0603")
-    C(f"C{u}B", "4.7uF", "V3V3", "GND", x + 4.8, y + 6.2, "0603")
-    add(f"L{u}", "Inductor_SMD", "L_Abracon_AOTA-B201610S", x + 9.6, y + 6.5, 0, "3.3uH",
-        mpn="AOTA-B201610S3R3-101-T")   # RP2350 datasheet part; dot (winding start) to VREG_LX
-    conn(f"L{u}", {"1": f"{tag}_LX", "2": f"{tag}_1V1"})
+    vreg(tag, u, ref, part)
     # QSPI flash
     ic(f"F{u}", "Package_SO", "SOIC-8_5.3x5.3mm_P1.27mm", ("Memory_Flash", "W25Q128JVS"), x + 12, y - 2, mpn="W25Q128JVSIQ", mapping={
         "~{CS}": f"{tag}_QSS", "DO/IO_{1}": f"{tag}_QSD1", "~{WP}/IO_{2}": f"{tag}_QSD2",
         "GND": "GND", "DI/IO_{0}": f"{tag}_QSD0", "CLK": f"{tag}_QSCK",
         "~{HOLD}/~{RESET}/IO_{3}": f"{tag}_QSD3", "VCC": "V3V3"})
-    C(f"C{u}C", "100nF", "V3V3", "GND", x + 12, y - 6.5)
+    C(f"C{u}22", "100nF", "V3V3", "GND", x + 12, y - 6.5)
     # crystal 12 MHz with 1k series on XOUT
     add(f"Y{u}", "Crystal", "Crystal_SMD_3225-4Pin_3.2x2.5mm", x - 12, y, 90, "12MHz", mpn="ABM8-272-T3")
     conn(f"Y{u}", {"1": f"{tag}_XIN", "3": f"{tag}_XB", "2": "GND", "4": "GND"})
     R(f"R{u}1", "1k", f"{tag}_XB", f"{tag}_XOUT", x - 12, y + 4)
-    C(f"C{u}D", "15pF", f"{tag}_XIN", "GND", x - 14.5, y - 3.5)
-    C(f"C{u}E", "15pF", f"{tag}_XB", "GND", x - 14.5, y + 3.5)
+    C(f"C{u}23", "15pF", f"{tag}_XIN", "GND", x - 14.5, y - 3.5)
+    C(f"C{u}24", "15pF", f"{tag}_XB", "GND", x - 14.5, y + 3.5)
     # BOOTSEL (QSPI_SS through 1k to a button), RUN pull-up + reset button
     R(f"R{u}2", "1k", f"{tag}_QSS", f"{tag}_BOOT", x + 12, y + 3.0)
     add(bootref, "Button_Switch_SMD", "SW_SPST_B3U-1000P", x + 16, y + 9.5, 0, "BOOTSEL", mpn="B3U-1000P")
@@ -255,9 +336,9 @@ def support(tag, u, x, y, bootref, runref, swdref, usb=False, swd_dy=8):
 UI_X, UI_Y = 102.0, 42.0
 NET_X, NET_Y = 52.0, 44.0
 rp2350("UI", "U1", UI_X, UI_Y, UI_GPIO, usb="UI_USB", part="RP2350B")
-support("UI", 1, UI_X, UI_Y, "SW1", None, "J3", usb=True, swd_dy=-9)
+support("UI", 1, UI_X, UI_Y, "SW1", None, "J3", usb=True, swd_dy=-9, part="RP2350B", ref="U1")
 rp2350("NET", "U2", NET_X, NET_Y, NET_GPIO, usb="NET_USB_MCU")
-support("NET", 2, NET_X, NET_Y, "SW3", "SW4", "J4", swd_dy=4)
+support("NET", 2, NET_X, NET_Y, "SW3", "SW4", "J4", swd_dy=4, part="RP2350A", ref="U2")
 
 # --------------------------------------------------------------------------------------
 # Power: USB-C -> BQ25798 -> VSYS -> 5 V buck -> 3.3 V buck
@@ -287,21 +368,39 @@ ic("U5", "Package_DFN_QFN", "Texas_RQM0029A_VQFN-29_4x4mm_P0.4mm", ("Battery_Man
             "D-": "USB_N", "VAC2": "VBUS", "VAC1": "VBUS", "SCL": "I2C_SCL", "SDA": "I2C_SDA",
             "TS": "TS", "ILIM_HIZ": "ILIM", "BATP": "VBATP", "BTST2": "BTST2", "~{INT}": "CHG_INT",
             "BAT": "VBAT", "SYS": "VSYS", "SW2": "SW2", "GND": "GND", "SW1": "SW1", "PMID": "PMID",
-            "~{CE}": "GND", "ACDRV1": "GND", "ACDRV2": "GND", "PROG": "PROG", "SDRV": "SDRV"},
-   mpn="BQ25798RQMR")   # ACDRV to GND: no input FETs. QON open (internal pull-up).
-add("L5", "Inductor_SMD", "L_Bourns_SRP7028A_7.3x6.6mm", 28, 38, 0, "2.2uH", mpn="SRP7028A-2R2M")
+            "~{CE}": "GND", "ACDRV1": "GND", "ACDRV2": "GND", "PROG": "PROG", "SDRV": "SDRV", "~{QON}": "QON"},
+   mpn="BQ25798RQMR")   # ACDRV to GND: no input FETs. QON = power button (via D50).
+# Charger layout (real board mm, fixed=True), after the BQ25798 datasheet layout guide: L5 straight above
+# the SW1/SW2 pins with its own switch-node pours; PMID caps on a strip from the PMID pin; BTST caps beside
+# the switch pours; REGN cap at its pin; VBUS pour along the left pins (a corridor for the REGN cap); VSYS
+# strip from the SYS pin to its caps, then a VSYS area up to the 5 V buck; BAT pour from the BAT pins around
+# to the ship FET Q50; VBAT_PACK pour from J2 to Q50's drain. Pours are named PWR_*: the autorouter sees them
+# (other nets keep off), so they stay solid.
+add("L5", "Inductor_SMD", "L_Bourns_SRP7028A_7.3x6.6mm", 28.0, 23.5, 0, "2.2uH", mpn="SRP7028A-2R2M", fixed=True)
 conn("L5", {"1": "SW1", "2": "SW2"})
-C("C50", "10uF", "VBUS", "GND", 21, 18, "0805")
-C("C51", "10uF", "VBUS", "GND", 21, 21, "0805")
-C("C52", "10uF", "PMID", "GND", 21, 24, "0805")
-C("C53", "10uF", "PMID", "GND", 21, 27, "0805")
-C("C54", "47nF", "BTST1", "SW1", 35, 19)
-C("C55", "47nF", "BTST2", "SW2", 35, 21)
-C("C56", "4.7uF", "REGN", "GND", 35, 24, "0603")
-C("C57", "10uF", "VSYS", "GND", 36, 28, "0805")
-C("C58", "10uF", "VSYS", "GND", 36, 31, "0805")
-C("C59", "10uF", "VBAT", "GND", 21, 31, "0805")
-C("C5A", "10uF", "VBAT", "GND", 21, 34, "0805")
+
+
+def Cf(ref, val, a, b, x, y, size="0402", rot=0):
+    """C() in real board coordinates."""
+    C(ref, val, a, b, x, y / SY, size, rot)
+
+
+def Rf(ref, val, a, b, x, y, rot=0):
+    R(ref, val, a, b, x, y / SY, rot)
+
+
+Cf("C52", "10uF", "PMID", "GND", 22.6, 29.0, "0805", 90)        # PMID pad (1) down on the PMID strip
+Cf("C53", "10uF", "PMID", "GND", 20.6, 29.0, "0805", 90)
+Cf("C54", "47nF", "BTST1", "SW1", 24.75, 28.25, "0402", 0)      # pad 2 on the SW1 pour
+Cf("C55", "47nF", "BTST2", "SW2", 31.25, 28.25, "0402", 180)    # pad 2 on the SW2 pour
+Cf("C50", "10uF", "VBUS", "GND", 18.6, 31.85, "0805", 180)       # VBUS pad (1) on the VBUS pour
+Cf("C51", "10uF", "VBUS", "GND", 18.6, 33.95, "0805", 180)
+Cf("C56", "4.7uF", "REGN", "GND", 23.9, 32.12, "0603", 180)     # REGN pad (1) next to pin 5
+Cf("C57", "10uF", "VSYS", "GND", 33.6, 29.0, "0805", 90)        # VSYS pad (1) down on the VSYS strip
+Cf("C58", "10uF", "VSYS", "GND", 35.6, 29.0, "0805", 90)
+Cf("C59", "10uF", "VBAT", "GND", 34.55, 33.0, "0805", 0)        # VBAT pad (1) on the BAT column
+Cf("C510", "10uF", "VBAT", "GND", 34.55, 35.2, "0805", 0)
+track("REGN", (26.10, 32.12), (24.9, 32.12), 0.2)             # REGN pin 5 -> C56
 R("R50", "5.23k", "REGN", "TS", 40, 19)
 R("R51", "30.1k", "TS", "GND", 40, 21)
 R("R52", "47k", "REGN", "ILIM", 40, 23)
@@ -311,40 +410,55 @@ R("R55", "4.7k", "V3V3", "I2C_SCL", 44, 21)
 R("R56", "10k", "V3V3", "CHG_INT", 44, 23)
 R("R57", "10k", "V3V3", "CHG_STAT", 44, 25)
 R("R58", "8.2k", "PROG", "GND", 40, 27)          # datasheet Table 7-1: 2s, 750 kHz (needs the 2.2 uH L5)
-R("R59", "100", "VBATP", "VBAT", 40, 29)         # datasheet: 100R in series with BATP
-C("C5B", "1nF", "SDRV", "GND", 44, 27)          # datasheet: 1 nF 50 V on SDRV when no ship FET
+Rf("R59", "100", "VBATP", "VBAT_PACK", 16.95, 28.6, 180)   # datasheet: 100R from BATP to the pack + side
+# Ship FET (datasheet 7.3.12, Figure 7-15): N-FET between the pack and BAT, gate on SDRV. Firmware
+# "power off" sets SDRV_CTRL = 10 (ship mode): the FET disconnects the pack (no drain at all). Pressing the
+# power button (QON low for 1 s, or 15 ms with WKUP_DLY) or plugging in USB turns it back on; holding it
+# 10 s power-cycles the whole system (tRST). Drain tab towards J2 (PWR_VBAT_PACK), sources into PWR_VBAT.
+add("Q50", "Package_SON", "VSON-8_3.3x3.3mm_P0.65mm_TI_Q3A", 15, 37, 90, "CSD17581Q3A", mpn="CSD17581Q3A", fixed=True)
+SYMBOL["Q50"] = (LOCAL_LIB, "NMOS_SON8_Q3A")
+conn("Q50", {"1": "VBAT", "2": "VBAT", "3": "VBAT", "4": "SDRV", "5": "VBAT_PACK"})
+Cf("C512", "10nF", "QON", "GND", 27.8, 35.75)   # QON filter: 200k internal pull-up x 10 nF = 2 ms
 add("J2", "Connector_AMASS", "AMASS_XT30PW-M_1x02_P2.50mm_Horizontal", 0, 0, 90, "BATTERY 2S", mpn="XT30PW-M")
-conn("J2", {"1": "VBAT", "2": "GND"})
+conn("J2", {"1": "VBAT_PACK", "2": "GND"})
 place_edge("J2", "left", 26)
 add("J5", "Connector_JST", "JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical", 10, 46, 0, "NTC", mpn="B2B-PH-K-S")
 conn("J5", {"1": "TS", "2": "GND"})
+track("QON", (27.8, 34.02), (27.8, 35.35), 0.15)                # QON pin 12 -> C512 (straight down)
+track("QON", (27.8, 35.35), (27.32, 35.75), 0.15)
+track("GND", (28.0, 30.42), (28.0, 29.4), 0.2)                  # GND pin 27 (between SW1 and SW2) -> via
+via("GND", (28.0, 29.4), 0.35, 0.15)
 
-# 5 V buck (TPS62933, VSYS -> 5 V / 3 A)
+# 5 V buck (TPS62933 at 62, 14.8): input caps on VIN/GND with a local GND pour, L6 below-right on a SW5 pour,
+# BST cap at the pin, output caps beside L6 on the V5 pour.
 ic("U6", "Package_TO_SOT_SMD", "SOT-583-8", ("Regulator_Switching", "TPS62933"), 62, 12,
    {"EN": "VSYS", "VIN": "VSYS", "GND": "GND", "SW": "SW5", "BST": "BST5", "SS": "SS5", "FB": "FB5"},
    mpn="TPS62933DRLR")   # RT open: 500 kHz
-add("L6", "Inductor_SMD", "L_Bourns_SRP7028A_7.3x6.6mm", 62, 22, 0, "4.7uH", mpn="SRP7028A-4R7M")
+add("L6", "Inductor_SMD", "L_Bourns_SRP7028A_7.3x6.6mm", 66.0, 20.2, 0, "4.7uH", mpn="SRP7028A-4R7M", fixed=True)
 conn("L6", {"1": "SW5", "2": "V5"})
-C("C60", "10uF", "VSYS", "GND", 55, 9, "0805")
-C("C61", "10uF", "VSYS", "GND", 55, 12, "0805")
-C("C62", "100nF", "BST5", "SW5", 69, 9)
-C("C63", "10nF", "SS5", "GND", 69, 11)
-R("R60", "52.3k", "V5", "FB5", 69, 13)
-R("R61", "10k", "FB5", "GND", 69, 15)
-C("C64", "22uF", "V5", "GND", 70, 22, "0805")
-C("C65", "22uF", "V5", "GND", 70, 25, "0805")
-C("C66", "22uF", "V5", "GND", 70, 28, "0805")
+Cf("C60", "10uF", "VSYS", "GND", 59.55, 15.2, "0805", 270)      # VSYS pad (1) up, GND down
+Cf("C61", "10uF", "VSYS", "GND", 57.45, 15.2, "0805", 270)
+Cf("C62", "100nF", "BST5", "SW5", 64.0, 14.75, "0402", 270)    # BST5 up, SW5 (2) down onto the SW5 pour
+Cf("C63", "10nF", "SS5", "GND", 64.6, 13.2)
+Rf("R61", "10k", "FB5", "GND", 64.6, 12.2)
+Rf("R60", "52.3k", "V5", "FB5", 64.6, 11.2, 180)
+Cf("C64", "22uF", "V5", "GND", 72.3, 18.2, "0805")
+Cf("C65", "22uF", "V5", "GND", 72.3, 20.3, "0805")
+Cf("C66", "22uF", "V5", "GND", 72.3, 22.4, "0805")
 
-# 3.3 V buck (AP63203, 5 V -> 3.3 V / 2 A)
+# 3.3 V buck (AP63203 at 90, 12.35): C70 across VIN/GND right under the chip, L7 at the SW pin, BST cap at
+# the pin, output caps on a 3.3 V pour with plane vias.
 ic("U7", "Package_TO_SOT_SMD", "TSOT-23-6", ("Regulator_Switching", "AP63203WU"), 90, 10,
    {"FB": "V3V3", "EN": "V5", "IN": "V5", "GND": "GND", "SW": "SW3", "BST": "BST3"}, mpn="AP63203WU-7")
-add("L7", "Inductor_SMD", "L_Bourns_SRN6045TA", 90, 20, 0, "4.7uH", mpn="SRN6045TA-4R7M")
+add("L7", "Inductor_SMD", "L_Bourns_SRN6045TA", 95.9, 12.35, 0, "4.7uH", mpn="SRN6045TA-4R7M", fixed=True)
 conn("L7", {"1": "SW3", "2": "V3V3"})
-C("C70", "10uF", "V5", "GND", 84, 14, "0805")
-C("C71", "100nF", "BST3", "SW3", 96, 9)
-C("C72", "22uF", "V3V3", "GND", 98, 20, "0805")
-C("C73", "22uF", "V3V3", "GND", 98, 23, "0805")
-C("C74", "22uF", "V3V3", "GND", 98, 26, "0805")
+Cf("C70", "10uF", "V5", "GND", 90.0, 15.2, "0805")
+Cf("C71", "100nF", "BST3", "SW3", 91.35, 9.95)
+Cf("C72", "22uF", "V3V3", "GND", 101.2, 10.3, "0805")
+Cf("C73", "22uF", "V3V3", "GND", 101.2, 12.4, "0805")
+Cf("C74", "22uF", "V3V3", "GND", 101.2, 14.5, "0805")
+for vx, vy in ((99.45, 11.35), (99.45, 13.45)):                  # 3.3 V output pour -> In4 plane
+    via("V3V3", (vx, vy), 0.6, 0.3)
 R("R70", "4.7k", "V3V3", "PWR_LED", 98, 4)      # ~0.3 mA, always on: keep standby drain low
 add("D1", "LED_SMD", "LED_0603_1608Metric", 101, 4, 0, "PWR", spec="LED green 0603")
 conn("D1", {"1": "GND", "2": "PWR_LED"})
@@ -414,9 +528,26 @@ conn("J13", {"1": "V3V3", "2": "GND", **{str(3 + i): f"EXP{g}" for i, g in enume
 
 # UI reset on the right edge, side-actuated, behind a pinhole in the case wall. Double-tap = USB update
 # mode (pico_bootsel_via_double_reset in the UI firmware).
+# System reset: SW2 pulls both RUN pins low through D51 (dual Schottky, common cathode), so one press
+# resets the UI and NET MCUs together; each RUN keeps its own 10k pull-up and SW4 still resets NET alone.
 add("SW2", "Button_Switch_SMD", "Panasonic_EVQPUJ_EVQPUA", 0, 0, 270, "RESET", mpn="EVQ-PUJ02K")
-conn("SW2", {"1": "UI_RUN", "2": "GND"})
+conn("SW2", {"1": "SYS_RST", "2": "GND"})
 place_edge("SW2", "right", 34)
+add("D51", "Package_TO_SOT_SMD", "SOT-23", 144, 36, 0, "BAT54C", mpn="BAT54C", fixed=True)
+SYMBOL["D51"] = ("Diode", "BAT54C")
+conn("D51", {"1": "UI_RUN", "2": "NET_RUN", "3": "SYS_RST"})
+
+# Power button: right wall, above the reset pinhole, finger-pressed through a printed plunger in the case.
+# It pulls the charger's QON (exit ship mode / 10 s system power cycle) and UI GPIO37 (short presses:
+# sleep, wake, soft power-off) low through D50. QON's internal pull-up reaches 3.8 V, so the diode keeps
+# it off the 3.3 V GPIO; with the system off (ship mode) the GPIO side is unpowered and blocks too.
+add("SW5", "Button_Switch_SMD", "Panasonic_EVQPUJ_EVQPUA", 0, 0, 270, "POWER", mpn="EVQ-PUJ02K")
+conn("SW5", {"1": "PWR_KEY", "2": "GND"})
+place_edge("SW5", "right", 25.55)
+add("D50", "Package_TO_SOT_SMD", "SOT-23", 144, 26, 0, "BAT54C", mpn="BAT54C", fixed=True)
+SYMBOL["D50"] = ("Diode", "BAT54C")
+conn("D50", {"1": "QON", "2": "UI_PWR_KEY", "3": "PWR_KEY"})
+R("R130", "10k", "V3V3", "UI_PWR_KEY", 113, 53.2 / SY)
 
 # NET MCU USB for factory/recovery flashing: 27R series, internal JST-SH 4-pin (pin 1 VBUS not connected:
 # the board powers itself; connect GND, D-, D+ from a PC)
@@ -526,6 +657,11 @@ def zone(layer, net, name=""):
         ol.Append(FromMM(x), FromMM(y))
     z.SetPadConnection(pcbnew.ZONE_CONNECTION_THERMAL)
     z.SetMinThickness(FromMM(0.2))
+    # pcbnew's zone default is 0.5 mm: under the 0.5 mm-pitch eMMC BGA that cuts the plane into islands
+    # and leaves its GND/3V3 via-in-pad balls unconnected
+    z.SetLocalClearance(FromMM(0.2))
+    z.SetThermalReliefGap(FromMM(0.25))
+    z.SetThermalReliefSpokeWidth(FromMM(0.3))
     board.Add(z)
 
 
@@ -565,13 +701,49 @@ def power_pour(net, clip, priority, layer=pcbnew.F_Cu):
     board.Add(z)
 
 
-# power-stage pours (switch nodes SW1/SW2/SW5/SW3 stay short traces: no pour, less EMI)
-CHG = (5, 5, 50, 47)
-power_pour("VSYS", (20, 5, 70, 34), 6)
-power_pour("VBAT", (0, 15, 45, 47), 5)
-power_pour("PMID", CHG, 4)
-power_pour("VBUS", (15, 5, 50, 30), 3)
-power_pour("V5", (55, 2, 100, 32), 2)
+# Power pours with explicit outlines (real mm; see the charger / buck notes above). Priorities: switch nodes and
+# the local GND / PMID / VSYS / BAT copper of each stage above the generic areas; VREG_* (RP2350) above all.
+PWR = [
+    ("SW1", 9, [(27.67, 30.0), (27.67, 28.6), (26.75, 26.0), (26.75, 25.0), (23.8, 25.0), (23.8, 27.6), (24.8, 27.6),
+                (24.8, 28.9), (27.15, 28.9), (27.43, 29.25), (27.43, 30.0)]),
+    ("SW2", 9, [(28.33, 30.0), (28.33, 28.6), (29.25, 26.0), (29.25, 25.0), (32.2, 25.0), (32.2, 27.6), (31.2, 27.6),
+                (31.2, 28.9), (28.85, 28.9), (28.57, 29.25), (28.57, 30.0)]),
+    ("PMID", 9, [(27.22, 30.05), (27.22, 29.45), (27.0, 29.3), (19.75, 29.3), (19.75, 30.5), (25.6, 30.5), (26.0, 30.25),
+                 (26.98, 30.25), (26.98, 30.05)]),
+    ("VBUS", 3, [(19.6, 30.75), (26.0, 30.75), (26.0, 31.45), (21.4, 31.45), (21.4, 33.1), (26.0, 33.1), (26.0, 33.6),
+                 (26.7, 33.6), (26.7, 34.3), (19.6, 34.3)]),
+    ("VSYS", 6, [(28.8, 30.0), (29.02, 30.0), (29.02, 30.25), (38.8, 30.25), (38.8, 22.0), (56.5, 22.0), (56.5, 15.3),
+                 (61.62, 15.3), (61.62, 9.0), (36.6, 9.0), (36.6, 29.35), (29.15, 29.35), (28.8, 29.6)]),
+    ("VBAT", 7, [(29.9, 30.75), (34.8, 30.75), (34.8, 41.0), (13.0, 41.0), (13.0, 37.85), (15.6, 37.85), (15.6, 39.3),
+                 (17.6, 39.3), (17.6, 37.3), (33.3, 37.3), (33.3, 31.5), (29.9, 31.5)]),
+    ("VBAT_PACK", 7, [(11.3, 21.5), (15.9, 21.5), (15.9, 28.05), (16.75, 28.05), (16.75, 29.15), (15.9, 29.15),
+                      (15.9, 37.0), (11.3, 37.0)]),
+    ("GND", 8, [(56.6, 15.45), (61.62, 15.45), (61.62, 17.5), (56.6, 17.5)]),            # 5 V buck input loop
+    ("SW5", 9, [(62.4, 15.45), (63.6, 15.45), (63.7, 14.95), (64.35, 14.95), (64.35, 15.6), (64.75, 16.0),
+                (64.75, 18.6), (61.85, 18.6), (61.85, 17.7), (62.4, 17.2)]),
+    ("V5", 5, [(67.3, 23.4), (71.95, 23.4), (71.95, 17.4), (89.5, 17.4), (89.5, 12.0), (86.0, 12.0), (86.0, 16.4),
+               (67.3, 16.4)]),
+    ("GND", 8, [(90.45, 13.0), (91.85, 13.0), (91.85, 16.0), (90.45, 16.0)]),             # 3.3 V buck input loop
+    ("SW3", 9, [(91.85, 9.75), (93.2, 9.75), (93.2, 12.75), (91.6, 12.75), (91.6, 12.0), (91.85, 11.9)]),
+    ("V3V3", 7, [(96.85, 9.5), (100.8, 9.5), (100.8, 15.3), (96.85, 15.3)]),
+]
+for i, (n, pri, pts) in enumerate(PWR):
+    zone_local(n, f"PWR_{n}_{i}", pts, pri, 0.2)
+for vx in (57.3, 58.8, 60.3):                                     # 5 V buck input-loop GND pour -> In1 plane
+    via("GND", (vx, 17.0), 0.6, 0.3)
+for vx in (90.85, 91.5):                                          # 3.3 V buck input-loop GND pour -> In1 plane
+    via("GND", (vx, 14.04), 0.45, 0.2)
+# VBUS trunk: USB-C J1 (right edge) to the charger's VBUS pour (left), up to 1.9 A (ILIM). 1.2 mm on In3
+# (~0.1 V drop at 1.9 A over its ~125 mm), two vias at J1 (one per VBUS pad pair), three into the pour.
+# Laid down before fan-out and autorouting, which keep out of it.
+for y in (13.55, 18.45):
+    track("VBUS", (143.6, y), (142.3, y), 0.5)
+VBUS_TRUNK = [(142.3, 13.55), (142.3, 18.45), (140.85, 20.0), (42.0, 20.0), (23.0, 30.0), (21.6, 31.1),
+              (20.75, 31.95), (20.75, 32.75)]
+for a, b in zip(VBUS_TRUNK, VBUS_TRUNK[1:]):
+    track("VBUS", a, b, 1.2, pcbnew.In3_Cu)
+for v in ((142.3, 13.55), (142.3, 18.45), (21.6, 31.1), (20.75, 31.95), (20.75, 32.75)):
+    via("VBUS", v, 0.6, 0.3)
 
 ds = board.GetDesignSettings()
 ds.m_TrackMinWidth = FromMM(0.127)
@@ -590,7 +762,7 @@ pw.SetTrackWidth(FromMM(0.25))     # current is carried by the power pours
 pw.SetViaDiameter(FromMM(0.6))
 pw.SetViaDrill(FromMM(0.3))
 ds.m_NetSettings.SetNetclass("Power", pw)
-for pat in ("VBUS", "VBAT", "VSYS", "V5", "V5_PANEL", "SW1", "SW2", "SW5", "SW3", "PMID"):
+for pat in ("VBUS", "VBAT", "VBAT_PACK", "VSYS", "V5", "V5_PANEL", "SW1", "SW2", "SW5", "SW3", "PMID"):
     ds.m_NetSettings.SetNetclassPatternAssignment(pat, "Power")
 # Differential pairs for interactive routing (Route > Differential Pair). Width/gap are starting values
 # for ~100 ohm (TMDS) / ~90 ohm (USB) on an outer layer over the In1 GND plane: confirm them with the
@@ -622,7 +794,7 @@ RM2_X, RM2_Y = 85, BH - 8.25
 json.dump({"board": [BW, BH], "holes": HOLES,
            "rf_keepout": [RM2_X - 17.75, BH - 5.0, RM2_X + 17.75, BH + 13.5],
            "connectors": {r: {"bbox": bbox(r), "value": refs[r].GetValue()}
-                          for r in ("J1", "J2", "J6", "J9", "J11", "J12", "J13", "J7", "J8", "J5", "U8", "SW2", "J14")},
+                          for r in ("J1", "J2", "J6", "J9", "J11", "J12", "J13", "J7", "J8", "J5", "U8", "SW2", "SW5", "J14")},
            "symbols": SYMBOL},
           open(os.path.join(KICAD, "mainboard.json"), "w"), indent=1)
 print(f"{len(refs)} footprints, {len(_nets)} nets, {BW:.0f} x {BH:.0f} mm -> {OUT}")

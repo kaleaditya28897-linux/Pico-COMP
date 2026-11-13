@@ -1,17 +1,18 @@
-# Routing the main board by hand (KiCad 10)
+# Routing the main board
 
-Open `hardware/kicad/mainboard.kicad_pro`, then the PCB editor. Placement, netlist, stack-up, rules and
-pours are done; only tracks are missing (~360 connections). The schematic is linked, so **Inspect >
-Design Rules Checker** with "Test for parity" stays meaningful.
+The main board is generated and routed by scripts; the full pipeline is in `CLAUDE.md` ("Main board
+pipeline"): `gen_pcb.py` (placement + recipe copper + power pours + VBUS trunk) -> `fanout.py` ->
+`route.py` race -> `maze_route.py` / `route_from.py` for leftovers -> `merge_vias.py`, `route.py --prune`
+-> `gen_sch.py` -> `fab.sh`, with `check_power.py` as a release gate next to ERC/DRC.
 
-Once the board has tracks, `hardware/mainboard/gen_pcb.py` refuses to overwrite it (`--force` would
-wipe your routing). From here on, make netlist changes in KiCad: edit the schematic, then **Tools >
-Update PCB from Schematic**. Don't rerun the generators.
+Hand edits in KiCad are still possible for small fixes; keep the schematic linked (DRC with "Test for
+parity" must stay at 0) and remember that `gen_pcb.py` refuses to overwrite a routed board. For netlist
+changes prefer the generator + `eco.py` route (see `CLAUDE.md`).
 
 ## Stack-up and rules (already set)
 | Layer | Use |
 |---|---|
-| F.Cu | parts, short signals, power pours (`POUR_*`, filled by B) |
+| F.Cu | parts, short signals, power pours (`PWR_*`) and RP2350 regulator pours (`VREG_*`) |
 | In1 (GND) | solid GND plane. **Never route on it** |
 | In2, In3 | signals |
 | In4 (PWR) | solid 3V3 plane. **Never route on it** |

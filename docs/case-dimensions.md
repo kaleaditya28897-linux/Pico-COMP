@@ -15,7 +15,7 @@
 | Display module | 164.9 x 124.27 x 10.0 mm (thickness assumed) |
 | Visible window | 154.08 x 85.92 mm |
 | Hinge | pin dia 3 mm, knuckle dia 8 mm, axis at y=140, z=37 |
-| Ports | Right wall: USB-C 1 (UI, dual-role), reset pinhole, microSD, USB-C 2 (NET); HDMI internal via the hinge slot |
+| Ports | Right wall: USB-C 1 (UI, dual-role), power key (flexure tab), system-reset pinhole, microSD, USB-C 2 (NET); HDMI internal via the hinge slot |
 | Wi-Fi | RM2 onboard antenna at the main board's front edge, under the plastic top deck |
 | Feet / vents | 4x dia 12 x 1.2 mm feet pockets, 8 bottom vent slots 3 x 36 mm |
 

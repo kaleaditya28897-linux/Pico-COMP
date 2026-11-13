@@ -83,8 +83,16 @@ def chain_pts(chain):
 
 def build(board):
     R = Raster(board)
+    R.smd = Image.new("L", (R.W, R.H), 0)              # every SMD pad: no via may land on one (solder wicking)
+    sdrw = ImageDraw.Draw(R.smd)
     for p in board.GetPads():
         nc = p.GetNetCode() or -1
+        if p.GetAttribute() == pcbnew.PAD_ATTRIB_SMD and p.IsOnLayer(pcbnew.F_Cu):
+            ps = p.GetEffectivePolygon(pcbnew.F_Cu, pcbnew.ERROR_OUTSIDE)
+            for i in range(ps.OutlineCount()):
+                pts = chain_pts(ps.COutline(i))
+                if len(pts) >= 3:
+                    sdrw.polygon([R.px(*q) for q in pts], fill=1)
         for L in LAYERS:
             if p.IsOnLayer(L) or p.GetAttribute() == pcbnew.PAD_ATTRIB_PTH:
                 ps = p.GetEffectivePolygon(L, pcbnew.ERROR_OUTSIDE)
@@ -112,7 +120,7 @@ def build(board):
                 for i in range(ol.OutlineCount()):
                     R.adrw.polygon([R.px(*p) for p in chain_pts(ol.COutline(i))], fill=1)
             continue
-        if z.GetZoneName().startswith("POUR_") and z.GetLayer() == pcbnew.F_Cu:   # keep power pours whole
+        if z.GetZoneName().startswith(("POUR_", "PWR_", "VREG_")) and z.GetLayer() == pcbnew.F_Cu:   # keep pours whole
             fp = z.GetFilledPolysList(pcbnew.F_Cu)
             for i in range(fp.OutlineCount()):
                 R.poly(pcbnew.F_Cu, chain_pts(fp.COutline(i)), z.GetNetCode())
@@ -158,6 +166,7 @@ def route_pair(board, R, a, b, net, w, nets_info):
         vb = dilate(other, k_via)
         viafree = ~vb if viafree is None else viafree & ~vb
     viafree &= ~dilate(allb, k_via - k_tr) & ~R.edge[j0:j1, i0:i1]
+    viafree &= ~dilate(np.array(R.smd)[j0:j1, i0:i1] > 0, int(math.ceil((VIA_D / 2 + 0.05) / RES)))
     own = [np.array(R.lab[L])[j0:j1, i0:i1] == net for L in LAYERS]
     H, W = free[0].shape
 

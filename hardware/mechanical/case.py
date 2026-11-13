@@ -169,8 +169,24 @@ base = base.cut(box(W - WALL - 1.5, syc - 6.5, PCB_TOP + 0.1, WALL + 4, 13.0, 2.
 base = base.cut(box(W - 0.8, syc - 5.0, PCB_TOP - 2.0, 1.0, 10.0, 6.0))                                   # finger scoop
 nx0, ny0, nx1, ny1 = mb_bbox_case("J14")                 # USB-C port 2 (NET MCU), below the microSD
 base = base.cut(rounded_box(W - WALL - 1.5, (ny0 + ny1) / 2 - 4.9, PCB_TOP + 1.63 - 1.9, WALL + 4, 9.8, 3.8, 1.5))
-rx0, ry0, rx1, ry1 = mb_bbox_case("SW2")                 # side-push UI reset: pinhole (double-tap = update mode)
-base = base.cut(cyl(0.8, WALL + 4, W - WALL - 1.5, (ry0 + ry1) / 2, PCB_TOP + 1.75, EX))
+# EVQ-PUJ02K side-push switches (SW2 reset, SW5 power): the plunger is 2.6 mm wide and spans 0.25-1.65 mm
+# above the PCB (KiCad model), so its axis is 0.95 mm above the PCB top.
+EVQ_Z = PCB_TOP + 0.95
+rx0, ry0, rx1, ry1 = mb_bbox_case("SW2")                 # side-push system reset: pinhole (double-tap = update mode)
+base = base.cut(cyl(0.8, WALL + 4, W - WALL - 1.5, (ry0 + ry1) / 2, EVQ_Z, EX))
+# power button (SW5, same side-push part as the reset): a flexure key in the right wall. A U-slot frees a
+# 6 x 5 mm tab hinged along its front edge (bends in the layer plane of the upright-printed wall); a nub on
+# its inside stops 0.1 mm short of the actuator tip, a raised dot outside marks it by touch.
+qx0, qy0, qx1, qy1 = mb_bbox_case("SW5")
+qyc, qz = (qy0 + qy1) / 2, EVQ_Z
+TAB_L, TAB_H, SLOT = 6.0, 5.0, 0.6
+tip_x = PL.mb_to_case(mb["connectors"]["SW5"]["bbox"][2] - 0.48, 0)[0]     # actuator tip (courtyard - 0.48)
+for y0, dy, z0, dz in ((qyc - TAB_L / 2, TAB_L + SLOT, qz + TAB_H / 2, SLOT),           # top slot
+                       (qyc - TAB_L / 2, TAB_L + SLOT, qz - TAB_H / 2 - SLOT, SLOT),    # bottom slot
+                       (qyc + TAB_L / 2, SLOT, qz - TAB_H / 2 - SLOT, TAB_H + 2 * SLOT)):  # free (rear) end
+    base = base.cut(box(W - WALL - 0.1, y0, z0, WALL + 0.2, dy, dz))
+base = base.fuse(cyl(0.65, (W - WALL) - tip_x - 0.1, tip_x + 0.1, qyc, qz, EX))         # nub on the plunger axis
+base = base.fuse(cyl(1.3, 0.4, W, qyc, qz, EX))                                           # touch dot
 # HDMI (J6) is internal: the panel cable leaves J6 rearward and rises through this slot to the lid
 hx0, hy0, hx1, hy1 = mb_bbox_case("J6")
 hx_ = (hx0 + hx1) / 2
@@ -410,7 +426,7 @@ dim_rows = [
     ("Display module", f"{PANEL[0]} x {PANEL[1]} x {PANEL[2]} mm (thickness assumed)"),
     ("Visible window", f"{ACTIVE[0]} x {ACTIVE[1]} mm"),
     ("Hinge", f"pin dia {2 * PIN_R:.0f} mm, knuckle dia {2 * HK_R:.0f} mm, axis at y={HINGE_Y:.0f}, z={HINGE_Z:.0f}"),
-    ("Ports", "Right wall: USB-C 1 (UI, dual-role), reset pinhole, microSD, USB-C 2 (NET); HDMI internal via the hinge slot"),
+    ("Ports", "Right wall: USB-C 1 (UI, dual-role), power key (flexure tab), system-reset pinhole, microSD, USB-C 2 (NET); HDMI internal via the hinge slot"),
     ("Wi-Fi", "RM2 onboard antenna at the main board's front edge, under the plastic top deck"),
     ("Feet / vents", "4x dia 12 x 1.2 mm feet pockets, 8 bottom vent slots 3 x 36 mm"),
 ]

@@ -18,17 +18,40 @@ original placement could not be routed with intact planes. `gen_pcb.py` keeps pl
 Design rules: 0.127 mm (5 mil) trace/space, 0.45/0.2 mm vias; power nets 0.25 mm traces plus pours.
 Six layers were needed: on four, the two QFN-60s could only be autorouted by running signals through the
 planes. The planes are `LT_POWER` layers so nothing is ever routed on them.
-- 2x RP2350A (UI, NET), each with W25Q128JV flash, 12 MHz ABM8-272 crystal, AOTA-B201610S 3.3 uH
-  core-regulator inductor (the RP2350 datasheet part), BOOTSEL + RESET buttons, 1.27 mm SWD header.
+- RP2350B (UI) + RP2350A (NET), each with W25Q128JV flash, 12 MHz ABM8-272 crystal, BOOTSEL + RESET
+  buttons, 1.27 mm SWD header.
+- RP2350 core regulator: an exact copy of Raspberry Pi's layout from the RP2350A/B minimal KiCad designs
+  (RP-010328-CA / RP-010329-CA, MIT; `hardware/kicad/import_rp2350_vreg.py` -> `mainboard/rp2350_vreg.py`).
+  "Hardware design with RP2350" (RP-008280-DS) says the regulator only behaves with their placement, parts
+  and inductor orientation: L = AOTA-B201610S3R3-101-T with its polarity dot on pad 1 (the 1V1 side, not
+  VREG_LX), 4.7 uF 0402 input/output caps (Murata GRM155R60J475ME47D), and VREG_AVDD RC-filtered with
+  33 R + 4.7 uF. Their local LX / 1V1 / 3V3 / GND pours, tracks and vias are reproduced in each IC's frame.
 - Power: USB-C (5.1k CC pull-downs, USBLC6 ESD) -> BQ25798 buck-boost charger -> VSYS -> TPS62933
   5 V / 3 A -> AP63203 3.3 V / 2 A. Pack on XT30PW-M, NTC on JST-PH.
   BQ25798 strapping (datasheet SLUSDV2): PROG 8.2k = 2S, 750 kHz (needs the 2.2 uH inductor);
-  ACDRV1/2 to GND (no input FETs); SDRV 1 nF to GND (no ship FET); BATP via 100R; QON open;
-  ILIM_HIZ 47k/47k from REGN = ~1.9 A input limit; TS 5.23k/30.1k for a 103AT NTC. TPS62933 RT
-  open = 500 kHz.
-- Power pours on F.Cu for VBUS, PMID, VSYS, VBAT and 5 V around the converters (the BQ25798's
-  0.2 mm pads only take 0.25 mm traces); switch nodes stay short traces. The pours are hidden from the
-  autorouter and filled afterwards.
+  ACDRV1/2 to GND (no input FETs); BATP via 100R to the pack side; ILIM_HIZ 47k/47k from REGN =
+  ~1.9 A input limit; TS 5.23k/30.1k for a 103AT NTC. TPS62933 RT open = 500 kHz.
+- Power button and ship FET (datasheet 7.3.12): Q50 CSD17581Q3A (30 V, 3.9 mOhm at 4.5 V) between the
+  pack (XT30, net VBAT_PACK) and BAT, gate on SDRV. Ship/shutdown mode only switch this *external* FET
+  (the internal BATFET stays on), so without it there is no real off. Power off: firmware sets
+  SDRV_CTRL = 10 (ship mode). Power on: QON low >= 1 s (or 15 ms with WKUP_DLY) or USB plugged in.
+  QON low 10 s: hardware power cycle of the whole system (tRST, 350 ms off). SW5 (EVQ-PUJ02K, right
+  wall, flexure key in the case) pulls QON (10 nF filter, internal 200k pull-up to ~3.8 V) and UI GPIO37
+  (10k pull-up) low through D50 BAT54C, so the 3.3 V GPIO never sees the QON pull-up.
+- System reset: SW2 (pinhole) pulls UI_RUN and NET_RUN low through D51 BAT54C: both MCUs reset together
+  (double tap = UI USB update mode). SW4 still resets the NET MCU alone.
+- Power-stage layout (all explicit, real coordinates in `gen_pcb.py`; pours named `PWR_*`, visible to the
+  autorouter so other nets keep off them):
+  - BQ25798: L5 directly above the SW1/SW2 pins on two switch-node pours; PMID caps on a strip from the
+    PMID pin; BTST caps beside the switch pours; REGN cap at its pin; VBUS pour along the left pins; VSYS
+    strip from the SYS pin to its caps and up to the 5 V buck; BAT pour from the BAT pins around to the
+    ship FET (>= 0.65 mm everywhere, 2.5 mm along the bottom); VBAT_PACK pour from the XT30 to the FET.
+  - TPS62933 / AP63203: input cap across VIN-GND at the pins with a local GND pour and plane vias,
+    inductor at the SW pin on a switch-node pour, BST cap at the pin, output caps beside the inductor.
+  - VBUS: 1.2 mm trunk on In3 from the USB-C to the charger (~0.1 V at the 1.9 A input limit).
+  The first layout had every inductor 12-17 mm from its IC (the 68 -> 84 mm stretch pulled them apart)
+  and power carried on long 0.25 mm traces; this replaced it. `fanout.py` leaves pours and recipe copper
+  alone; release check: the power-copper audit (no high-current pad reached only by a thin trace).
 - UI: HSTX -> 270R -> HDMI-A (internal link to the panel, +5 V on pin 18), microSD (SPI0), printer
   JST-SH on UART1, expansion 1x10 1.27 mm (GPIO0-3, 8-11: I2C0, SPI1), piezo beeper on PWM, LED.
 - NET: keyboard matrix header (1x20, right angle, pins out of the front edge), BQ25798 on I2C0,

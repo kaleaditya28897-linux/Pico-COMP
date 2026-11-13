@@ -26,7 +26,8 @@ sch = kisch.Schematic("keyboard", "Pico-COMP keyboard matrix (6 x 14)", paper="A
 
 def put(ref, lib, name, x, y):
     fp = fps[ref]
-    nets = {p.GetNumber(): p.GetNetname() for p in fp.Pads() if p.GetNumber() and p.GetNetname()}
+    nets = {p.GetNumber(): p.GetNetname() for p in fp.Pads() if p.GetNumber() and p.GetNetname()
+                and not p.GetNetname().startswith("unconnected-(")}   # NC pads get these nets from link_pcb
     fields = [(k, fp.GetFieldText(k)) for k in ("MPN", "Spec") if fp.HasField(k)]
     footprint = f"{fp.GetFPID().GetLibNickname()}:{fp.GetFPID().GetLibItemName()}"
     sch.place(ref, lib, name, kisch.snap(x), kisch.snap(y), fp.GetValue(), footprint, nets, fields)

@@ -98,8 +98,41 @@ def emmc():
 '''
 
 
+def nfet_q3a():
+    """N-channel power MOSFET in TI's SON 3.3 x 3.3 (Q3A) package, pins as the pico-comp footprint
+    VSON-8_3.3x3.3mm_P0.65mm_TI_Q3A: 1-3 source, 4 gate, 5 drain (pins 5-8 + tab are one pad)."""
+    pins = []
+    for num, name, et, x, y, a, hide in (("5", "D", "passive", 2.54, 5.08, 270, ""),
+                                          ("4", "G", "input", -5.08, 0, 0, ""),
+                                          ("1", "S", "passive", 2.54, -5.08, 90, ""),
+                                          ("2", "S", "passive", 2.54, -5.08, 90, " hide"),
+                                          ("3", "S", "passive", 2.54, -5.08, 90, " hide")):
+        pins.append(f'      (pin {et} line (at {x:.2f} {y:.2f} {a}) (length 2.54){hide}\n'
+                    f'        (name "{name}" (effects (font (size 1.27 1.27))))\n'
+                    f'        (number "{num}" (effects (font (size 1.27 1.27)))))\n')
+    return f'''  (symbol "NMOS_SON8_Q3A" (pin_names (offset 0.254)) (exclude_from_sim no) (in_bom yes) (on_board yes)
+    (property "Reference" "Q" (at 5.08 1.27 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Value" "NMOS_SON8_Q3A" (at 5.08 -1.27 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Footprint" "pico-comp:VSON-8_3.3x3.3mm_P0.65mm_TI_Q3A" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Datasheet" "https://www.ti.com/lit/ds/symlink/csd17581q3a.pdf" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "N-channel MOSFET, SON 3.3 x 3.3 (pins 1-3 S, 4 G, 5-8 D)" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (symbol "NMOS_SON8_Q3A_0_1"
+      (polyline (pts (xy -2.54 0) (xy 0.254 0)) (stroke (width 0) (type default)) (fill (type none)))
+      (polyline (pts (xy 0.254 1.905) (xy 0.254 -1.905)) (stroke (width 0.254) (type default)) (fill (type none)))
+      (polyline (pts (xy 0.762 2.286) (xy 0.762 -2.286)) (stroke (width 0.254) (type default)) (fill (type none)))
+      (polyline (pts (xy 0.762 1.778) (xy 2.54 1.778) (xy 2.54 2.54)) (stroke (width 0) (type default)) (fill (type none)))
+      (polyline (pts (xy 0.762 -1.778) (xy 2.54 -1.778) (xy 2.54 -2.54)) (stroke (width 0) (type default)) (fill (type none)))
+      (polyline (pts (xy 0.762 0) (xy 2.54 0) (xy 2.54 -1.778)) (stroke (width 0) (type default)) (fill (type none)))
+      (polyline (pts (xy 1.016 0) (xy 2.032 0.381) (xy 2.032 -0.381) (xy 1.016 0)) (stroke (width 0) (type default)) (fill (type outline)))
+    )
+    (symbol "NMOS_SON8_Q3A_1_1"
+{"".join(pins)}    )
+  )
+'''
+
+
 def write():
-    body = rm2() + emmc()
+    body = rm2() + emmc() + nfet_q3a()
     open(os.path.join(here, "pico-comp.kicad_sym"), "w").write(
         '(kicad_symbol_lib (version 20241209) (generator "pico-comp-projsyms")\n' + body + ")\n")
 

@@ -43,12 +43,29 @@ TRIM = {
 }
 
 
+def _q3a(src):
+    """TI Q3A land pattern (CSD17581Q3A datasheet 7.2): pins 1-4 are 0.30 mm wide, not the NexFET
+    power-block 0.50 mm, so the gate (4) keeps a 0.35 mm gap to the source (3)."""
+    return re.sub(r'(\(pad "[1-4]" smd roundrect\s*\(at [^)]*\)\s*\(size) 0.63 0.5\)', r"\1 0.63 0.3)", src)
+
+
+# project footprints derived from a library footprint: name -> (library footprint, transform)
+DERIVED = {"VSON-8_3.3x3.3mm_P0.65mm_TI_Q3A": ("VSON-8_3.3x3.3mm_P0.65mm_NexFET", _q3a)}
+
+
 def needs_copy(name):
-    return name in OWN_3D or name in TRIM
+    return name in OWN_3D or name in TRIM or name in DERIVED
 
 
 def copy(lib, name):
     """Write pico-comp.pretty/<name>.kicad_mod from the KiCad library; returns the project lib name."""
+    if name in DERIVED:
+        base, fn = DERIVED[name]
+        src = fn(open(f"{SYS_FP}/{lib}.pretty/{base}.kicad_mod").read())
+        src = src.replace(f'(footprint "{base}"', f'(footprint "{name}"', 1)
+        assert f'(footprint "{name}"' in src, name
+        open(os.path.join(here, f"{LIB}.pretty", f"{name}.kicad_mod"), "w").write(src)
+        return LIB
     src = open(f"{SYS_FP}/{lib}.pretty/{name}.kicad_mod").read()
     if name in OWN_3D:
         src = re.sub(r'\(model "[^"]*"', f'(model "${{KIPRJMOD}}/{LIB}.3dshapes/{name}.step"', src)

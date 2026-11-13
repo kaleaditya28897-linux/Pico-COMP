@@ -1,0 +1,111 @@
+(footprint "L_Abracon_AOTA-B201610S_RPi"
+  (version 20260206)
+  (generator "pcbnew")
+  (generator_version "10.0")
+  (layer "F.Cu")
+  (descr "From Raspberry Pi RP2350 minimal design (L1). MIT License, Copyright (c) 2026 Raspberry Pi Ltd. Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files, to deal in the Software without restriction, subject to the following conditions: the above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND.")
+  (property "Reference" "REF**"
+    (at 0 -1.55 0)
+    (unlocked yes)
+    (layer "F.SilkS")
+    (uuid "732b3116-8b4f-4c2c-b9e0-f6faf57d388f")
+    (effects
+      (font
+        (size 0.8 0.5)
+        (thickness 0.125))))
+  (property "Value" "L_Abracon_AOTA-B201610S_RPi"
+    (at 0 0.8 0)
+    (unlocked yes)
+    (layer "F.Fab")
+    (hide yes)
+    (uuid "4bdf4036-f95e-4475-a301-4dff29cfd626")
+    (effects
+      (font
+        (size 0.8 0.5)
+        (thickness 0.01))))
+  (property "Description" "Inductor, SMT, 3.3uH, 20%, Irms=2.1A, Isat=2.4A, DCR=115mR typ 140mR max, Polarity Marked, M2016"
+    (at 0 0 0)
+    (unlocked yes)
+    (layer "F.Fab")
+    (hide yes)
+    (uuid "5e872e10-f298-42c8-a52e-a5d49806f257")
+    (effects
+      (font
+        (size 0.8 0.5)
+        (thickness 0.01))))
+  (sheetname "/")
+  (sheetfile "RPI-RP2350A-MINIMAL_R4-S1.kicad_sch")
+  (attr smd)
+  (duplicate_pad_numbers_are_jumpers no)
+  (fp_circle
+    (center -1.4 0.7)
+    (end -1.25 0.7)
+    (stroke
+      (width 0.01)
+      (type solid))
+    (fill yes)
+    (layer "F.SilkS")
+    (uuid "3c80fdce-c452-4755-94a9-d7565edf950e"))
+  (fp_rect
+    (start -1.1 0.9)
+    (end 1.1 -0.9)
+    (stroke
+      (width 0.01)
+      (type default))
+    (fill no)
+    (layer "F.CrtYd")
+    (uuid "85277d34-80f0-4f1d-bb99-ab0d66fd5949"))
+  (fp_rect
+    (start -1 0.8)
+    (end 1 -0.8)
+    (stroke
+      (width 0.01)
+      (type default))
+    (fill no)
+    (layer "F.Fab")
+    (uuid "b5726503-f824-4b9b-8a8d-7d0edb9f3345"))
+  (fp_rect
+    (start -0.4 0.8)
+    (end 0.4 -0.8)
+    (stroke
+      (width 0.01)
+      (type default))
+    (fill no)
+    (layer "F.Fab")
+    (uuid "019ac5d5-5872-499d-a827-d1128f557147"))
+  (fp_circle
+    (center -0.7 0.55)
+    (end -0.6 0.55)
+    (stroke
+      (width 0.01)
+      (type solid))
+    (fill yes)
+    (layer "F.Fab")
+    (uuid "0284cb08-9c51-4bb7-83dd-780a39bc0fed"))
+  (fp_text user "${REFERENCE}"
+    (at 0 0 0)
+    (unlocked yes)
+    (layer "F.Fab")
+    (uuid "459bd252-1227-4104-9fd6-4ff6ab8ce33a")
+    (effects
+      (font
+        (size 0.8 0.5)
+        (thickness 0.01))))
+  (pad "1" smd rect
+    (at -0.7 0)
+    (size 0.7 1.7)
+    (layers "F.Cu" "F.Mask" "F.Paste")
+    (uuid "73eb4c7b-7d12-4fd3-9fd0-4d4a123aae93"))
+  (pad "2" smd rect
+    (at 0.7 0)
+    (size 0.7 1.7)
+    (layers "F.Cu" "F.Mask" "F.Paste")
+    (uuid "b22fcd42-6d83-46e8-9dc9-21b7c48190f4"))
+  (embedded_fonts no)
+  (model "${KICAD10_3DMODEL_DIR}/Inductor_SMD.3dshapes/L_Abracon_AOTA-B201610S.step"
+    (offset
+      (xyz 0 0 0))
+    (scale
+      (xyz 1 1 1))
+    (rotate
+      (xyz 0 0 0))))
